@@ -10,12 +10,12 @@ It's not an object mapper, but a bare-bones library that aims at being
   - **simple**: reading, writing and modifying JSON with minimal code (short names, fluent style)
 
 ### Version
-[`-`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
+[`0.0.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
 
 For older versions check out the private [Bitbucket Git Repository](https://bitbucket.org/arcticicestudio/icecore-json).
 
 ### Changelog
-[`-`](CHANGELOG.md)
+[`0.0.0`](CHANGELOG.md)
 
 ### Development
 #### Workflow
