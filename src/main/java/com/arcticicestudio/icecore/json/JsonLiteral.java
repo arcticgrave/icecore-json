@@ -3,13 +3,13 @@
 title     JSON Literal                    +
 project   icecore-json                    +
 file      JsonLiteral.java                +
-version   0.4.0                           +
+version   0.5.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:40 UTC+0200       +
-modified  2016-05-28 13:41 UTC+0200       +
+modified  2016-05-28 15:15 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -29,6 +29,8 @@ Arctic Versioning Specification (ArcVer)
   (http://specs.arcticicestudio.com/arcver)
 */
 package com.arcticicestudio.icecore.json;
+
+import java.io.IOException;
 
 /**
  * Represents a JSON literal.
@@ -53,6 +55,16 @@ class JsonLiteral extends JsonValue {
     isNull = "null".equals(value);
     isTrue = "true".equals(value);
     isFalse = "false".equals(value);
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 0.5.0
+   */
+  @Override
+  void write(JsonWriter writer) throws IOException {
+    writer.writeLiteral(value);
   }
 
   @Override

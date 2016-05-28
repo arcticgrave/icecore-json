@@ -3,13 +3,13 @@
 title     JSON Array                      +
 project   icecore-json                    +
 file      JsonArray.java                  +
-version   0.4.0                           +
+version   0.5.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 11:42 UTC+0200       +
-modified  2016-05-28 12:01 UTC+0200       +
+modified  2016-05-28 15:14 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -30,6 +30,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -378,6 +379,26 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
         throw new UnsupportedOperationException();
       }
     };
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @since 0.5.0
+   */
+  @Override
+  void write(JsonWriter writer) throws IOException {
+    writer.writeArrayOpen();
+    Iterator<JsonValue> iterator = iterator();
+    boolean first = true;
+    while (iterator.hasNext()) {
+      if (!first) {
+        writer.writeArraySeparator();
+      }
+      iterator.next().write(writer);
+      first = false;
+    }
+    writer.writeArrayClose();
   }
 
   @Override

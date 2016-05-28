@@ -3,13 +3,13 @@
 title     JSON Value                      +
 project   icecore-json                    +
 file      JsonValue.java                  +
-version   0.4.0                           +
+version   0.5.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 10:38 UTC+0200       +
-modified  2016-05-28 10:39 UTC+0200       +
+modified  2016-05-28 15:31 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -265,6 +265,77 @@ public abstract class JsonValue implements Serializable {
   }
 
   /**
+   * Writes the JSON representation of this value to the given writer in its minimal form, without any additional
+   * whitespace.
+   * <p>
+   *   Writing performance can be improved by using a {@link java.io.BufferedWriter BufferedWriter}.
+   * </p>
+   *
+   * @param writer the writer to write this value to
+   * @throws IOException if an I/O error occurs in the writer
+   * @since 0.5.0
+   */
+  public void writeTo(Writer writer) throws IOException {
+    writeTo(writer, WriterConfig.MINIMAL);
+  }
+
+  /**
+   * Writes the JSON representation of this value to the given writer using the given formatting.
+   * <p>
+   *   Writing performance can be improved by using a {@link java.io.BufferedWriter BufferedWriter}.
+   * </p>
+   *
+   * @param writer the writer to write this value to
+   * @param config a configuration that controls the formatting or {@code null} for the minimal form
+   * @throws IOException if an I/O error occurs in the writer
+   * @since 0.5.0
+   */
+  public void writeTo(Writer writer, WriterConfig config) throws IOException {
+    if (writer == null) {
+      throw new NullPointerException("writer is null");
+    }
+    if (config == null) {
+      throw new NullPointerException("config is null");
+    }
+    WritingBuffer buffer = new WritingBuffer(writer, 128);
+    write(config.createWriter(buffer));
+    buffer.flush();
+  }
+
+  /**
+   * Returns the JSON string for this value in its minimal form, without any additional whitespace.
+   * <p>
+   *   The result is guaranteed to be a valid input for the method {@link #readFrom(String)} and to create a value that
+   *   is <em>equal</em> to this object.
+   * </p>
+   *
+   * @return a JSON string that represents this value
+   * @since 0.5.0
+   */
+  @Override
+  public String toString() {
+    return toString(WriterConfig.MINIMAL);
+  }
+
+  /**
+   * Returns the JSON string for this value using the given formatting.
+   *
+   * @param config a configuration that controls the formatting or {@code null} for the minimal form
+   * @return a JSON string that represents this value
+   * @since 0.5.0
+   */
+  public String toString(WriterConfig config) {
+    StringWriter writer = new StringWriter();
+    try {
+      writeTo(writer, config);
+    } catch (IOException exception) {
+      // StringWriter does not throw IOExceptions
+      throw new RuntimeException(exception);
+    }
+    return writer.toString();
+  }
+
+  /**
    * Indicates whether some other object is <em>equal to</em> this one.
    * <p>
    *   Two JsonValues are considered equal if and only if they represent the same JSON text.
@@ -284,4 +355,9 @@ public abstract class JsonValue implements Serializable {
   public int hashCode() {
     return super.hashCode();
   }
+
+  /**
+   * @since 0.5.0
+   */
+  abstract void write(JsonWriter writer) throws IOException;
 }
