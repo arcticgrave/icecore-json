@@ -11,7 +11,7 @@ It's not an object mapper, but a bare-bones library that aims at being
 
 Usage Guide
 -----------
-This is a basic guide to show the common usage of this library.
+This is a basic guide to show the common usage of the icecore-json API.
 The API documentation can be found in the JavaDoc.
 
 The class `Json` is the entrypoint to the icecore-json API, use it to parse and to create JSON.
@@ -207,12 +207,12 @@ In the rare case that JSON data structures must be accessed from multiple thread
 Iterators will throw a `ConcurrentModificationException` when the contents of a JSON structure have been modified after the creation of the iterator.
 
 ### Version
-[`0.5.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
+[`0.6.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
 
 For older versions check out the private [Bitbucket Git Repository](https://bitbucket.org/arcticicestudio/icecore-json).
 
 ### Changelog
-[`0.5.0`](CHANGELOG.md)
+[`0.6.0`](CHANGELOG.md)
 
 ### Development
 #### Workflow

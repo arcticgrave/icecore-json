@@ -3,7 +3,7 @@
 title     Writer Configuration                  +
 project   icecore-json                          +
 file      WriterConfig.java                     +
-version   0.5.0                                 +
+version   0.6.0                                 +
 author    Arctic Ice Studio                     +
 email     development@arcticicestudio.com       +
 website   http://arcticicestudio.com            +

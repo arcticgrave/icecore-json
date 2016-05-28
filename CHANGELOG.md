@@ -1,6 +1,38 @@
 IceCore - JSON
 ==============
 
+## 0.6.0 (2016-05-28) - API
+This version includes the API entrypoint class `Json` to write and parse JSON.
+
+### Features
+#### API
+  - Implemented new classes:
+
+| Class | Description |
+| ----- | ----------- |
+| `com.arcticicestudio.icecore.json.Json` | Serves as the entry point to the "IceCore - JSON" public API. |
+| `com.arcticicestudio.icecore.json.package-info` | Package Info for `com.arcticicestudio.icecore.json`. |
+
+  - Implemented new `add` methods to make use of the API:
+
+| Class | Method | Throws | Description |
+| ----- | ------ | ------ | ----------- |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ add(String, int) : JsonObject` | - | Appends a new member to the end of this object, with the specified name and the JSON representation of the specified `int` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ add(String, long) : JsonObject` | - | Appends a new member to the end of this object, with the specified name and the JSON representation of the specified `long` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ add(String, float) : JsonObject` | - | Appends a new member to the end of this object, with the specified name and the JSON representation of the specified `float` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `add(String, double) : JsonObject` | - | Appends a new member to the end of this object, with the specified name and the JSON representation of the specified `double` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ add(String, boolean) : JsonObject` | - | Appends a new member to the end of this object, with the specified name and the JSON representation of the specified `boolean` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ add(String, String) : JsonObject` | - | Appends a new member to the end of this object, with the specified name and the JSON representation of the specified string. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, int) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified `int` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, long) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified `long` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, float) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified `float` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, double) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified `double` value. |
+| `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, String) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified string. |
+
+#### Documentation
+  - Added a basic "User Guide" to the README to show the common usage of the icecore-json API.
+  - Added "Concurrency" section to inform about the thread-safety of the JSON library structures
+
 ## 0.5.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
