@@ -392,4 +392,8 @@ class JsonParser {
     int offset = isEndOfText() ? absIndex : absIndex - 1;
     return new ParseException(message, offset, line, column - 1);
   }
+
+  private boolean isWhiteSpace() {
+    return current == ' ' || current == '\t' || current == '\n' || current == '\r';
+  }
 }
