@@ -145,5 +145,13 @@ public class PrettyPrint extends WriterConfig {
       writer.write(':');
       writer.write(' ');
     }
+
+    @Override
+    protected void writeObjectSeparator() throws IOException {
+      writer.write(',');
+      if (!writeNewLine()) {
+        writer.write(' ');
+      }
+    }
   }
 }
