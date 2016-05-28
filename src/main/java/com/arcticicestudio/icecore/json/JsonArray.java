@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 11:42 UTC+0200       +
-modified  2016-05-28 11:43 UTC+0200       +
+modified  2016-05-28 12:01 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -66,7 +66,7 @@ import java.util.List;
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @since 0.1.0
+ * @since 0.2.0
  */
 public class JsonArray extends JsonValue implements Iterable<JsonValue> {
 
