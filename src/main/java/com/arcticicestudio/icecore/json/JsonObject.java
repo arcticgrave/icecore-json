@@ -199,6 +199,29 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return this;
   }
 
+  /**
+   * Removes a member with the specified name from this object.
+   * <p>
+   *   If this object contains multiple members with the given name, only the last one is removed.
+   *   If this object does not contain a member with the specified name, the object is not modified.
+   * </p>
+   *
+   * @param name the name of the member to remove
+   * @return the object itself, to enable method chaining
+   */
+  public JsonObject remove(String name) {
+    if (name == null) {
+      throw new NullPointerException("name is null");
+    }
+    int index = indexOf(name);
+    if (index != -1) {
+      table.remove(index);
+      names.remove(index);
+      values.remove(index);
+    }
+    return this;
+  }
+
   @Override
   public boolean isObject() {
     return true;
