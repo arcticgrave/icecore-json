@@ -319,4 +319,13 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public int size() {
     return values.size();
   }
+
+  /**
+   * Returns {@code true} if this array contains no elements.
+   *
+   * @return {@code true} if this array contains no elements
+   */
+  public boolean isEmpty() {
+    return values.isEmpty();
+  }
 }
