@@ -30,10 +30,30 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.StringReader;
+
 /**
  * A JSON parser.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.4.0
  */
-class JsonParser {}
+class JsonParser {
+
+  private static final int MIN_BUFFER_SIZE = 10;
+  private static final int DEFAULT_BUFFER_SIZE = 1024;
+
+  /*
+   * |                      bufferOffset
+   *                        v
+   * [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t]        < input
+   *                       [l|m|n|o|p|q|r|s|t|?|?]    < buffer
+   *                          ^               ^
+   *                       |  index           fill
+   */
+
+  JsonParser(String string) {
+    this(new StringReader(string),
+      Math.max(MIN_BUFFER_SIZE, Math.min(DEFAULT_BUFFER_SIZE, string.length())));
+  }
+}
