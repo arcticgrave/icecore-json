@@ -163,6 +163,11 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return this;
   }
 
+  @Override
+  public boolean isObject() {
+    return true;
+  }
+
   private void updateHashIndex() {
     int size = names.size();
     for (int i = 0; i < size; i++) {
