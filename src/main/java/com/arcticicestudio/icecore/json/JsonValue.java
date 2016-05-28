@@ -280,6 +280,29 @@ public abstract class JsonValue implements Serializable {
   }
 
   /**
+   * Writes the JSON representation of this value to the given writer using the given formatting.
+   * <p>
+   *   Writing performance can be improved by using a {@link java.io.BufferedWriter BufferedWriter}.
+   * </p>
+   *
+   * @param writer the writer to write this value to
+   * @param config a configuration that controls the formatting or {@code null} for the minimal form
+   * @throws IOException if an I/O error occurs in the writer
+   * @since 0.5.0
+   */
+  public void writeTo(Writer writer, WriterConfig config) throws IOException {
+    if (writer == null) {
+      throw new NullPointerException("writer is null");
+    }
+    if (config == null) {
+      throw new NullPointerException("config is null");
+    }
+    WritingBuffer buffer = new WritingBuffer(writer, 128);
+    write(config.createWriter(buffer));
+    buffer.flush();
+  }
+
+  /**
    * Indicates whether some other object is <em>equal to</em> this one.
    * <p>
    *   Two JsonValues are considered equal if and only if they represent the same JSON text.
