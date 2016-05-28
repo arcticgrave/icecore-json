@@ -244,6 +244,22 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return this;
   }
 
+  /**
+   * Returns the value of the member with the specified name in this object.
+   * <p>
+   *   If this object contains multiple members with the given name, this method will return the last one.
+   * </p>
+   *
+   * @param name the name of the member whose value is to be returned object does not contain a member with that name
+   */
+  public JsonValue get(String name) {
+    if (name == null) {
+      throw new NullPointerException("name is null");
+    }
+    int index = indexOf(name);
+    return index != -1 ? values.get(index) : null;
+  }
+
   @Override
   public boolean isObject() {
     return true;
