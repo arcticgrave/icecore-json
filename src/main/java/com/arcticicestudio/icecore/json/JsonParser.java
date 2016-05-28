@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:49 UTC+0200       +
-modified  2016-05-28 13:50 UTC+0200       +
+modified  2016-05-28 14:13 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -405,5 +405,9 @@ class JsonParser {
     return current >= '0' && current <= '9'
       || current >= 'a' && current <= 'f'
       || current >= 'A' && current <= 'F';
+  }
+
+  private boolean isEndOfText() {
+    return current == -1;
   }
 }
