@@ -30,6 +30,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
@@ -72,5 +73,16 @@ class JsonParser {
     buffer = new char[buffersize];
     line = 1;
     captureStart = -1;
+  }
+
+  JsonValue parse() throws IOException {
+    read();
+    skipWhiteSpace();
+    JsonValue result = readValue();
+    skipWhiteSpace();
+    if (!isEndOfText()) {
+      throw error("Unexpected character");
+    }
+    return result;
   }
 }
