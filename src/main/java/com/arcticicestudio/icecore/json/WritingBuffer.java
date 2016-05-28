@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 14:57 UTC+0200       +
-modified  2016-05-28 14:58 UTC+0200       +
+modified  2016-05-28 15:09 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -102,4 +102,10 @@ class WritingBuffer extends Writer {
     writer.write(buffer, 0, fill);
     fill = 0;
   }
+
+  /**
+   * Does not close or flush the wrapped writer.
+   */
+  @Override
+  public void close() throws IOException {}
 }
