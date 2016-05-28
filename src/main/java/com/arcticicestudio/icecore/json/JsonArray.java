@@ -32,6 +32,7 @@ package com.arcticicestudio.icecore.json;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -352,5 +353,30 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
    */
   public List<JsonValue> values() {
     return Collections.unmodifiableList(values);
+  }
+
+  /**
+   * Returns an iterator over the values of this array in document order.
+   * <strong>The returned iterator cannot be used to modify this array!</strong>
+   *
+   *
+   * @return an iterator over the values of this array
+   */
+  public Iterator<JsonValue> iterator() {
+    final Iterator<JsonValue> iterator = values.iterator();
+    return new Iterator<JsonValue>() {
+
+      public boolean hasNext() {
+        return iterator.hasNext();
+      }
+
+      public JsonValue next() {
+        return iterator.next();
+      }
+
+      public void remove() {
+        throw new UnsupportedOperationException();
+      }
+    };
   }
 }
