@@ -125,5 +125,12 @@ public class PrettyPrint extends WriterConfig {
         writer.write(' ');
       }
     }
+
+    @Override
+    protected void writeObjectOpen() throws IOException {
+      indent++;
+      writer.write('{');
+      writeNewLine();
+    }
   }
 }
