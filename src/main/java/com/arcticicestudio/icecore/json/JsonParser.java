@@ -364,4 +364,18 @@ class JsonParser {
     captureBuffer.append(buffer, captureStart, end - captureStart);
     captureStart = -1;
   }
+
+  private String endCapture() {
+    int end = current == -1 ? index : index - 1;
+    String captured;
+    if (captureBuffer.length() > 0) {
+      captureBuffer.append(buffer, captureStart, end - captureStart);
+      captured = captureBuffer.toString();
+      captureBuffer.setLength(0);
+    } else {
+      captured = new String(buffer, captureStart, end - captureStart);
+    }
+    captureStart = -1;
+    return captured;
+  }
 }
