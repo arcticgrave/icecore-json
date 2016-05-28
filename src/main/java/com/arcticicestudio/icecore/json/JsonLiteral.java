@@ -89,4 +89,19 @@ class JsonLiteral extends JsonValue {
   public int hashCode() {
     return value.hashCode();
   }
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+    if (object == null) {
+      return false;
+    }
+    if (getClass() != object.getClass()) {
+      return false;
+    }
+    JsonLiteral other = (JsonLiteral)object;
+    return value.equals(other.value);
+  }
 }
