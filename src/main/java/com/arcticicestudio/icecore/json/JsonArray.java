@@ -3,7 +3,7 @@
 title     JSON Array                      +
 project   icecore-json                    +
 file      JsonArray.java                  +
-version                                   +
+version   0.2.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
