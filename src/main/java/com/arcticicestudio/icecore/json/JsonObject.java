@@ -99,6 +99,16 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       }
     }
 
+    void remove(int index) {
+      for (int i = 0; i < hashTable.length; i++) {
+        if (hashTable[i] == index + 1) {
+          hashTable[i] = 0;
+        } else if (hashTable[i] > index + 1) {
+          hashTable[i]--;
+        }
+      }
+    }
+
     private int hashSlotFor(Object element) {
       return element.hashCode() & hashTable.length - 1;
     }
