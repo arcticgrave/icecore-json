@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 11:06 UTC+0200       +
-modified  2016-05-28 11:07 UTC+0200       +
+modified  2016-05-28 15:13 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -29,6 +29,8 @@ Arctic Versioning Specification (ArcVer)
   (http://specs.arcticicestudio.com/arcver)
 */
 package com.arcticicestudio.icecore.json;
+
+import java.io.IOException;
 
 /**
  * Represents a JSON number.
@@ -80,6 +82,11 @@ class JsonNumber extends JsonValue {
   @Override
   public String toString() {
     return string;
+  }
+
+  @Override
+  void write(JsonWriter writer) throws IOException {
+    writer.writeNumber(string);
   }
 
   @Override
