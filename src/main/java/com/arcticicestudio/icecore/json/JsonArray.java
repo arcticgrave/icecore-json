@@ -119,4 +119,15 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public static JsonArray unmodifiableArray(JsonArray array) {
     return new JsonArray(array, true);
   }
+
+  /**
+   * Appends the JSON representation of the specified {@code int} value to the end of this array.
+   *
+   * @param value the value to add to the array
+   * @return the array itself, to enable method chaining
+   */
+  public JsonArray add(int value) {
+    values.add(Json.value(value));
+    return this;
+  }
 }
