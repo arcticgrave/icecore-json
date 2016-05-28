@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 10:38 UTC+0200       +
-modified  2016-05-28 10:39 UTC+0200       +
+modified  2016-05-28 15:31 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -315,6 +315,24 @@ public abstract class JsonValue implements Serializable {
   @Override
   public String toString() {
     return toString(WriterConfig.MINIMAL);
+  }
+
+  /**
+   * Returns the JSON string for this value using the given formatting.
+   *
+   * @param config a configuration that controls the formatting or {@code null} for the minimal form
+   * @return a JSON string that represents this value
+   * @since 0.5.0
+   */
+  public String toString(WriterConfig config) {
+    StringWriter writer = new StringWriter();
+    try {
+      writeTo(writer, config);
+    } catch (IOException exception) {
+      // StringWriter does not throw IOExceptions
+      throw new RuntimeException(exception);
+    }
+    return writer.toString();
   }
 
   /**
