@@ -191,4 +191,10 @@ class JsonParser {
     readRequiredChar('e');
     return Json.FALSE;
   }
+
+  private void readRequiredChar(char ch) throws IOException {
+    if (!readChar(ch)) {
+      throw expected("'" + ch + "'");
+    }
+  }
 }
