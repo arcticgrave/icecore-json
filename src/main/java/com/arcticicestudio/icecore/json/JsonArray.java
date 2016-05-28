@@ -104,4 +104,19 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
       values = new ArrayList<JsonValue>(array.values);
     }
   }
+
+  /**
+   * Returns an unmodifiable wrapper for the specified JsonArray.
+   * This method allows to provide read-only access to a JsonArray.
+   * <p>
+   *   The returned JsonArray is backed by the given array and reflects subsequent changes.
+   *   Attempts to modify the returned JsonArray result in an {@code UnsupportedOperationException}.
+   * </p>
+   *
+   * @param array the JsonArray for which an unmodifiable JsonArray is to be returned
+   * @return an unmodifiable view of the specified JsonArray
+   */
+  public static JsonArray unmodifiableArray(JsonArray array) {
+    return new JsonArray(array, true);
+  }
 }
