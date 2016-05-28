@@ -99,4 +99,17 @@ public final class Json {
   public static JsonValue value(long value) {
     return new JsonNumber(Long.toString(value, 10));
   }
+
+  /**
+   * Returns a {@link JsonValue} instance that represents the given {@code float} value.
+   *
+   * @param value the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue value(float value) {
+    if (Float.isInfinite(value) || Float.isNaN(value)) {
+      throw new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+    }
+    return new JsonNumber(cutOffPointZero(Float.toString(value)));
+  }
 }
