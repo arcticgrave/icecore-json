@@ -259,4 +259,16 @@ public final class Json {
     }
     return array;
   }
+
+  /**
+   * Creates a new empty {@link JsonObject}.
+   * <p>
+   *   This is equivalent to creating a new {@link JsonObject} using the constructor.
+   * </p>
+   *
+   * @return a new empty JSON object of {@link JsonObject}
+   */
+  public static JsonObject object() {
+    return new JsonObject();
+  }
 }
