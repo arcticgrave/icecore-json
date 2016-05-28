@@ -88,5 +88,9 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     public HashIndexTable(HashIndexTable original) {
       System.arraycopy(original.hashTable, 0, hashTable, 0, hashTable.length);
     }
+
+    private int hashSlotFor(Object element) {
+      return element.hashCode() & hashTable.length - 1;
+    }
   }
 }
