@@ -319,4 +319,10 @@ class JsonParser {
     read();
     return true;
   }
+
+  private void skipWhiteSpace() throws IOException {
+    while (isWhiteSpace()) {
+      read();
+    }
+  }
 }
