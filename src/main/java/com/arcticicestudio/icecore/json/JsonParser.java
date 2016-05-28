@@ -44,6 +44,11 @@ class JsonParser {
   private static final int MIN_BUFFER_SIZE = 10;
   private static final int DEFAULT_BUFFER_SIZE = 1024;
 
+  private final Reader reader;
+  private final char[] buffer;
+  private int line;
+  private int captureStart;
+
   /*
    * |                      bufferOffset
    *                        v
@@ -60,5 +65,12 @@ class JsonParser {
 
   JsonParser(Reader reader) {
     this(reader, DEFAULT_BUFFER_SIZE);
+  }
+
+  JsonParser(Reader reader, int buffersize) {
+    this.reader = reader;
+    buffer = new char[buffersize];
+    line = 1;
+    captureStart = -1;
   }
 }
