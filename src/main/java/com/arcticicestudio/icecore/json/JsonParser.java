@@ -166,4 +166,12 @@ class JsonParser {
     }
     return readStringInternal();
   }
+
+  private JsonValue readNull() throws IOException {
+    read();
+    readRequiredChar('u');
+    readRequiredChar('l');
+    readRequiredChar('l');
+    return Json.NULL;
+  }
 }
