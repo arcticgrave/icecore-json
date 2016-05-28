@@ -61,4 +61,9 @@ class JsonNumber extends JsonValue {
   public int asInt() {
     return Integer.parseInt(string, 10);
   }
+
+  @Override
+  public long asLong() {
+    return Long.parseLong(string, 10);
+  }
 }
