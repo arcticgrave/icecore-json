@@ -351,4 +351,11 @@ class JsonParser {
     }
     current = buffer[index++];
   }
+
+  private void startCapture() {
+    if (captureBuffer == null) {
+      captureBuffer = new StringBuilder();
+    }
+    captureStart = index - 1;
+  }
 }
