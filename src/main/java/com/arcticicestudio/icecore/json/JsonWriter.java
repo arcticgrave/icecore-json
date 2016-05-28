@@ -76,6 +76,20 @@ class JsonWriter {
     writer.write(string);
   }
 
+  protected void writeJsonString(String string) throws IOException {
+    int length = string.length();
+    int start = 0;
+    for (int index = 0; index < length; index++) {
+      char[] replacement = getReplacementChars(string.charAt(index));
+      if (replacement != null) {
+        writer.write(string, start, index - start);
+        writer.write(replacement);
+        start = index + 1;
+      }
+    }
+    writer.write(string, start, length - start);
+  }
+
   private static char[] getReplacementChars(char ch) {
     if (ch > '\\') {
       if (ch < '\u2028' || ch > '\u2029') {
