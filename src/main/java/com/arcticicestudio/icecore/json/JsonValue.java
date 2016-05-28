@@ -86,4 +86,14 @@ public abstract class JsonValue implements Serializable {
   public boolean isObject() {
     return false;
   }
+
+  /**
+   * Detects whether this value represents a JSON array.
+   * If this is the case, this value is an instance of {@link JsonArray}.
+   *
+   * @return {@code true} if this value is an instance of {@link JsonArray}
+   */
+  public boolean isArray() {
+    return false;
+  }
 }
