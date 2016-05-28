@@ -242,4 +242,21 @@ public final class Json {
     }
     return array;
   }
+
+  /**
+   * Creates a new {@link JsonArray} that contains the JSON representations of the given strings.
+   *
+   * @param strings the strings to be included in the new JSON array
+   * @return a new JSON array of {@link JsonArray} that contains the given strings
+   */
+  public static JsonArray array(String... strings) {
+    if (strings == null) {
+      throw new NullPointerException("values is null");
+    }
+    JsonArray array = new JsonArray();
+    for (String value : strings) {
+      array.add(value);
+    }
+    return array;
+  }
 }
