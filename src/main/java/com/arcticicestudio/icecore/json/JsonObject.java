@@ -222,6 +222,14 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
   }
 
   /**
+   * Represents a member of a JSON object, a pair of a name and a value.
+   *
+   * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
+   * @since 0.2.0
+   */
+  public static class Member {}
+
+  /**
    * Represents a indexed hash table to handle JSON object member.
    *
    * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
