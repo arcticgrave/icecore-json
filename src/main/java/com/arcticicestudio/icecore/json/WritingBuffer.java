@@ -47,8 +47,14 @@ import java.io.Writer;
 class WritingBuffer extends Writer {
 
   private final Writer writer;
+  private final char[] buffer;
 
   WritingBuffer(Writer writer) {
     this(writer, 16);
+  }
+
+  WritingBuffer(Writer writer, int bufferSize) {
+    this.writer = writer;
+    buffer = new char[bufferSize];
   }
 }
