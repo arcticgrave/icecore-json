@@ -76,4 +76,13 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public JsonArray() {
     values = new ArrayList<JsonValue>();
   }
+
+  /**
+   * Creates a new JsonArray with the contents of the specified JSON array.
+   *
+   * @param array the JsonArray to get the initial contents from which <strong>MUST NOT</strong> be {@code null}.
+   */
+  public JsonArray(JsonArray array) {
+    this(array, false);
+  }
 }
