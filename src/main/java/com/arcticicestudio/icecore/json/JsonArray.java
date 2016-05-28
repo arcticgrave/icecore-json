@@ -185,4 +185,18 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     values.add(Json.value(value));
     return this;
   }
+
+  /**
+   * Appends the specified JSON value to the end of this array.
+   *
+   * @param value the JsonValue to add to the array which <strong>MUST NOT</strong> be {@code null}
+   * @return the array itself, to enable method chaining
+   */
+  public JsonArray add(JsonValue value) {
+    if (value == null) {
+      throw new NullPointerException("value is null");
+    }
+    values.add(value);
+    return this;
+  }
 }
