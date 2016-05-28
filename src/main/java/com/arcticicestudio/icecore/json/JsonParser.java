@@ -385,4 +385,11 @@ class JsonParser {
     }
     return error("Expected " + expected);
   }
+
+  private ParseException error(String message) {
+    int absIndex = bufferOffset + index;
+    int column = absIndex - lineOffset;
+    int offset = isEndOfText() ? absIndex : absIndex - 1;
+    return new ParseException(message, offset, line, column - 1);
+  }
 }
