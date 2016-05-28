@@ -43,4 +43,11 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.5.0
  */
-public class PrettyPrint extends WriterConfig {}
+public class PrettyPrint extends WriterConfig {
+
+  private final char[] indentChars;
+
+  protected PrettyPrint(char[] indentChars) {
+    this.indentChars = indentChars;
+  }
+}
