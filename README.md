@@ -15,6 +15,7 @@ Usage
 The class `Json` is the entrypoint to the minimal-json API, use it to parse and to create JSON.
 
   - [Parse JSON](#parse-json)
+  - [JSON values](#json-values)
 
 #### Parse JSON
 
@@ -23,6 +24,23 @@ You *don't* need to wrap your reader in a BufferedReader, as the parse method us
 
 ```java
 JsonValue value = Json.parse(string);
+```
+
+#### JSON values
+
+JSON values are represented by the type `JsonValue`.
+A `JsonValue` can contain a JSON array, object, string, number, or one of the literals `true`, `false`, and `null`.
+To transform a `JsonValue` into a Java type, use the methods `asString`, `asInt`, `asFloat`, `asArray` etc., depending on the expected type.
+To query the actual type, use one of the methods `isString`, `isNumber`, `isArray`, `isObject`, `isBoolean`, and `isNull`.
+
+```java
+if (value.isString()) {
+  String string = value.asString();
+  // ...
+} else if (value.isArray()) {
+  JsonArray array = value.asArray();
+  // ...
+}
 ```
 
 ### Version
