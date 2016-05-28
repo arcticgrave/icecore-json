@@ -298,4 +298,16 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     values.set(index, value);
     return this;
   }
+
+  /**
+   * Removes the element at the specified index from this array.
+   *
+   * @param index the index of the element to remove
+   * @return the array itself, to enable method chaining
+   * @throws IndexOutOfBoundsException if the index is out of range ({@code index &lt; 0} or {@code index &gt;= size})
+   */
+  public JsonArray remove(int index) {
+    values.remove(index);
+    return this;
+  }
 }
