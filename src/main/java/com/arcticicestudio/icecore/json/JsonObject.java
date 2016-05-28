@@ -89,6 +89,16 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       System.arraycopy(original.hashTable, 0, hashTable, 0, hashTable.length);
     }
 
+    void add(String name, int index) {
+      int slot = hashSlotFor(name);
+      if (index < 0xff) {
+        /* Increment by 1, 0 stands for empty. */
+        hashTable[slot] = (byte)(index + 1);
+      } else {
+        hashTable[slot] = 0;
+      }
+    }
+
     private int hashSlotFor(Object element) {
       return element.hashCode() & hashTable.length - 1;
     }
