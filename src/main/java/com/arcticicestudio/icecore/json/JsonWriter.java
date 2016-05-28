@@ -32,6 +32,7 @@ StackOverflow
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
 import java.io.Writer;
 
 /**
@@ -51,5 +52,9 @@ class JsonWriter {
 
   protected void writeLiteral(String value) throws IOException {
     writer.write(value);
+  }
+
+  protected void writeNumber(String string) throws IOException {
+    writer.write(string);
   }
 }
