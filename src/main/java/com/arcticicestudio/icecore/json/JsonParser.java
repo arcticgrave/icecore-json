@@ -30,6 +30,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.Reader;
 import java.io.StringReader;
 
 /**
@@ -55,5 +56,9 @@ class JsonParser {
   JsonParser(String string) {
     this(new StringReader(string),
       Math.max(MIN_BUFFER_SIZE, Math.min(DEFAULT_BUFFER_SIZE, string.length())));
+  }
+
+  JsonParser(Reader reader) {
+    this(reader, DEFAULT_BUFFER_SIZE);
   }
 }
