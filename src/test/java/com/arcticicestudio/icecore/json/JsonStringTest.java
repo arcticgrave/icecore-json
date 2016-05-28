@@ -112,4 +112,9 @@ public class JsonStringTest {
   public void equalsFalseForNull() {
     assertFalse(new JsonString("yoghurt").equals(null));
   }
+
+  @Test
+  public void equalsFalseForSubclass() {
+    assertFalse(new JsonString("yoghurt").equals(new JsonString("yoghurt") {}));
+  }
 }
