@@ -63,4 +63,9 @@ class JsonString extends JsonValue {
   public String asString() {
     return string;
   }
+
+  @Override
+  public int hashCode() {
+    return string.hashCode();
+  }
 }
