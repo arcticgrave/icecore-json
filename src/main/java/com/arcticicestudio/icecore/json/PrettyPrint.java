@@ -153,5 +153,16 @@ public class PrettyPrint extends WriterConfig {
         writer.write(' ');
       }
     }
+
+    private boolean writeNewLine() throws IOException {
+      if (indentChars == null) {
+        return false;
+      }
+      writer.write('\n');
+      for (int i = 0; i < indent; i++) {
+        writer.write(indentChars);
+      }
+      return true;
+    }
   }
 }
