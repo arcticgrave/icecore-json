@@ -201,4 +201,23 @@ class JsonParser {
   private JsonValue readString() throws IOException {
     return new JsonString(readStringInternal());
   }
+
+  private String readStringInternal() throws IOException {
+    read();
+    startCapture();
+    while (current != '"') {
+      if (current == '\\') {
+        pauseCapture();
+        readEscape();
+        startCapture();
+      } else if (current < 0x20) {
+        throw expected("valid string character");
+      } else {
+        read();
+      }
+    }
+    String string = endCapture();
+    read();
+    return string;
+  }
 }
