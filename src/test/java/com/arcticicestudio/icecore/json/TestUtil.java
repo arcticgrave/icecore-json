@@ -32,6 +32,8 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Provides test utils.
  *
@@ -42,5 +44,11 @@ public class TestUtil {
 
   public static <T extends Exception> T assertException(Class<T> type, String message, Runnable runnable) {
     return assertException(type, message, adapt(runnable));
+  }
+
+  public static <T extends Exception> T assertException(Class<T> type, String message, RunnableEx runnable) {
+    T exception = assertException(type, runnable);
+    assertEquals("exception message", message, exception.getMessage());
+    return exception;
   }
 }
