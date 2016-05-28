@@ -260,4 +260,20 @@ class JsonParser {
     }
     read();
   }
+
+  private JsonValue readNumber() throws IOException {
+    startCapture();
+    readChar('-');
+    int firstDigit = current;
+    if (!readDigit()) {
+      throw expected("digit");
+    }
+    if (firstDigit != '0') {
+      while (readDigit()) {
+      }
+    }
+    readFraction();
+    readExponent();
+    return new JsonNumber(endCapture());
+  }
 }
