@@ -72,4 +72,10 @@ public class JsonStringTest {
     new JsonString("yoghurt").write(jsonWriter);
     assertEquals("\"yoghurt\"", stringWriter.toString());
   }
+
+  @Test
+  public void writeEscapesStrings() throws IOException {
+    new JsonString("yog\\hurt").write(jsonWriter);
+    assertEquals("\"yog\\\\hurt\"", stringWriter.toString());
+  }
 }
