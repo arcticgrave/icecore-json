@@ -322,4 +322,6 @@ public abstract class JsonValue implements Serializable {
   public int hashCode() {
     return super.hashCode();
   }
+
+  abstract void write(JsonWriter writer) throws IOException;
 }
