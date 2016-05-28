@@ -70,4 +70,10 @@ import java.io.Writer;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.1.0
  */
-public abstract class JsonValue implements Serializable {}
+public abstract class JsonValue implements Serializable {
+
+  /*
+ * Prevents subclasses outside of this package
+ */
+  JsonValue() {}
+}
