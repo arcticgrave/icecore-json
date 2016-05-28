@@ -117,4 +117,9 @@ public class JsonStringTest {
   public void equalsFalseForSubclass() {
     assertFalse(new JsonString("yogurt").equals(new JsonString("yogurt") {}));
   }
+
+  @Test
+  public void hashCodeEqualsForEqualStrings() {
+    assertTrue(new JsonString("yogurt").hashCode() == new JsonString("yogurt").hashCode());
+  }
 }
