@@ -78,5 +78,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
    * @since 0.2.0
    */
-  static class HashIndexTable {}
+  static class HashIndexTable {
+
+    public HashIndexTable() {}
+  }
 }
