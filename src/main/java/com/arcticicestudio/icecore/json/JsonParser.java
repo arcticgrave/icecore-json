@@ -288,4 +288,19 @@ class JsonParser {
     }
     return true;
   }
+
+  private boolean readExponent() throws IOException {
+    if (!readChar('e') && !readChar('E')) {
+      return false;
+    }
+    if (!readChar('+')) {
+      readChar('-');
+    }
+    if (!readDigit()) {
+      throw expected("digit");
+    }
+    while (readDigit()) {
+    }
+    return true;
+  }
 }
