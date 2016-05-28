@@ -145,4 +145,16 @@ public final class Json {
   public static JsonValue value(boolean value) {
     return value ? TRUE : FALSE;
   }
+
+  /**
+   * Creates a new empty {@link JsonArray}.
+   * <p>
+   *   This is equivalent to creating a new {@link JsonArray} using the constructor.
+   * </p>
+   *
+   * @return a new empty JSON array of {@link JsonArray}
+   */
+  public static JsonValue array() {
+    return new JsonArray();
+  }
 }
