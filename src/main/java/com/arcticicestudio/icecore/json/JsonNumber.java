@@ -36,4 +36,19 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.1.0
  */
-class JsonNumber extends JsonValue {}
+class JsonNumber extends JsonValue {
+
+  private final String string;
+
+  /**
+   * Initializes the JSON number value.
+   *
+   * @param string the JSON number to be literalized
+   */
+  JsonNumber(String string) {
+    if (string == null) {
+      throw new NullPointerException("string is null");
+    }
+    this.string = string;
+  }
+}
