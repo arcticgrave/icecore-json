@@ -95,4 +95,9 @@ public class JsonStringTest {
     JsonString string = new JsonString("yoghurt");
     assertTrue(string.equals(string));
   }
+
+  @Test
+  public void equalsTrueForEqualStrings() {
+    assertTrue(new JsonString("yoghurt").equals(new JsonString("yoghurt")));
+  }
 }
