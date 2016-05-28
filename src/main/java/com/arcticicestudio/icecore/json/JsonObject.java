@@ -198,6 +198,14 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     }
   }
 
+  @Override
+  public int hashCode() {
+    int result = 1;
+    result = 31 * result + names.hashCode();
+    result = 31 * result + values.hashCode();
+    return result;
+  }
+
   /**
    * Represents a indexed hash table to handle JSON object member.
    *
