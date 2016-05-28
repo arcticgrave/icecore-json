@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 10:58 UTC+0200       +
-modified  2016-05-28 10:59 UTC+0200       +
+modified  2016-05-28 15:10 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -52,6 +52,11 @@ class JsonString extends JsonValue {
       throw new NullPointerException("string is null");
     }
     this.string = string;
+  }
+
+  @Override
+  void write(JsonWriter writer) throws IOException {
+    writer.writeString(string);
   }
 
   @Override
