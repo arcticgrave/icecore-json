@@ -80,4 +80,17 @@ class WritingBuffer extends Writer {
     System.arraycopy(cbuf, off, buffer, fill, len);
     fill += len;
   }
+
+  @Override
+  public void write(String str, int off, int len) throws IOException {
+    if (fill > buffer.length - len) {
+      flush();
+      if (len > buffer.length) {
+        writer.write(str, off, len);
+        return;
+      }
+    }
+    str.getChars(off, off + len, buffer, fill);
+    fill += len;
+  }
 }
