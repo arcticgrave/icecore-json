@@ -32,6 +32,10 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 import static java.util.concurrent.ForkJoinTask.adapt;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -81,5 +85,11 @@ public class TestUtil {
   @SuppressWarnings("unchecked")
   public static <T> T serializeAndDeserialize(T instance) throws Exception {
     return (T)deserialize(serialize(instance));
+  }
+
+  public static byte[] serialize(Object object) throws IOException {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    new ObjectOutputStream(outputStream).writeObject(object);
+    return outputStream.toByteArray();
   }
 }
