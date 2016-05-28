@@ -358,4 +358,10 @@ class JsonParser {
     }
     captureStart = index - 1;
   }
+
+  private void pauseCapture() {
+    int end = current == -1 ? index : index - 1;
+    captureBuffer.append(buffer, captureStart, end - captureStart);
+    captureStart = -1;
+  }
 }
