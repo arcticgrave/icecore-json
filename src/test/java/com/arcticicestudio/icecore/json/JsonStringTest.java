@@ -89,4 +89,10 @@ public class JsonStringTest {
   public void asString() {
     assertEquals("yoghurt", new JsonString("yoghurt").asString());
   }
+
+  @Test
+  public void equalsTrueForSameInstance() {
+    JsonString string = new JsonString("yoghurt");
+    assertTrue(string.equals(string));
+  }
 }
