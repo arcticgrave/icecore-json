@@ -38,4 +38,9 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class TestUtil {}
+public class TestUtil {
+
+  public static <T extends Exception> T assertException(Class<T> type, String message, Runnable runnable) {
+    return assertException(type, message, adapt(runnable));
+  }
+}
