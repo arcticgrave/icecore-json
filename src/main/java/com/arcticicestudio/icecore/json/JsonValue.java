@@ -193,4 +193,21 @@ public abstract class JsonValue implements Serializable {
   public int asInt() {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
+
+  /**
+   * Returns this JSON value as a {@code long} value, assuming that this value represents a JSON number that can be
+   * interpreted as Java {@code long}.
+   * If this is not the case, an exception is thrown.
+   * <p>
+   *   To be interpreted as Java {@code long}, the JSON number must neither contain an exponent nor a fraction part.
+   *   Moreover, the number must be in the {@code Long} range.
+   * </p>
+   *
+   * @return this value as {@code long}
+   * @throws UnsupportedOperationException if this value is not a JSON number
+   * @throws NumberFormatException if this JSON number can not be interpreted as {@code long} value
+   */
+  public long asLong() {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
 }
