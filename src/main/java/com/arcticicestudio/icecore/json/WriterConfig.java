@@ -30,6 +30,8 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.Writer;
+
 /**
  * Controls the formatting of the JSON output.
  * Use one of the available constants.
@@ -37,4 +39,16 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.5.0
  */
-public abstract class WriterConfig {}
+public abstract class WriterConfig {
+
+  /**
+   * Write JSON in its minimal form, without any additional whitespace.
+   * This is the default.
+   */
+  public static WriterConfig MINIMAL = new WriterConfig() {
+    @Override
+    JsonWriter createWriter(Writer writer) {
+      return new JsonWriter(writer);
+    }
+  };
+}
