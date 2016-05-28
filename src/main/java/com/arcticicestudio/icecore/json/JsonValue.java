@@ -210,4 +210,19 @@ public abstract class JsonValue implements Serializable {
   public long asLong() {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
+
+  /**
+   * Returns this JSON value as a {@code float} value, assuming that this value represents a JSON number.
+   * If this is not the case, an exception is thrown.
+   * <p>
+   *   If the JSON number is out of the {@code Float} range, {@link Float#POSITIVE_INFINITY} or
+   *   {@link Float#NEGATIVE_INFINITY} is returned.
+   * </p>
+   *
+   * @return this value as {@code float}
+   * @throws UnsupportedOperationException if this value is not a JSON number
+   */
+  public float asFloat() {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
 }
