@@ -32,6 +32,8 @@ StackOverflow
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.Writer;
+
 /**
  * Writes the generated JSON object.
  *
@@ -39,4 +41,11 @@ package com.arcticicestudio.icecore.json;
  * @since 0.5.0
  */
 
-class JsonWriter {}
+class JsonWriter {
+
+  protected final Writer writer;
+
+  JsonWriter(Writer writer) {
+    this.writer = writer;
+  }
+}
