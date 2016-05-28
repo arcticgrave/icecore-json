@@ -390,6 +390,20 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return names.isEmpty();
   }
 
+  /**
+   * Returns a list of the names in this object in document order.
+   * <p>
+   *   The returned list is backed by this object and will reflect subsequent changes.
+   *   It cannot be used to modify this object.
+   *   Attempts to modify the returned list will result in an exception.
+   * </p>
+   *
+   * @return a list of the names in this object
+   */
+  public List<String> names() {
+    return Collections.unmodifiableList(names);
+  }
+
   @Override
   public boolean isObject() {
     return true;
