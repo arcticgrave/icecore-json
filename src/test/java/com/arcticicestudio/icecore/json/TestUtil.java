@@ -33,6 +33,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Provides test utils.
@@ -54,5 +55,11 @@ public class TestUtil {
 
   public static <T extends Exception> T assertException(Class<T> type, Runnable runnable) {
     return assertException(type, adapt(runnable));
+  }
+
+  public static <T extends Exception> T assertException(Class<T> type, RunnableEx runnable) {
+    T exception = catchException(runnable, type);
+    assertNotNull("Expected exception: " + type.getName(), exception);
+    return exception;
   }
 }
