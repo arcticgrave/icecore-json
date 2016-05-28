@@ -254,6 +254,14 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     public JsonValue getValue() {
       return value;
     }
+
+    @Override
+    public int hashCode() {
+      int result = 1;
+      result = 31 * result + name.hashCode();
+      result = 31 * result + value.hashCode();
+      return result;
+    }
   }
 
   /**
