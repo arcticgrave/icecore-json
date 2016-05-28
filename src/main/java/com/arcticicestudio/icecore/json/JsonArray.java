@@ -384,4 +384,9 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public boolean isArray() {
     return true;
   }
+
+  @Override
+  public JsonArray asArray() {
+    return this;
+  }
 }
