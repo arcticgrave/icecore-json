@@ -106,4 +106,14 @@ public abstract class JsonValue implements Serializable {
   public boolean isNumber() {
     return false;
   }
+
+  /**
+   * Detects whether this value represents a JSON string.
+   * If this is the case, this value is an instance of {@link JsonNumber}.
+   *
+   * @return {@code true} if this value represents a {@link JsonString}
+   */
+  public boolean isString() {
+    return false;
+  }
 }
