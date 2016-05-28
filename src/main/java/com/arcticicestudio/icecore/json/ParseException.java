@@ -48,4 +48,14 @@ public class ParseException extends RuntimeException {
     this.line = line;
     this.column = column;
   }
+
+  /**
+   * Returns the absolute index of the character at which the error occurred.
+   * The index of the first character of a document is 0.
+   *
+   * @return the character offset at which the error occurred, will be &gt;= 0
+   */
+  public int getOffset() {
+    return offset;
+  }
 }
