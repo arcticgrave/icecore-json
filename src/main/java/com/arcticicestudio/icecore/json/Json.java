@@ -64,4 +64,9 @@ public final class Json {
  * Prevents the instantiation
  */
   private Json() {}
+
+  /**
+   * Represents the JSON literal {@code null}.
+   */
+  public static final JsonValue NULL = new JsonLiteral("null");
 }
