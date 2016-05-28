@@ -89,6 +89,15 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
   }
 
   /**
+   * Creates a new JsonObject, initialized with the contents of the specified JSON object.
+   *
+   * @param object the JSON object to get the initial contents from which <strong>MUST NOT</strong> be {@code null}
+   */
+  public JsonObject(JsonObject object) {
+    this(object, false);
+  }
+
+  /**
    * Represents a indexed hash table to handle JSON object member.
    *
    * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
