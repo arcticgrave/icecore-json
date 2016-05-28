@@ -81,4 +81,9 @@ class JsonNumber extends JsonValue {
   public String toString() {
     return string;
   }
+
+  @Override
+  public int hashCode() {
+    return string.hashCode();
+  }
 }
