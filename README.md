@@ -16,6 +16,7 @@ The class `Json` is the entrypoint to the minimal-json API, use it to parse and 
 
   - [Parse JSON](#parse-json)
   - [JSON values](#json-values)
+  - [JSON arrays](#json-arrays)
 
 #### Parse JSON
 
@@ -39,6 +40,25 @@ if (value.isString()) {
   // ...
 } else if (value.isArray()) {
   JsonArray array = value.asArray();
+  // ...
+}
+```
+
+### JSON arrays
+
+The method `asArray` returns an instance of `JsonArray`.
+This subtype of `JsonValue` provides a `get` method to access the elements of a JSON array:
+
+```java
+JsonArray array = Json.parse(reader).asArray();
+String name = array.get(0).asString();
+int quantity = array.get(1).asInt();
+```
+
+You can also iterate over the elements of a `JsonArray`, which are again also JSON values:
+
+```java
+for (JsonValue value : jsonArray) {
   // ...
 }
 ```
