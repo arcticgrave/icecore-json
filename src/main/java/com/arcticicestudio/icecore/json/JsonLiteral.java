@@ -54,4 +54,9 @@ class JsonLiteral extends JsonValue {
     isTrue = "true".equals(value);
     isFalse = "false".equals(value);
   }
+
+  @Override
+  public boolean isNull() {
+    return isNull;
+  }
 }
