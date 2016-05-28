@@ -38,4 +38,19 @@ import java.io.IOException;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.1.0
  */
-class JsonString extends JsonValue {}
+class JsonString extends JsonValue {
+
+  private final String string;
+
+  /**
+   * Initializes the JSON string value.
+   *
+   * @param string the JSON string to be literalized
+   */
+  JsonString(String string) {
+    if (string == null) {
+      throw new NullPointerException("string is null");
+    }
+    this.string = string;
+  }
+}
