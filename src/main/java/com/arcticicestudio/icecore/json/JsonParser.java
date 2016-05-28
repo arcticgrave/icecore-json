@@ -49,6 +49,7 @@ class JsonParser {
   private final char[] buffer;
   private int line;
   private int captureStart;
+  private int current;
 
   /*
    * |                      bufferOffset
@@ -157,5 +158,12 @@ class JsonParser {
       throw expected("',' or '}'");
     }
     return object;
+  }
+
+  private String readName() throws IOException {
+    if (current != '"') {
+      throw expected("name");
+    }
+    return readStringInternal();
   }
 }
