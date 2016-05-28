@@ -71,50 +71,50 @@ public class JsonStringTest {
 
   @Test
   public void write() throws IOException {
-    new JsonString("yoghurt").write(jsonWriter);
-    assertEquals("\"yoghurt\"", stringWriter.toString());
+    new JsonString("yogurt").write(jsonWriter);
+    assertEquals("\"yogurt\"", stringWriter.toString());
   }
 
   @Test
   public void writeEscapesStrings() throws IOException {
     new JsonString("yog\\hurt").write(jsonWriter);
-    assertEquals("\"yog\\\\hurt\"", stringWriter.toString());
+    assertEquals("\"yog\\\\urt\"", stringWriter.toString());
   }
 
   @Test
   public void isString() {
-    assertTrue(new JsonString("yoghurt").isString());
+    assertTrue(new JsonString("yogurt").isString());
   }
 
   @Test
   public void asString() {
-    assertEquals("yoghurt", new JsonString("yoghurt").asString());
+    assertEquals("yogurt", new JsonString("yogurt").asString());
   }
 
   @Test
   public void equalsTrueForSameInstance() {
-    JsonString string = new JsonString("yoghurt");
+    JsonString string = new JsonString("yogurt");
     assertTrue(string.equals(string));
   }
 
   @Test
   public void equalsTrueForEqualStrings() {
-    assertTrue(new JsonString("yoghurt").equals(new JsonString("yoghurt")));
+    assertTrue(new JsonString("yogurt").equals(new JsonString("yogurt")));
   }
 
   @Test
   public void equalsFalseForDifferentStrings() {
-    assertFalse(new JsonString("").equals(new JsonString("yoghurt")));
-    assertFalse(new JsonString("yoghurt").equals(new JsonString("coconut")));
+    assertFalse(new JsonString("").equals(new JsonString("yogurt")));
+    assertFalse(new JsonString("yogurt").equals(new JsonString("coconut")));
   }
 
   @Test
   public void equalsFalseForNull() {
-    assertFalse(new JsonString("yoghurt").equals(null));
+    assertFalse(new JsonString("yogurt").equals(null));
   }
 
   @Test
   public void equalsFalseForSubclass() {
-    assertFalse(new JsonString("yoghurt").equals(new JsonString("yoghurt") {}));
+    assertFalse(new JsonString("yogurt").equals(new JsonString("yogurt") {}));
   }
 }
