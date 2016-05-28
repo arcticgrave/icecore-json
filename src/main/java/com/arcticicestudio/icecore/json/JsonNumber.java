@@ -56,4 +56,9 @@ class JsonNumber extends JsonValue {
   public boolean isNumber() {
     return true;
   }
+
+  @Override
+  public int asInt() {
+    return Integer.parseInt(string, 10);
+  }
 }
