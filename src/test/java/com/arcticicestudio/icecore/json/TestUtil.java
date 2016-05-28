@@ -32,6 +32,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static java.util.concurrent.ForkJoinTask.adapt;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -61,5 +62,19 @@ public class TestUtil {
     T exception = catchException(runnable, type);
     assertNotNull("Expected exception: " + type.getName(), exception);
     return exception;
+  }
+
+  @SuppressWarnings("unchecked")
+  private static <T extends Exception> T catchException(RunnableEx runnable, Class<T> type) {
+    try {
+      runnable.run();
+      return null;
+    } catch (Exception exception) {
+      if (type.isAssignableFrom(exception.getClass())) {
+        return (T)exception;
+      }
+      String message = "Unexpected exception: " + exception.getMessage();
+      throw new RuntimeException(message, exception);
+    }
   }
 }
