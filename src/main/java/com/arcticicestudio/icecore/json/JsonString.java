@@ -70,6 +70,11 @@ class JsonString extends JsonValue {
   }
 
   @Override
+  public String toString() {
+    return string;
+  }
+
+  @Override
   public boolean equals(Object object) {
     if (this == object) {
       return true;
