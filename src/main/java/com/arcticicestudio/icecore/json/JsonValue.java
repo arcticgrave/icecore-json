@@ -116,4 +116,13 @@ public abstract class JsonValue implements Serializable {
   public boolean isString() {
     return false;
   }
+
+  /**
+   * Detects whether this value represents a boolean value.
+   *
+   * @return {@code true} if this value represents either the JSON literal {@link Json#TRUE} or {@link Json#FALSE}
+   */
+  public boolean isBoolean() {
+    return false;
+  }
 }
