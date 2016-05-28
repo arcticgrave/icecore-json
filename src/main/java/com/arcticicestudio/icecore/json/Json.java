@@ -125,4 +125,14 @@ public final class Json {
     }
     return new JsonNumber(cutOffPointZero(Double.toString(value)));
   }
+
+  /**
+   * Returns a {@link JsonValue} instance that represents the given string.
+   *
+   * @param string the string to get a JSON representation for
+   * @return a JSON value that represents the given string
+   */
+  public static JsonValue value(String string) {
+    return string == null ? NULL : new JsonString(string);
+  }
 }
