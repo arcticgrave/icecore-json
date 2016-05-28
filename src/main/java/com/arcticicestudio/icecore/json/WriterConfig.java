@@ -51,4 +51,9 @@ public abstract class WriterConfig {
       return new JsonWriter(writer);
     }
   };
+
+  /**
+   * Write JSON in pretty-print, with each value on a separate line and an indentation of two spaces.
+   */
+  public static WriterConfig PRETTY_PRINT = PrettyPrint.indentWithSpaces(2);
 }
