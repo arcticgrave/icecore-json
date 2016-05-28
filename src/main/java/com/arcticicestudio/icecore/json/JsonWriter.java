@@ -108,6 +108,10 @@ class JsonWriter {
     writer.write('"');
   }
 
+  protected void writeMemberSeparator() throws IOException {
+    writer.write(':');
+  }
+
   protected void writeJsonString(String string) throws IOException {
     int length = string.length();
     int start = 0;
