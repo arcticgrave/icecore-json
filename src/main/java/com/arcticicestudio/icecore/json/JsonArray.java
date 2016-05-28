@@ -31,6 +31,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -84,5 +85,23 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
    */
   public JsonArray(JsonArray array) {
     this(array, false);
+  }
+
+  /**
+   * Initializes the contents of the specified JSON array with a modifiability state based on the boolean value of the
+   * {@code unmodifiable} parameter.
+   *
+   * @param array the JsonArray to get the initial contents from which <strong>MUST NOT</strong> be {@code null}.
+   * @param unmodifiable the state of the modifiability
+   */
+  private JsonArray(JsonArray array, boolean unmodifiable) {
+    if (array == null) {
+      throw new NullPointerException("array is null");
+    }
+    if (unmodifiable) {
+      values = Collections.unmodifiableList(array.values);
+    } else {
+      values = new ArrayList<JsonValue>(array.values);
+    }
   }
 }
