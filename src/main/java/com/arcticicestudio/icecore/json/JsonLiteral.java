@@ -36,4 +36,22 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.3.0
  */
-class JsonLiteral extends JsonValue {}
+class JsonLiteral extends JsonValue {
+
+  private final String value;
+  private final boolean isNull;
+  private final boolean isTrue;
+  private final boolean isFalse;
+
+  /**
+   * Initializes the JSON literal values.
+   *
+   * @param value the JSON literal to be literalized
+   */
+  JsonLiteral(String value) {
+    this.value = value;
+    isNull = "null".equals(value);
+    isTrue = "true".equals(value);
+    isFalse = "false".equals(value);
+  }
+}
