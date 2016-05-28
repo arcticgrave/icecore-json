@@ -328,4 +328,15 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public boolean isEmpty() {
     return values.isEmpty();
   }
+
+  /**
+   * Returns the value of the element at the specified position in this array.
+   *
+   * @param index the index of the array element to return
+   * @return the value of the element at the specified position
+   * @throws IndexOutOfBoundsException if the index is out of range ({@code index &lt; 0} or {@code index &gt;= size})
+   */
+  public JsonValue get(int index) {
+    return values.get(index);
+  }
 }
