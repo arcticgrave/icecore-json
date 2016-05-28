@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 12:03 UTC+0200       +
-modified  2016-05-28 15:37 UTC+0200       +
+modified  2016-05-28 16:45 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -246,6 +246,27 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * @since 0.6.0
    */
   public JsonObject add(String name, boolean value) {
+    add(name, Json.value(value));
+    return this;
+  }
+
+  /**
+   * Appends a new member to the end of this object, with the specified name and the JSON representation of the
+   * specified string.
+   * <p>
+   *   <strong>This method does not prevent duplicate names!</strong>
+   *   Calling this method with a name that already exists in the object will append another member with the same name.
+   *   In order to replace existing members, use the method {@code set(name, value)} instead.
+   *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
+   *   existing members.
+   *   Therefore <em>add</em> should be preferred when constructing new objects.
+   * </p>
+   *
+   * @param name the name of the member to add
+   * @param value the value of the member to add
+   * @return the object itself, to enable method chaining
+   */
+  public JsonObject add(String name, String value) {
     add(name, Json.value(value));
     return this;
   }
