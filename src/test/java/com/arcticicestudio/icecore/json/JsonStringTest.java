@@ -32,7 +32,10 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+
 import org.junit.Before;
+import org.junit.Test;
 
 import java.io.StringWriter;
 
@@ -51,5 +54,14 @@ public class JsonStringTest {
   public void setUp() {
     stringWriter = new StringWriter();
     jsonWriter = new JsonWriter(stringWriter);
+  }
+
+  @Test
+  public void constructorFailsWithNull() {
+    assertException(NullPointerException.class, "string is null", new Runnable() {
+      public void run() {
+        new JsonString(null);
+      }
+    });
   }
 }
