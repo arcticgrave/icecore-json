@@ -241,4 +241,18 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     values.set(index, Json.value(value));
     return this;
   }
+
+  /**
+   * Replaces the element at the specified position in this array with the JSON representation of the specified
+   * {@code double} value.
+   *
+   * @param index the index of the array element to replace
+   * @param value the value to be stored at the specified array position
+   * @return the array itself, to enable method chaining
+   * @throws IndexOutOfBoundsException if the index is out of range ({@code index &lt; 0} or {@code index &gt;= size})
+   */
+  public JsonArray set(int index, double value) {
+    values.set(index, Json.value(value));
+    return this;
+  }
 }
