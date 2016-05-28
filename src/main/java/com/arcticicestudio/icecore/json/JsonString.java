@@ -53,4 +53,9 @@ class JsonString extends JsonValue {
     }
     this.string = string;
   }
+
+  @Override
+  public boolean isString() {
+    return true;
+  }
 }
