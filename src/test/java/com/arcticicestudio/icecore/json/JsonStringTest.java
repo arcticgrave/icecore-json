@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 20:35 UTC+0200       +
-modified  2016-05-28 20:36 UTC+0200       +
+modified  2016-05-28 20:56 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -33,6 +33,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+import static com.arcticicestudio.icecore.json.TestUtil.serializeAndDeserialize;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -127,5 +128,11 @@ public class JsonStringTest {
   public void hashCodeDiffersForDifferentStrings() {
     assertFalse(new JsonString("").hashCode() == new JsonString("yogurt").hashCode());
     assertFalse(new JsonString("yogurt").hashCode() == new JsonString("coconut").hashCode());
+  }
+
+  @Test
+  public void canBeSerializedAndDeserialized() throws Exception {
+    JsonString string = new JsonString("yogurt");
+    assertEquals(string, serializeAndDeserialize(string));
   }
 }
