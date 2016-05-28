@@ -70,4 +70,13 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.2.0
  */
-public class JsonObject extends JsonValue implements Iterable<Member> {}
+public class JsonObject extends JsonValue implements Iterable<Member> {
+
+  /**
+   * Represents a indexed hash table to handle JSON object member.
+   *
+   * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
+   * @since 0.2.0
+   */
+  static class HashIndexTable {}
+}
