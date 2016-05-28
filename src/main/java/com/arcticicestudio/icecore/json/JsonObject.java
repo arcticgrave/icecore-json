@@ -80,6 +80,13 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    */
   static class HashIndexTable {
 
+    /* The size MUST be a power of two. */
+    private final byte[] hashTable = new byte[32];
+
     public HashIndexTable() {}
+
+    public HashIndexTable(HashIndexTable original) {
+      System.arraycopy(original.hashTable, 0, hashTable, 0, hashTable.length);
+    }
   }
 }
