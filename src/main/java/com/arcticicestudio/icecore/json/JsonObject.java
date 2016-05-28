@@ -236,6 +236,15 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       this.name = name;
       this.value = value;
     }
+
+    /**
+     * Returns the name of this member.
+     *
+     * @return the name of this member, never {@code null}
+     */
+    public String getName() {
+      return name;
+    }
   }
 
   /**
