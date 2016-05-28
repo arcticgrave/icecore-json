@@ -225,4 +225,21 @@ public final class Json {
     }
     return array;
   }
+
+  /**
+   * Creates a new {@link JsonArray} that contains the JSON representations of the given {@code boolean} values.
+   *
+   * @param values the values to be included in the new JSON array
+   * @return a new JSON array of {@link JsonArray} that contains the given values
+   */
+  public static JsonArray array(boolean... values) {
+    if (values == null) {
+      throw new NullPointerException("values is null");
+    }
+    JsonArray array = new JsonArray();
+    for (boolean value : values) {
+      array.add(value);
+    }
+    return array;
+  }
 }
