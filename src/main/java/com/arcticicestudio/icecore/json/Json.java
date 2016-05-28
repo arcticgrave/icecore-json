@@ -9,7 +9,7 @@ email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 16:06 UTC+0200        +
-modified  2016-05-28 16:07 UTC+0200        +
+modified  2016-05-28 16:23 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -313,5 +313,18 @@ public final class Json {
       throw new NullPointerException("reader is null");
     }
     return new JsonParser( reader ).parse();
+  }
+
+  /**
+   * Cuts of the the point and a the following zero digit ({@code .0}).
+   *
+   * @param string the string which contains the section that is to be cut
+   * @return the cut off string
+   */
+  private static String cutOffPointZero(String string) {
+    if (string.endsWith(".0")) {
+      return string.substring(0, string.length() - 2);
+    }
+    return string;
   }
 }
