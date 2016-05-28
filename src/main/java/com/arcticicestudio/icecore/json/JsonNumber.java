@@ -76,4 +76,9 @@ class JsonNumber extends JsonValue {
   public double asDouble() {
     return Double.parseDouble(string);
   }
+
+  @Override
+  public String toString() {
+    return string;
+  }
 }
