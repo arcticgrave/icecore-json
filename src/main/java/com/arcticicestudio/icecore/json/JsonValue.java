@@ -263,4 +263,20 @@ public abstract class JsonValue implements Serializable {
   public boolean asBoolean() {
     throw new UnsupportedOperationException("Not a boolean: " + toString());
   }
+
+  /**
+   * Indicates whether some other object is <em>equal to</em> this one.
+   * <p>
+   *   Two JsonValues are considered equal if and only if they represent the same JSON text.
+   *   As a consequence, two given {@link JsonObject} may be different even though they contain the same set of names
+   *   with the same values, but in a different order.
+   * </p>
+   *
+   * @param object the reference object with which to compare
+   * @return {@code true} if this object is the same as the object argument, {@code false} otherwise
+   */
+  @Override
+  public boolean equals(Object object) {
+    return super.equals(object);
+  }
 }
