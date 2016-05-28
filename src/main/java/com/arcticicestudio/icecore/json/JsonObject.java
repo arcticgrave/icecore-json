@@ -31,6 +31,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -95,6 +96,28 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    */
   public JsonObject(JsonObject object) {
     this(object, false);
+  }
+
+  /**
+   * Initializes the contents of the specified JSON object with a modifiability state based on the boolean value of the
+   * {@code unmodifiable} parameter.
+   *
+   * @param object the JsonObject to get the initial contents from which <strong>MUST NOT</strong> be {@code null}.
+   * @param unmodifiable the state of the modifiability
+   */
+  private JsonObject(JsonObject object, boolean unmodifiable) {
+    if (object == null) {
+      throw new NullPointerException("object is null");
+    }
+    if (unmodifiable) {
+      names = Collections.unmodifiableList(object.names);
+      values = Collections.unmodifiableList(object.values);
+    } else {
+      names = new ArrayList<String>(object.names);
+      values = new ArrayList<JsonValue>(object.values);
+    }
+    table = new HashIndexTable();
+    updateHashIndex();
   }
 
   private void updateHashIndex() {
