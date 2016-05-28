@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 14:24 UTC+0200       +
-modified  2016-05-28 14:25 UTC+0200       +
+modified  2016-05-28 14:36 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -110,6 +110,10 @@ class JsonWriter {
 
   protected void writeMemberSeparator() throws IOException {
     writer.write(':');
+  }
+
+  protected void writeObjectSeparator() throws IOException {
+    writer.write(',');
   }
 
   protected void writeJsonString(String string) throws IOException {
