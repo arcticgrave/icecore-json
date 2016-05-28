@@ -47,8 +47,13 @@ class JsonParser {
 
   private final Reader reader;
   private final char[] buffer;
+  private int bufferOffset;
+  private int index;
+  private int fill;
   private int line;
   private int captureStart;
+  private int lineOffset;
+  private StringBuilder captureBuffer;
   private int current;
 
   /*
@@ -324,5 +329,26 @@ class JsonParser {
     while (isWhiteSpace()) {
       read();
     }
+  }
+
+  private void read() throws IOException {
+    if (index == fill) {
+      if (captureStart != -1) {
+        captureBuffer.append(buffer, captureStart, fill - captureStart);
+        captureStart = 0;
+      }
+      bufferOffset += fill;
+      fill = reader.read(buffer, 0, buffer.length);
+      index = 0;
+      if (fill == -1) {
+        current = -1;
+        return;
+      }
+    }
+    if (current == '\n') {
+      line++;
+      lineOffset = bufferOffset + index;
+    }
+    current = buffer[index++];
   }
 }
