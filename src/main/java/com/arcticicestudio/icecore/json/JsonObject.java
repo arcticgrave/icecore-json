@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.arcticicestudio.icecore.json.JsonObject.Member;
+
 /**
  * Represents a JSON object, a set of name/value pairs, where the names are strings and the values are JSON values.
  * <p>
@@ -218,6 +220,26 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       table.remove(index);
       names.remove(index);
       values.remove(index);
+    }
+    return this;
+  }
+
+  /**
+   * Copies all members of the specified object into this object.
+   * <p>
+   *   When the specified object contains members with names that also exist in this object, the existing values in
+   *   this object will be replaced by the corresponding values in the specified object.
+   * </p>
+   *
+   * @param object the object to merge
+   * @return the object itself, to enable method chaining
+   */
+  public JsonObject merge(JsonObject object) {
+    if (object == null) {
+      throw new NullPointerException("object is null");
+    }
+    for (Member member : object) {
+      this.set(member.name, member.value);
     }
     return this;
   }
