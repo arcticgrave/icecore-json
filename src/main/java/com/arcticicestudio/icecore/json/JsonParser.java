@@ -276,4 +276,16 @@ class JsonParser {
     readExponent();
     return new JsonNumber(endCapture());
   }
+
+  private boolean readFraction() throws IOException {
+    if (!readChar('.')) {
+      return false;
+    }
+    if (!readDigit()) {
+      throw expected("digit");
+    }
+    while (readDigit()) {
+    }
+    return true;
+  }
 }
