@@ -372,6 +372,15 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return value != null ? value.asString() : defaultValue;
   }
 
+  /**
+   * Returns the number of members (name/value pairs) in this object.
+   *
+   * @return the number of members in this object
+   */
+  public int size() {
+    return names.size();
+  }
+
   @Override
   public boolean isObject() {
     return true;
