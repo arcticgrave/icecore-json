@@ -109,6 +109,12 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       }
     }
 
+    int get(Object name) {
+      int slot = hashSlotFor(name);
+      /* Subtract 1, 0 stands for empty */
+      return (hashTable[slot] & 0xff) - 1;
+    }
+
     private int hashSlotFor(Object element) {
       return element.hashCode() & hashTable.length - 1;
     }
