@@ -197,4 +197,8 @@ class JsonParser {
       throw expected("'" + ch + "'");
     }
   }
+
+  private JsonValue readString() throws IOException {
+    return new JsonString(readStringInternal());
+  }
 }
