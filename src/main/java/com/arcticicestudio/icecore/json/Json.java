@@ -157,4 +157,21 @@ public final class Json {
   public static JsonValue array() {
     return new JsonArray();
   }
+
+  /**
+   * Creates a new {@link JsonArray} that contains the JSON representations of the given {@code int} values.
+   *
+   * @param values the values to be included in the new JSON array
+   * @return a new JSON array of {@link JsonArray} that contains the given values
+   */
+  public static JsonArray array(int... values) {
+    if (values == null) {
+      throw new NullPointerException("values is null");
+    }
+    JsonArray array = new JsonArray();
+    for (int value : values) {
+      array.add(value);
+    }
+    return array;
+  }
 }
