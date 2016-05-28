@@ -76,4 +76,14 @@ public abstract class JsonValue implements Serializable {
  * Prevents subclasses outside of this package
  */
   JsonValue() {}
+
+  /**
+   * Detects whether this value represents a JSON object.
+   * If this is the case, this value is an instance of {@link JsonObject}.
+   *
+   * @return {@code true} if this value is an instance of {@link JsonObject}
+   */
+  public boolean isObject() {
+    return false;
+  }
 }
