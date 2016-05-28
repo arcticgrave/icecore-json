@@ -107,4 +107,9 @@ public class JsonStringTest {
     assertFalse(new JsonString("").equals(new JsonString("yoghurt")));
     assertFalse(new JsonString("yoghurt").equals(new JsonString("coconut")));
   }
+
+  @Test
+  public void equalsFalseForNull() {
+    assertFalse(new JsonString("yoghurt").equals(null));
+  }
 }
