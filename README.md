@@ -198,6 +198,14 @@ String json = jsonValue.toString(WriterConfig.PRETTY_PRINT);
 jsonValue.writeTo(writer, WriterConfig.PRETTY_PRINT);
 ```
 
+---
+
+### Concurrency
+The JSON structures in this library (`JsonObject` and `JsonArray`) are deliberately **not thread-safe** to keep them fast and simple.
+In the rare case that JSON data structures must be accessed from multiple threads, while at least one of these threads modifies their contents, the application must ensure proper synchronization.
+
+Iterators will throw a `ConcurrentModificationException` when the contents of a JSON structure have been modified after the creation of the iterator.
+
 ### Version
 [`0.5.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
 
