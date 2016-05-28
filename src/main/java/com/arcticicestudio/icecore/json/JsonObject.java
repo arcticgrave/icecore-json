@@ -97,6 +97,13 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     this(object, false);
   }
 
+  private void updateHashIndex() {
+    int size = names.size();
+    for (int i = 0; i < size; i++) {
+      table.add(names.get(i), i);
+    }
+  }
+
   /**
    * Represents a indexed hash table to handle JSON object member.
    *
