@@ -116,4 +116,22 @@ class JsonParser {
         throw expected("value");
     }
   }
+
+  private JsonArray readArray() throws IOException {
+    read();
+    JsonArray array = new JsonArray();
+    skipWhiteSpace();
+    if (readChar(']')) {
+      return array;
+    }
+    do {
+      skipWhiteSpace();
+      array.add(readValue());
+      skipWhiteSpace();
+    } while (readChar(','));
+    if (!readChar(']')) {
+      throw expected("',' or ']'");
+    }
+    return array;
+  }
 }
