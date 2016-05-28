@@ -34,6 +34,7 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -77,5 +78,10 @@ public class JsonStringTest {
   public void writeEscapesStrings() throws IOException {
     new JsonString("yog\\hurt").write(jsonWriter);
     assertEquals("\"yog\\\\hurt\"", stringWriter.toString());
+  }
+
+  @Test
+  public void isString() {
+    assertTrue(new JsonString("yoghurt").isString());
   }
 }
