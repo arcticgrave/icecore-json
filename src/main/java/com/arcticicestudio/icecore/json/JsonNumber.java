@@ -51,4 +51,9 @@ class JsonNumber extends JsonValue {
     }
     this.string = string;
   }
+
+  @Override
+  public boolean isNumber() {
+    return true;
+  }
 }
