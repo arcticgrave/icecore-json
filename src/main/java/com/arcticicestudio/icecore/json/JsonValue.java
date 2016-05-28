@@ -251,4 +251,16 @@ public abstract class JsonValue implements Serializable {
   public String asString() {
     throw new UnsupportedOperationException("Not a string: " + toString());
   }
+
+  /**
+   * Returns this JSON value as a {@code boolean} value, assuming that this value is either {@code true} or
+   * {@code false}.
+   * If this is not the case, an exception is thrown.
+   *
+   * @return this value as {@code boolean}
+   * @throws UnsupportedOperationException if this value is neither {@code true} or {@code false}
+   */
+  public boolean asBoolean() {
+    throw new UnsupportedOperationException("Not a boolean: " + toString());
+  }
 }
