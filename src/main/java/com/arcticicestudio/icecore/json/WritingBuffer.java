@@ -3,7 +3,7 @@
 title     Writing Buffer                  +
 project   icecore-json                    +
 file      WritingBuffer.java              +
-version                                   +
+version   0.5.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
