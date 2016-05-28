@@ -120,6 +120,21 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     updateHashIndex();
   }
 
+  /**
+   * Returns an unmodifiable JsonObject for the specified one.
+   * This method allows to provide read-only access to a JsonObject.
+   * <p>
+   *   The returned JsonObject is backed by the given object and reflect changes that happen to it.
+   *   Attempts to modify the returned JsonObject result in an {@code UnsupportedOperationException}.
+   * </p>
+   *
+   * @param object the JsonObject for which an unmodifiable JsonObject is to be returned
+   * @return an unmodifiable view of the specified JsonObject
+   */
+  public static JsonObject unmodifiableObject(JsonObject object) {
+    return new JsonObject(object, true);
+  }
+
   private void updateHashIndex() {
     int size = names.size();
     for (int i = 0; i < size; i++) {
