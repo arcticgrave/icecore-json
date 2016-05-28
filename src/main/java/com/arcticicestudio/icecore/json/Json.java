@@ -112,4 +112,17 @@ public final class Json {
     }
     return new JsonNumber(cutOffPointZero(Float.toString(value)));
   }
+
+  /**
+   * Returns a {@link JsonValue} instance that represents the given {@code double} value.
+   *
+   * @param value the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue value(double value) {
+    if (Double.isInfinite(value) || Double.isNaN(value)) {
+      throw new IllegalArgumentException("Infinite and NaN values not permitted in JSON");
+    }
+    return new JsonNumber(cutOffPointZero(Double.toString(value)));
+  }
 }
