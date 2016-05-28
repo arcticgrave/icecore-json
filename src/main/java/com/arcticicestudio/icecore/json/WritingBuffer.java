@@ -44,4 +44,11 @@ import java.io.Writer;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.5.0
  */
-class WritingBuffer extends Writer {}
+class WritingBuffer extends Writer {
+
+  private final Writer writer;
+
+  WritingBuffer(Writer writer) {
+    this(writer, 16);
+  }
+}
