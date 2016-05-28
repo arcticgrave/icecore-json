@@ -400,4 +400,10 @@ class JsonParser {
   private boolean isDigit() {
     return current >= '0' && current <= '9';
   }
+
+  private boolean isHexDigit() {
+    return current >= '0' && current <= '9'
+      || current >= 'a' && current <= 'f'
+      || current >= 'A' && current <= 'F';
+  }
 }
