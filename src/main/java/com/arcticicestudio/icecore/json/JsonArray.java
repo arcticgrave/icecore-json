@@ -381,6 +381,11 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     };
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @since 0.5.0
+   */
   @Override
   void write(JsonWriter writer) throws IOException {
     writer.writeArrayOpen();

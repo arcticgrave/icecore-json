@@ -84,6 +84,11 @@ class JsonNumber extends JsonValue {
     return string;
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @since 0.5.0
+   */
   @Override
   void write(JsonWriter writer) throws IOException {
     writer.writeNumber(string);

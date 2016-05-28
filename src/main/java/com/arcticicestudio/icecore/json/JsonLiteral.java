@@ -57,6 +57,11 @@ class JsonLiteral extends JsonValue {
     isFalse = "false".equals(value);
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @since 0.5.0
+   */
   @Override
   void write(JsonWriter writer) throws IOException {
     writer.writeLiteral(value);
