@@ -303,6 +303,21 @@ public abstract class JsonValue implements Serializable {
   }
 
   /**
+   * Returns the JSON string for this value in its minimal form, without any additional whitespace.
+   * <p>
+   *   The result is guaranteed to be a valid input for the method {@link #readFrom(String)} and to create a value that
+   *   is <em>equal</em> to this object.
+   * </p>
+   *
+   * @return a JSON string that represents this value
+   * @since 0.5.0
+   */
+  @Override
+  public String toString() {
+    return toString(WriterConfig.MINIMAL);
+  }
+
+  /**
    * Indicates whether some other object is <em>equal to</em> this one.
    * <p>
    *   Two JsonValues are considered equal if and only if they represent the same JSON text.
@@ -323,5 +338,8 @@ public abstract class JsonValue implements Serializable {
     return super.hashCode();
   }
 
+  /**
+   * @since 0.5.0
+   */
   abstract void write(JsonWriter writer) throws IOException;
 }
