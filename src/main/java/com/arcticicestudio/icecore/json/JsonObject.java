@@ -279,6 +279,25 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return value != null ? value.asInt() : defaultValue;
   }
 
+  /**
+   * Returns the {@code long} value of the member with the specified name in this object.
+   * <p>
+   *   If this object does not contain a member with this name, the given default value is returned.
+   *   If this object contains multiple members with the given name, the last one will be picked.
+   *   If this member's value does not represent a JSON number or if it cannot be interpreted as Java {@code long},
+   *   an exception is thrown.
+   * </p>
+   *
+   * @param name the name of the member whose value is to be returned
+   * @param defaultValue the value to be returned if the requested member is missing
+   * @return the value of the last member with the specified name, or the given default value if this object does not
+   *         contain a member with that name
+   */
+  public long getLong(String name, long defaultValue) {
+    JsonValue value = get(name);
+    return value != null ? value.asLong() : defaultValue;
+  }
+
   @Override
   public boolean isObject() {
     return true;
