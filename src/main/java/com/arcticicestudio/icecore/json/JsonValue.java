@@ -265,6 +265,21 @@ public abstract class JsonValue implements Serializable {
   }
 
   /**
+   * Writes the JSON representation of this value to the given writer in its minimal form, without any additional
+   * whitespace.
+   * <p>
+   *   Writing performance can be improved by using a {@link java.io.BufferedWriter BufferedWriter}.
+   * </p>
+   *
+   * @param writer the writer to write this value to
+   * @throws IOException if an I/O error occurs in the writer
+   * @since 0.5.0
+   */
+  public void writeTo(Writer writer) throws IOException {
+    writeTo(writer, WriterConfig.MINIMAL);
+  }
+
+  /**
    * Indicates whether some other object is <em>equal to</em> this one.
    * <p>
    *   Two JsonValues are considered equal if and only if they represent the same JSON text.
