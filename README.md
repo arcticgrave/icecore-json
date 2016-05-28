@@ -17,6 +17,7 @@ The class `Json` is the entrypoint to the minimal-json API, use it to parse and 
   - [Parse JSON](#parse-json)
   - [JSON values](#json-values)
   - [JSON arrays](#json-arrays)
+  - [JSON objects](#json-objects)
 
 #### Parse JSON
 
@@ -59,6 +60,34 @@ You can also iterate over the elements of a `JsonArray`, which are again also JS
 
 ```java
 for (JsonValue value : jsonArray) {
+  // ...
+}
+```
+
+### JSON objects
+
+Similar to `JsonArray`, the type `JsonObject` represents JSON objects, the map type in JSON.
+Members of a JSON object can be accessed by name using the `get` method.
+
+```java
+JsonObject object = Json.parse(input).asObject();
+String name = object.get("name").asString();
+int quantity = object.get("quantity").asInt();
+```
+
+There are also shorthand methods like `getString`, `getInt`, `getDouble`, etc. that directly return the expected type. These methods require a default value that is returned when the member is not found:
+
+```java
+String name = object.getString("name", "Unknown");
+int age = object.getInt("quantity", 1);
+```
+
+You can also iterate over the members of a JSON object:
+
+```java
+for (Member member : jsonObject) {
+  String name = member.getName();
+  JsonValue value = member.getValue();
   // ...
 }
 ```
