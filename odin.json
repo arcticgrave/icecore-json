@@ -1,10 +1,10 @@
 {
   "id": "icecore-json",
   "name": "IceCore - JSON",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "date": {
    "created": "2016-05-27 19:39 UTC+0100",
-   "updated": "2016-05-28 11:25 UTC+0100"
+   "updated": "2016-05-28 12:51 UTC+0100"
   },
   "access": "private",
   "modularity": "module",

@@ -1,6 +1,14 @@
 IceCore - JSON
 ==============
 
+## 0.2.0 (2016-05-28)
+**NOTE**: This is a development-progressive-only version and represents a non-executable state!**
+
+### Features
+#### JSON Structure Representations
+  - Implemented the `com.arcticicestudio.icecore.json.JsonArray` class which represents a JSON array, an ordered collection of JSON values
+  - Implemented the `com.arcticicestudio.icecore.json.JsonObject` class which represents a JSON object, a set of name/value pairs, where the names are strings and the values are JSON values
+
 ## 0.1.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
