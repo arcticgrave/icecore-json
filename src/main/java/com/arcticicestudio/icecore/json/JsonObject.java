@@ -30,6 +30,9 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a JSON object, a set of name/value pairs, where the names are strings and the values are JSON values.
  * <p>
@@ -71,6 +74,19 @@ package com.arcticicestudio.icecore.json;
  * @since 0.2.0
  */
 public class JsonObject extends JsonValue implements Iterable<Member> {
+
+  private final List<String> names;
+  private final List<JsonValue> values;
+  private transient HashIndexTable table;
+
+  /**
+   * Creates a new empty JsonObject.
+   */
+  public JsonObject() {
+    names = new ArrayList<String>();
+    values = new ArrayList<JsonValue>();
+    table = new HashIndexTable();
+  }
 
   /**
    * Represents a indexed hash table to handle JSON object member.
