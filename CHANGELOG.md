@@ -1,6 +1,14 @@
 IceCore - JSON
 ==============
 
+## 0.4.0 (2016-05-28)
+**NOTE**: This is a development-progressive-only version and represents a non-executable state!**
+
+### Features
+#### JSON Parsing
+  - Implemented the `com.arcticicestudio.icecore.json.JsonParser` class which represents a JSON parser
+  - Implemented the `com.arcticicestudio.icecore.json.ParseException` class which represents an unchecked exception to indicate that an input does not qualify as valid JSON
+
 ## 0.3.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
