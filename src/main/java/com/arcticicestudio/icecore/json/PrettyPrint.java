@@ -31,6 +31,8 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import java.util.Arrays;
+
 /**
  * Enables human readable JSON output by inserting whitespace between values after commas and colons.
  * <p>
@@ -61,5 +63,23 @@ public class PrettyPrint extends WriterConfig {
    */
   public static PrettyPrint singleLine() {
     return new PrettyPrint(null);
+  }
+
+  /**
+   * Print every value on a separate line.
+   * <p>
+   *   Use the given number of spaces for indentation.
+   * </p>
+   *
+   * @param number The number of spaces to use
+   * @return A PrettyPrint instance for wrapped mode with spaces indentation
+   */
+  public static PrettyPrint indentWithSpaces(int number) {
+    if (number < 0) {
+      throw new IllegalArgumentException("number is negative");
+    }
+    char[] chars = new char[number];
+    Arrays.fill(chars, ' ');
+    return new PrettyPrint(chars);
   }
 }
