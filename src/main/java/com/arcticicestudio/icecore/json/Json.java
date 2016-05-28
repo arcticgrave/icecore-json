@@ -79,4 +79,14 @@ public final class Json {
    * Represents the JSON literal {@code false}.
    */
   public static final JsonValue FALSE = new JsonLiteral("false");
+
+  /**
+   * Returns a {@link JsonValue} instance that represents the given {@code int} value.
+   *
+   * @param value the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue value(int value) {
+    return new JsonNumber(Integer.toString(value, 10));
+  }
 }
