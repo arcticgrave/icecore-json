@@ -9,7 +9,7 @@ email     development@arcticicestudio.com       +
 website   http://arcticicestudio.com            +
 copyright Copyright (C) 2016                    +
 created   2016-05-28 14:39 UTC+0200             +
-modified  2016-05-28 14:40 UTC+0200             +
+modified  2016-05-28 14:44 UTC+0200             +
 +++++++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -56,4 +56,6 @@ public abstract class WriterConfig {
    * Write JSON in pretty-print, with each value on a separate line and an indentation of two spaces.
    */
   public static WriterConfig PRETTY_PRINT = PrettyPrint.indentWithSpaces(2);
+
+  abstract JsonWriter createWriter(Writer writer);
 }
