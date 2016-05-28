@@ -102,6 +102,12 @@ class JsonWriter {
     writer.write('}');
   }
 
+  protected void writeMemberName(String name) throws IOException {
+    writer.write('"');
+    writeJsonString(name);
+    writer.write('"');
+  }
+
   protected void writeJsonString(String string) throws IOException {
     int length = string.length();
     int start = 0;
