@@ -35,6 +35,7 @@ package com.arcticicestudio.icecore.json;
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -99,5 +100,11 @@ public class JsonStringTest {
   @Test
   public void equalsTrueForEqualStrings() {
     assertTrue(new JsonString("yoghurt").equals(new JsonString("yoghurt")));
+  }
+
+  @Test
+  public void equalsFalseForDifferentStrings() {
+    assertFalse(new JsonString("").equals(new JsonString("yoghurt")));
+    assertFalse(new JsonString("yoghurt").equals(new JsonString("coconut")));
   }
 }
