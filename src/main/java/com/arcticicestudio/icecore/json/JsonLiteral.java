@@ -59,4 +59,9 @@ class JsonLiteral extends JsonValue {
   public boolean isNull() {
     return isNull;
   }
+
+  @Override
+  public boolean isTrue() {
+    return isTrue;
+  }
 }
