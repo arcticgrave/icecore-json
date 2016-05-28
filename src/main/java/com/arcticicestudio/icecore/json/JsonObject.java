@@ -3,7 +3,7 @@
 title     JSON Object                     +
 project   icecore-json                    +
 file      JsonObject.java                 +
-version                                   +
+version   0.2.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
