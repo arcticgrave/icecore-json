@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import com.arcticicestudio.icecore.json.JsonObject.Member;
@@ -402,6 +403,33 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    */
   public List<String> names() {
     return Collections.unmodifiableList(names);
+  }
+
+  /**
+   * Returns an iterator over the members of this object in document order.
+   * The returned iterator cannot be used to modify this object.
+   *
+   * @return an iterator over the members of this object
+   */
+  public Iterator<Member> iterator() {
+    final Iterator<String> namesIterator = names.iterator();
+    final Iterator<JsonValue> valuesIterator = values.iterator();
+    return new Iterator<JsonObject.Member>() {
+
+      public boolean hasNext() {
+        return namesIterator.hasNext();
+      }
+
+      public Member next() {
+        String name = namesIterator.next();
+        JsonValue value = valuesIterator.next();
+        return new Member(name, value);
+      }
+
+      public void remove() {
+        throw new UnsupportedOperationException();
+      }
+    };
   }
 
   @Override
