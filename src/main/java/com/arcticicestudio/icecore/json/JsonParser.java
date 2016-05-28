@@ -311,4 +311,12 @@ class JsonParser {
     read();
     return true;
   }
+
+  private boolean readDigit() throws IOException {
+    if (!isDigit()) {
+      return false;
+    }
+    read();
+    return true;
+  }
 }
