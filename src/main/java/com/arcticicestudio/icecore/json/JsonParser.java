@@ -182,4 +182,13 @@ class JsonParser {
     readRequiredChar('e');
     return Json.TRUE;
   }
+
+  private JsonValue readFalse() throws IOException {
+    read();
+    readRequiredChar('a');
+    readRequiredChar('l');
+    readRequiredChar('s');
+    readRequiredChar('e');
+    return Json.FALSE;
+  }
 }
