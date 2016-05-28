@@ -77,4 +77,9 @@ public class TestUtil {
       throw new RuntimeException(message, exception);
     }
   }
+
+  @SuppressWarnings("unchecked")
+  public static <T> T serializeAndDeserialize(T instance) throws Exception {
+    return (T)deserialize(serialize(instance));
+  }
 }
