@@ -74,4 +74,9 @@ public final class Json {
    * Represents the JSON literal {@code true}.
    */
   public static final JsonValue TRUE = new JsonLiteral("true");
+
+  /**
+   * Represents the JSON literal {@code false}.
+   */
+  public static final JsonValue FALSE = new JsonLiteral("false");
 }
