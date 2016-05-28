@@ -32,10 +32,24 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import org.junit.Before;
+
+import java.io.StringWriter;
+
 /**
  * Tests the JSON value representation class {@link JsonString}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonStringTest {}
+public class JsonStringTest {
+
+  private StringWriter stringWriter;
+  private JsonWriter jsonWriter;
+
+  @Before
+  public void setUp() {
+    stringWriter = new StringWriter();
+    jsonWriter = new JsonWriter(stringWriter);
+  }
+}
