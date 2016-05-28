@@ -240,4 +240,15 @@ public abstract class JsonValue implements Serializable {
   public double asDouble() {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
+
+  /**
+   * Returns this JSON value as String, assuming that this value represents a JSON string.
+   * If this is not the case, an exception is thrown.
+   *
+   * @return the string represented by this value
+   * @throws UnsupportedOperationException if this value is not a JSON string
+   */
+  public String asString() {
+    throw new UnsupportedOperationException("Not a string: " + toString());
+  }
 }
