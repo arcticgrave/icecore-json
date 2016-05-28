@@ -322,6 +322,28 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
   }
 
   /**
+   * Sets the value of the member with the specified name to the JSON representation of the specified {@code long}
+   * value.
+   * <p>
+   *   If this object does not contain a member with this name, a new member is added at the end of the object.
+   *   If this object contains multiple members with this name, only the last one is changed.
+   * </p>
+   * <p>
+   *   <strong>This method should only be used to modify existing objects!</strong>.
+   *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
+   *   as it does not need to search for existing members.
+   * </p>
+   *
+   * @param name the name of the member to replace
+   * @param value the value to set to the member
+   * @return the object itself, to enable method chaining
+   */
+  public JsonObject set(String name, long value) {
+    set(name, Json.value(value));
+    return this;
+  }
+
+  /**
    * Sets the value of the member with the specified name to the specified JSON value.
    * <p>
    *   If this object does not contain a member with this name, a new member is added at the end of the object.
