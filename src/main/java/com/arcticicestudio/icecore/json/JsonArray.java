@@ -389,4 +389,9 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public JsonArray asArray() {
     return this;
   }
+
+  @Override
+  public int hashCode() {
+    return values.hashCode();
+  }
 }
