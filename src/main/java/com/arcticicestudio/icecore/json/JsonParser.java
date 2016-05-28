@@ -303,4 +303,12 @@ class JsonParser {
     }
     return true;
   }
+
+  private boolean readChar(char ch) throws IOException {
+    if (current != ch) {
+      return false;
+    }
+    read();
+    return true;
+  }
 }
