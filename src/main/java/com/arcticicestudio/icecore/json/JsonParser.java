@@ -134,4 +134,28 @@ class JsonParser {
     }
     return array;
   }
+
+  private JsonObject readObject() throws IOException {
+    read();
+    JsonObject object = new JsonObject();
+    skipWhiteSpace();
+    if (readChar('}')) {
+      return object;
+    }
+    do {
+      skipWhiteSpace();
+      String name = readName();
+      skipWhiteSpace();
+      if (!readChar(':')) {
+        throw expected("':'");
+      }
+      skipWhiteSpace();
+      object.add(name, readValue());
+      skipWhiteSpace();
+    } while (readChar(','));
+    if (!readChar('}')) {
+      throw expected("',' or '}'");
+    }
+    return object;
+  }
 }
