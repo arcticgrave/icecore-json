@@ -135,4 +135,14 @@ public final class Json {
   public static JsonValue value(String string) {
     return string == null ? NULL : new JsonString(string);
   }
+
+  /**
+   * Returns a {@link JsonValue} instance that represents the given {@code boolean} value.
+   *
+   * @param value the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue value(boolean value) {
+    return value ? TRUE : FALSE;
+  }
 }
