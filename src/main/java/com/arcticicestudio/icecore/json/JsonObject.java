@@ -206,6 +206,21 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return result;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    JsonObject other = (JsonObject)obj;
+    return names.equals(other.names) && values.equals(other.values);
+  }
+
   /**
    * Represents a indexed hash table to handle JSON object member.
    *
