@@ -227,7 +227,16 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
    * @since 0.2.0
    */
-  public static class Member {}
+  public static class Member {
+
+    private final String name;
+    private final JsonValue value;
+
+    Member(String name, JsonValue value) {
+      this.name = name;
+      this.value = value;
+    }
+  }
 
   /**
    * Represents a indexed hash table to handle JSON object member.
