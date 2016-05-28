@@ -30,6 +30,8 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -179,6 +181,14 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       return index;
     }
     return names.lastIndexOf(name);
+  }
+
+  private synchronized void readObject(ObjectInputStream inputStream)
+    throws IOException, ClassNotFoundException
+  {
+    inputStream.defaultReadObject();
+    table = new HashIndexTable();
+    updateHashIndex();
   }
 
   private void updateHashIndex() {
