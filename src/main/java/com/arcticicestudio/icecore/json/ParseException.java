@@ -58,4 +58,13 @@ public class ParseException extends RuntimeException {
   public int getOffset() {
     return offset;
   }
+
+  /**
+   * Returns the number of the line in which the error occurred. The first line counts as 1.
+   *
+   * @return the line in which the error occurred, will be &gt;= 1
+   */
+  public int getLine() {
+    return line;
+  }
 }
