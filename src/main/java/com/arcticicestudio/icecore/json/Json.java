@@ -30,6 +30,8 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
+
 /**
  * This class serves as the entry point to the "IceCore - JSON" public API.
  * <p>
@@ -270,5 +272,25 @@ public final class Json {
    */
   public static JsonObject object() {
     return new JsonObject();
+  }
+
+  /**
+   * Parses the given input string as JSON.
+   * The input must contain a valid JSON value, optionally padded with whitespace.
+   *
+   * @param string the input string, must be valid JSON
+   * @return a value that represents the parsed JSON
+   * @throws ParseException if the input is not valid JSON
+   */
+  public static JsonValue parse(String string) {
+    if (string == null) {
+      throw new NullPointerException("string is null");
+    }
+    try {
+      return new JsonParser(string).parse();
+    } catch (IOException exception) {
+      // JsonParser does not throw IOException for String
+      throw new RuntimeException(exception);
+    }
   }
 }
