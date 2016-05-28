@@ -48,4 +48,8 @@ class JsonWriter {
   JsonWriter(Writer writer) {
     this.writer = writer;
   }
+
+  protected void writeLiteral(String value) throws IOException {
+    writer.write(value);
+  }
 }
