@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 12:03 UTC+0200       +
-modified  2016-05-28 12:04 UTC+0200       +
+modified  2016-05-28 15:37 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -430,6 +430,27 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
         throw new UnsupportedOperationException();
       }
     };
+  }
+
+  /**
+   * @since 0.5.0
+   */
+  @Override
+  void write(JsonWriter writer) throws IOException {
+    writer.writeObjectOpen();
+    Iterator<String> namesIterator = names.iterator();
+    Iterator<JsonValue> valuesIterator = values.iterator();
+    boolean first = true;
+    while (namesIterator.hasNext()) {
+      if (!first) {
+        writer.writeObjectSeparator();
+      }
+      writer.writeMemberName(namesIterator.next());
+      writer.writeMemberSeparator();
+      valuesIterator.next().write(writer);
+      first = false;
+    }
+    writer.writeObjectClose();
   }
 
   @Override
