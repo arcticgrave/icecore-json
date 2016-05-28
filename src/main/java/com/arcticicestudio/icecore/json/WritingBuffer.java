@@ -31,6 +31,7 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
 import java.io.Writer;
 
 /**
@@ -48,6 +49,7 @@ class WritingBuffer extends Writer {
 
   private final Writer writer;
   private final char[] buffer;
+  private int fill = 0;
 
   WritingBuffer(Writer writer) {
     this(writer, 16);
@@ -56,5 +58,13 @@ class WritingBuffer extends Writer {
   WritingBuffer(Writer writer, int bufferSize) {
     this.writer = writer;
     buffer = new char[bufferSize];
+  }
+
+  @Override
+  public void write(int c) throws IOException {
+    if (fill > buffer.length - 1) {
+      flush();
+    }
+    buffer[fill++] = (char)c;
   }
 }
