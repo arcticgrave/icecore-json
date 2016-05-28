@@ -1,6 +1,13 @@
 IceCore - JSON
 ==============
 
+## 0.3.0 (2016-05-28)
+**NOTE**: This is a development-progressive-only version and represents a non-executable state!**
+
+### Features
+#### JSON Literal Representations
+  - Implemented the `com.arcticicestudio.icecore.json.JsonLiteral` class which represents a JSON literal
+
 ## 0.2.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 

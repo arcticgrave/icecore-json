@@ -1,19 +1,19 @@
 /*
 +++++++++++++++++++++++++++++++++++++++++++
-title     JSON String                     +
+title     JSON Literal                    +
 project   icecore-json                    +
-file      JsonString.java                 +
+file      JsonLiteral.java                +
 version   0.3.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
-created   2016-05-28 10:58 UTC+0200       +
-modified  2016-05-28 10:59 UTC+0200       +
+created   2016-05-28 13:40 UTC+0200       +
+modified  2016-05-28 13:41 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
-Represents a JSON string.
+Represents a JSON literal.
 
 [Copyright]
 Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
@@ -30,48 +30,64 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
-import java.io.IOException;
-
 /**
- * Represents a JSON string.
+ * Represents a JSON literal.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @since 0.1.0
+ * @since 0.3.0
  */
-class JsonString extends JsonValue {
+class JsonLiteral extends JsonValue {
 
-  private final String string;
+  private final String value;
+  private final boolean isNull;
+  private final boolean isTrue;
+  private final boolean isFalse;
 
   /**
-   * Initializes the JSON string value.
+   * Initializes the JSON literal values.
    *
-   * @param string the JSON string to be literalized
+   * @param value the JSON literal to be literalized
    */
-  JsonString(String string) {
-    if (string == null) {
-      throw new NullPointerException("string is null");
-    }
-    this.string = string;
+  JsonLiteral(String value) {
+    this.value = value;
+    isNull = "null".equals(value);
+    isTrue = "true".equals(value);
+    isFalse = "false".equals(value);
   }
 
   @Override
-  public boolean isString() {
-    return true;
+  public boolean isNull() {
+    return isNull;
   }
 
   @Override
-  public String asString() {
-    return string;
+  public boolean isTrue() {
+    return isTrue;
   }
 
   @Override
-  public int hashCode() {
-    return string.hashCode();
+  public boolean isFalse() {
+    return isFalse;
+  }
+
+  @Override
+  public boolean isBoolean() {
+    return isTrue || isFalse;
+  }
+
+  @Override
+  public boolean asBoolean() {
+    return isNull ? super.asBoolean() : isTrue;
   }
 
   @Override
   public String toString() {
-    return string;
+    return value;
+  }
+
+  @Override
+  public int hashCode() {
+    return value.hashCode();
   }
 
   @Override
@@ -85,7 +101,7 @@ class JsonString extends JsonValue {
     if (getClass() != object.getClass()) {
       return false;
     }
-    JsonString other = (JsonString)object;
-    return string.equals(other.string);
+    JsonLiteral other = (JsonLiteral)object;
+    return value.equals(other.value);
   }
 }
