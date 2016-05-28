@@ -163,4 +163,17 @@ public abstract class JsonValue implements Serializable {
   public JsonObject asObject() {
     throw new UnsupportedOperationException("Not an object: " + toString());
   }
+
+  /**
+   * Returns this JSON value as {@link JsonArray}, assuming that this value represents a JSON array.
+   * <p>
+   *   If this is not the case, an exception is thrown.
+   * </p>
+   *
+   * @return a {@link JsonArray} for this value
+   * @throws UnsupportedOperationException if this value is not a JSON array
+   */
+  public JsonArray asArray() {
+    throw new UnsupportedOperationException("Not an array: " + toString());
+  }
 }
