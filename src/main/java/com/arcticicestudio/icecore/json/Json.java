@@ -58,4 +58,10 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.6.0
  */
-public final class Json {}
+public final class Json {
+
+  /*
+ * Prevents the instantiation
+ */
+  private Json() {}
+}
