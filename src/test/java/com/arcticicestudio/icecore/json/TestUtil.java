@@ -99,4 +99,12 @@ public class TestUtil {
     ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
     return new ObjectInputStream(inputStream).readObject();
   }
+
+  private static RunnableEx adapt(final Runnable runnable) {
+    return new RunnableEx() {
+      public void run() {
+        runnable.run();
+      }
+    };
+  }
 }
