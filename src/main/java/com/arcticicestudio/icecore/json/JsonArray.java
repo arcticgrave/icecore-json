@@ -30,6 +30,9 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a JSON array, an ordered collection of JSON values.
  * <p>
@@ -63,4 +66,14 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.1.0
  */
-public class JsonArray extends JsonValue implements Iterable<JsonValue> {}
+public class JsonArray extends JsonValue implements Iterable<JsonValue> {
+
+  private final List<JsonValue> values;
+
+  /**
+   * Creates a new empty JsonArray.
+   */
+  public JsonArray() {
+    values = new ArrayList<JsonValue>();
+  }
+}
