@@ -396,4 +396,8 @@ class JsonParser {
   private boolean isWhiteSpace() {
     return current == ' ' || current == '\t' || current == '\n' || current == '\r';
   }
+
+  private boolean isDigit() {
+    return current >= '0' && current <= '9';
+  }
 }
