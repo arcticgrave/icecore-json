@@ -31,6 +31,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import java.io.IOException;
+import java.io.Reader;
 
 /**
  * This class serves as the entry point to the "IceCore - JSON" public API.
@@ -292,5 +293,25 @@ public final class Json {
       // JsonParser does not throw IOException for String
       throw new RuntimeException(exception);
     }
+  }
+
+  /**
+   * Reads the entire input stream from the given reader and parses it as JSON.
+   * The input must contain a valid JSON value, optionally padded with whitespace.
+   * <p>
+   *   Characters are read in chunks and buffered internally, therefore wrapping an existing reader in an additional
+   *   {@link java.io.BufferedReader} <strong>does not improve reading performance!</strong>
+   * </p>
+   *
+   * @param reader the reader to read the JSON value from
+   * @return a value that represents the parsed JSON
+   * @throws IOException if an I/O error occurs in the reader
+   * @throws ParseException if the input is not valid JSON
+   */
+  public static JsonValue parse(Reader reader) throws IOException {
+    if (reader == null) {
+      throw new NullPointerException("reader is null");
+    }
+    return new JsonParser( reader ).parse();
   }
 }
