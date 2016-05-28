@@ -85,4 +85,35 @@ class JsonParser {
     }
     return result;
   }
+
+  private JsonValue readValue() throws IOException {
+    switch (current) {
+      case 'n':
+        return readNull();
+      case 't':
+        return readTrue();
+      case 'f':
+        return readFalse();
+      case '"':
+        return readString();
+      case '[':
+        return readArray();
+      case '{':
+        return readObject();
+      case '-':
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        return readNumber();
+      default:
+        throw expected("value");
+    }
+  }
 }
