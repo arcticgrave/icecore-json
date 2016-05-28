@@ -86,4 +86,19 @@ class JsonNumber extends JsonValue {
   public int hashCode() {
     return string.hashCode();
   }
+
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+    if (object == null) {
+      return false;
+    }
+    if (getClass() != object.getClass()) {
+      return false;
+    }
+    JsonNumber other = (JsonNumber)object;
+    return string.equals(other.string);
+  }
 }
