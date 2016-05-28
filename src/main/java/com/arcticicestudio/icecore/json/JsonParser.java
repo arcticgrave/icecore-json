@@ -174,4 +174,12 @@ class JsonParser {
     readRequiredChar('l');
     return Json.NULL;
   }
+
+  private JsonValue readTrue() throws IOException {
+    read();
+    readRequiredChar('r');
+    readRequiredChar('u');
+    readRequiredChar('e');
+    return Json.TRUE;
+  }
 }
