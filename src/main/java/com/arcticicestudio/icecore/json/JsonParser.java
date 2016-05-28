@@ -378,4 +378,11 @@ class JsonParser {
     captureStart = -1;
     return captured;
   }
+
+  private ParseException expected(String expected) {
+    if (isEndOfText()) {
+      return error("Unexpected end of input");
+    }
+    return error("Expected " + expected);
+  }
 }
