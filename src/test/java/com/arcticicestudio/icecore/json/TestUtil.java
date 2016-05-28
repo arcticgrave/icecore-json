@@ -32,8 +32,10 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import static java.util.concurrent.ForkJoinTask.adapt;
@@ -91,5 +93,10 @@ public class TestUtil {
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     new ObjectOutputStream(outputStream).writeObject(object);
     return outputStream.toByteArray();
+  }
+
+  public static Object deserialize(byte[] bytes) throws IOException, ClassNotFoundException {
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
+    return new ObjectInputStream(inputStream).readObject();
   }
 }
