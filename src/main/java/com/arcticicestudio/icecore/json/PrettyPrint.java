@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 14:44 UTC+0200       +
-modified  2016-05-28 14:45 UTC+0200       +
+modified  2016-05-28 14:55 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -92,6 +92,11 @@ public class PrettyPrint extends WriterConfig {
    */
   public static PrettyPrint indentWithTabs() {
     return new PrettyPrint(new char[] {'\t'});
+  }
+
+  @Override
+  protected JsonWriter createWriter(Writer writer) {
+    return new PrettyPrintWriter(writer, indentChars);
   }
 
   private static class PrettyPrintWriter extends JsonWriter {
