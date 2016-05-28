@@ -9,6 +9,22 @@ It's not an object mapper, but a bare-bones library that aims at being
   - **minimal**: no dependencies, single package with just a few classes, small download size (< 35kB)
   - **simple**: reading, writing and modifying JSON with minimal code (short names, fluent style)
 
+Usage
+-----
+
+The class `Json` is the entrypoint to the minimal-json API, use it to parse and to create JSON.
+
+  - [Parse JSON](#parse-json)
+
+#### Parse JSON
+
+You can parse JSON from a `String` or from a `java.io.Reader`.
+You *don't* need to wrap your reader in a BufferedReader, as the parse method uses a reading buffer.
+
+```java
+JsonValue value = Json.parse(string);
+```
+
 ### Version
 [`0.5.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
 
