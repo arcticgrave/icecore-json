@@ -173,6 +173,14 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return this;
   }
 
+  int indexOf(String name) {
+    int index = table.get(name);
+    if (index != -1 && name.equals(names.get(index))) {
+      return index;
+    }
+    return names.lastIndexOf(name);
+  }
+
   private void updateHashIndex() {
     int size = names.size();
     for (int i = 0; i < size; i++) {
