@@ -152,4 +152,15 @@ public abstract class JsonValue implements Serializable {
   public boolean isNull() {
     return false;
   }
+
+  /**
+   * Returns this JSON value as {@link JsonObject}, assuming that this value represents a JSON object.
+   * If this is not the case, an exception is thrown.
+   *
+   * @return a {@link JsonObject} for this value
+   * @throws UnsupportedOperationException if this value is not a JSON object
+   */
+  public JsonObject asObject() {
+    throw new UnsupportedOperationException("Not an object: " + toString());
+  }
 }
