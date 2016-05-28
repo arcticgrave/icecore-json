@@ -89,4 +89,14 @@ public final class Json {
   public static JsonValue value(int value) {
     return new JsonNumber(Integer.toString(value, 10));
   }
+
+  /**
+   * Returns a {@link JsonValue} instance that represents the given {@code long} value.
+   *
+   * @param value the value to get a JSON representation for
+   * @return a JSON value that represents the given value
+   */
+  public static JsonValue value(long value) {
+    return new JsonNumber(Long.toString(value, 10));
+  }
 }
