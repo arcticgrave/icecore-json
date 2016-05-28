@@ -82,4 +82,13 @@ public class PrettyPrint extends WriterConfig {
     Arrays.fill(chars, ' ');
     return new PrettyPrint(chars);
   }
+
+  /**
+   * Do not break lines, but still insert whitespace between values.
+   *
+   * @return A PrettyPrint instance for single-line mode
+   */
+  public static PrettyPrint indentWithTabs() {
+    return new PrettyPrint(new char[] {'\t'});
+  }
 }
