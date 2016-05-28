@@ -163,4 +163,15 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     values.add(Json.value(value));
     return this;
   }
+
+  /**
+   * Appends the JSON representation of the specified {@code boolean} value to the end of this array.
+   *
+   * @param value the value to add to the array
+   * @return the array itself, to enable method chaining
+   */
+  public JsonArray add(boolean value) {
+    values.add(Json.value(value));
+    return this;
+  }
 }
