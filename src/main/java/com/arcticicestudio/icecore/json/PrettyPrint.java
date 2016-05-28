@@ -31,6 +31,7 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import java.io.Writer;
 import java.util.Arrays;
 
 /**
@@ -92,5 +93,13 @@ public class PrettyPrint extends WriterConfig {
     return new PrettyPrint(new char[] {'\t'});
   }
 
-  private static class PrettyPrintWriter extends JsonWriter {}
+  private static class PrettyPrintWriter extends JsonWriter {
+
+    private final char[] indentChars;
+
+    private PrettyPrintWriter(Writer writer, char[] indentChars) {
+      super(writer);
+      this.indentChars = indentChars;
+    }
+  }
 }
