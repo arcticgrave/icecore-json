@@ -339,4 +339,18 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   public JsonValue get(int index) {
     return values.get(index);
   }
+
+  /**
+   * Returns a list of the values in this array in document order.
+   * <p>
+   * The returned list is backed by this array and will reflect subsequent changes.
+   * <strong>It cannot be used to modify this array!</strong>
+   * Attempts to modify the returned list will result in an exception.
+   * </p>
+   *
+   * @return a list of the values in this array
+   */
+  public List<JsonValue> values() {
+    return Collections.unmodifiableList(values);
+  }
 }
