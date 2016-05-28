@@ -50,4 +50,16 @@ public class PrettyPrint extends WriterConfig {
   protected PrettyPrint(char[] indentChars) {
     this.indentChars = indentChars;
   }
+
+  /**
+   * Print every value on a separate line.
+   * <p>
+   *   Use tabs ({@code \t}) for indentation.
+   * </p>
+   *
+   * @return A PrettyPrint instance for wrapped mode with tab indentation
+   */
+  public static PrettyPrint singleLine() {
+    return new PrettyPrint(null);
+  }
 }
