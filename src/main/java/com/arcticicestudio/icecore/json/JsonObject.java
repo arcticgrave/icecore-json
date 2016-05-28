@@ -262,6 +262,21 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
       result = 31 * result + value.hashCode();
       return result;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj) {
+        return true;
+      }
+      if (obj == null) {
+        return false;
+      }
+      if (getClass() != obj.getClass()) {
+        return false;
+      }
+      Member other = (Member)obj;
+      return name.equals(other.name) && value.equals(other.value);
+    }
   }
 
   /**
