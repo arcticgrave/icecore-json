@@ -110,5 +110,12 @@ public class PrettyPrint extends WriterConfig {
       writer.write('[');
       writeNewLine();
     }
+
+    @Override
+    protected void writeArrayClose() throws IOException {
+      indent--;
+      writeNewLine();
+      writer.write(']');
+    }
   }
 }
