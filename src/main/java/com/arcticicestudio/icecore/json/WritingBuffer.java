@@ -93,4 +93,13 @@ class WritingBuffer extends Writer {
     str.getChars(off, off + len, buffer, fill);
     fill += len;
   }
+
+  /**
+   * Flushes the internal buffer but does not flush the wrapped writer.
+   */
+  @Override
+  public void flush() throws IOException {
+    writer.write(buffer, 0, fill);
+    fill = 0;
+  }
 }
