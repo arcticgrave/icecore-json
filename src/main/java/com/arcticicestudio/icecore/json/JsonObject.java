@@ -381,6 +381,15 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return names.size();
   }
 
+  /**
+   * Returns {@code true} if this object contains no members.
+   *
+   * @return {@code true} if this object contains no members
+   */
+  public boolean isEmpty() {
+    return names.isEmpty();
+  }
+
   @Override
   public boolean isObject() {
     return true;
