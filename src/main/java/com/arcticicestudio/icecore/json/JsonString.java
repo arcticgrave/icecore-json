@@ -3,7 +3,7 @@
 title     JSON String                     +
 project   icecore-json                    +
 file      JsonString.java                 +
-version   0.4.0                           +
+version   0.5.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

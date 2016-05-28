@@ -3,7 +3,7 @@
 title     JSON Number                     +
 project   icecore-json                    +
 file      JsonNumber.java                 +
-version   0.4.0                           +
+version   0.5.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

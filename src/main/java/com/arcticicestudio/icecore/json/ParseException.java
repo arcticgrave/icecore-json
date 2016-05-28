@@ -3,7 +3,7 @@
 title     Parse Exception                  +
 project   icecore-json                     +
 file      ParseException.java              +
-version   0.4.0                            +
+version   0.5.0                            +
 author    Arctic Ice Studio                +
 email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
