@@ -9,7 +9,7 @@ email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 14:12 UTC+0200        +
-modified  2016-05-28 14:13 UTC+0200        +
+modified  2016-05-28 14:16 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -66,5 +66,15 @@ public class ParseException extends RuntimeException {
    */
   public int getLine() {
     return line;
+  }
+
+  /**
+   * Returns the index of the character at which the error occurred, relative to the line. The index
+   * of the first character of a line is 0.
+   *
+   * @return the column in which the error occurred, will be &gt;= 0
+   */
+  public int getColumn() {
+    return column;
   }
 }
