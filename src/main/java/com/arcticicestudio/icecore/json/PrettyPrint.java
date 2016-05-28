@@ -91,4 +91,6 @@ public class PrettyPrint extends WriterConfig {
   public static PrettyPrint indentWithTabs() {
     return new PrettyPrint(new char[] {'\t'});
   }
+
+  private static class PrettyPrintWriter extends JsonWriter {}
 }
