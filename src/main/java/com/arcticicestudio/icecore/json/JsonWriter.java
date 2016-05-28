@@ -76,6 +76,12 @@ class JsonWriter {
     writer.write(string);
   }
 
+  protected void writeString(String string) throws IOException {
+    writer.write('"');
+    writeJsonString(string);
+    writer.write('"');
+  }
+
   protected void writeJsonString(String string) throws IOException {
     int length = string.length();
     int start = 0;
