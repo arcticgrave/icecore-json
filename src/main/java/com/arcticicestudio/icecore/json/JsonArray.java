@@ -310,4 +310,13 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     values.remove(index);
     return this;
   }
+
+  /**
+   * Returns the number of elements in this array.
+   *
+   * @return the number of elements in this array
+   */
+  public int size() {
+    return values.size();
+  }
 }
