@@ -36,4 +36,16 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.4.0
  */
-public class ParseException extends RuntimeException {}
+public class ParseException extends RuntimeException {
+
+  private final int offset;
+  private final int line;
+  private final int column;
+
+  ParseException(String message, int offset, int line, int column) {
+    super(message + " at " + line + ":" + column);
+    this.offset = offset;
+    this.line = line;
+    this.column = column;
+  }
+}
