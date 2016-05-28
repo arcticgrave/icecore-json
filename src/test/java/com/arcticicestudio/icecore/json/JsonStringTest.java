@@ -122,4 +122,10 @@ public class JsonStringTest {
   public void hashCodeEqualsForEqualStrings() {
     assertTrue(new JsonString("yogurt").hashCode() == new JsonString("yogurt").hashCode());
   }
+
+  @Test
+  public void hashCodeDiffersForDifferentStrings() {
+    assertFalse(new JsonString("").hashCode() == new JsonString("yogurt").hashCode());
+    assertFalse(new JsonString("yogurt").hashCode() == new JsonString("coconut").hashCode());
+  }
 }
