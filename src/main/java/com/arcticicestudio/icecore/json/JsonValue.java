@@ -225,4 +225,19 @@ public abstract class JsonValue implements Serializable {
   public float asFloat() {
     throw new UnsupportedOperationException("Not a number: " + toString());
   }
+
+  /**
+   * Returns this JSON value as a {@code double} value, assuming that this value represents a JSON number.
+   * If this is not the case, an exception is thrown.
+   * <p>
+   *   If the JSON number is out of the {@code Double} range, {@link Double#POSITIVE_INFINITY} or
+   *   {@link Double#NEGATIVE_INFINITY} is returned.
+   * </p>
+   *
+   * @return this value as {@code double}
+   * @throws UnsupportedOperationException if this value is not a JSON number
+   */
+  public double asDouble() {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
 }
