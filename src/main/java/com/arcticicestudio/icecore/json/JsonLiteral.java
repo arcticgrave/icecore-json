@@ -3,7 +3,7 @@
 title     JSON Literal                    +
 project   icecore-json                    +
 file      JsonLiteral.java                +
-version                                   +
+version   0.3.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
