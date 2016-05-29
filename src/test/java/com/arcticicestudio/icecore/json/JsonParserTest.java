@@ -287,6 +287,11 @@ public class JsonParserTest {
     assertParseException(5, "Unexpected end of input", "[92, ");
   }
 
+  @Test
+  public void objectsEmpty() {
+    assertEquals("{}", parse("{}").toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
