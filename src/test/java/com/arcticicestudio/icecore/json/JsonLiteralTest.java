@@ -35,6 +35,7 @@ package com.arcticicestudio.icecore.json;
 import static com.arcticicestudio.icecore.json.Json.FALSE;
 import static com.arcticicestudio.icecore.json.Json.NULL;
 import static com.arcticicestudio.icecore.json.Json.TRUE;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -103,5 +104,10 @@ public class JsonLiteralTest {
     FALSE.write(writer);
     verify(writer).writeLiteral("false");
     verifyNoMoreInteractions(writer);
+  }
+
+  @Test
+  public void NULLToString() {
+    assertEquals("null", NULL.toString());
   }
 }
