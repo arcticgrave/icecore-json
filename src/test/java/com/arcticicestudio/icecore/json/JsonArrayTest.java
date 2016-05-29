@@ -33,6 +33,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+import static com.arcticicestudio.icecore.json.TestUtil.serializeAndDeserialize;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -534,5 +535,10 @@ public class JsonArrayTest {
   @Test
   public void equalsFalseForNull() {
     assertFalse(array.equals(null));
+  }
+
+  @Test
+  public void equalsFalseForSubclass() {
+    assertFalse(array.equals(new JsonArray(array) {}));
   }
 }
