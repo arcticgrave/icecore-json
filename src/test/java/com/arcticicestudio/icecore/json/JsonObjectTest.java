@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 16:46 UTC+0200       +
-modified  2016-05-29 16:47 UTC+0200       +
+modified  2016-05-29 18:04 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -910,6 +910,13 @@ public class JsonObjectTest {
   public void memberHashCodeEqualsForEqualObjects() {
     Member member = new Member("a", Json.TRUE);
     assertTrue(member.hashCode() == new Member("a", Json.TRUE).hashCode());
+  }
+
+  @Test
+  public void memberHashCodeDiffersForDifferingObjects() {
+    Member member = new Member("a", Json.TRUE);
+    assertFalse(member.hashCode() == new Member("b", Json.TRUE).hashCode());
+    assertFalse(member.hashCode() == new Member("a", Json.FALSE).hashCode());
   }
 
   private static JsonObject object(String... namesAndValues) {
