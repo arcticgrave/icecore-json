@@ -76,4 +76,10 @@ public class JsonWriterTest {
     writer.writeString("");
     assertEquals("\"\"", output.toString());
   }
+
+  @Test
+  public void writeStingEscapesBackslashes() throws IOException {
+    writer.writeString("yogurt\\coconut");
+    assertEquals("\"yogurt\\\\coconut\"", output.toString());
+  }
 }
