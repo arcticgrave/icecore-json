@@ -32,10 +32,26 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.Json.FALSE;
+import static com.arcticicestudio.icecore.json.Json.NULL;
+import static com.arcticicestudio.icecore.json.Json.TRUE;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
 /**
  * Tests the JSON literals representation class {@link JsonLiteral}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonLiteralTest {}
+public class JsonLiteralTest {
+
+  @Test
+  public void isNull() {
+    assertTrue(NULL.isNull());
+    assertFalse(TRUE.isNull());
+    assertFalse(FALSE.isNull());
+  }
+}
