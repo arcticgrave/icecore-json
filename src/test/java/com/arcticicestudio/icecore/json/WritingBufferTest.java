@@ -135,6 +135,14 @@ public class WritingBufferTest {
     assertEquals(createString(BUFFER_SIZE - 3) + "oob", wrapped.toString());
   }
 
+  @Test
+  public void testWriteStringExceeding() throws IOException {
+    writer.write(createString(BUFFER_SIZE - 2));
+    writer.write("foobar", 1, 3);
+    writer.flush();
+    assertEquals(createString(BUFFER_SIZE - 2) + "oob", wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
