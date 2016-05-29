@@ -154,4 +154,10 @@ public class PrettyPrintTest {
     new JsonArray().add(23).add(new JsonArray().add(42)).writeTo(output, singleLine());
     assertEquals("[23, [42]]", output.toString());
   }
+
+  @Test
+  public void singleLineNestedObject() throws IOException {
+    new JsonObject().add("a", 23).add("b", new JsonObject().add("c", 42)).writeTo(output, singleLine());
+    assertEquals("{\"a\": 23, \"b\": {\"c\": 42}}", output.toString());
+  }
 }
