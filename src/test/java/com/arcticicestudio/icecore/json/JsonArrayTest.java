@@ -436,4 +436,9 @@ public class JsonArrayTest {
       }
     });
   }
+
+  @Test(expected = IndexOutOfBoundsException.class)
+  public void setJsonFailsWithInvalidIndex() {
+    array.set(0, Json.NULL);
+  }
 }
