@@ -72,4 +72,9 @@ public class JsonNumberTest {
     new JsonNumber("92").write(writer);
     assertEquals("92", output.toString());
   }
+
+  @Test
+  public void toStringReturnsInputString() {
+    assertEquals("yogurt", new JsonNumber("yogurt").toString());
+  }
 }
