@@ -36,6 +36,9 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.PrettyPrint.indentWithSpaces;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static java.util.Locale.US;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -104,5 +107,15 @@ public class PrettyPrintTest {
   public void indentWithSpacesOne() throws IOException {
     new JsonArray().add(23).add(42).writeTo(output, indentWithSpaces(1));
     assertEquals("[\n 23,\n 42\n]", output.toString());
+  }
+
+  @Test
+  public void indentWithSpacesFailsWithNegativeValues() {
+    try {
+      indentWithSpaces(-1);
+      fail();
+    } catch (IllegalArgumentException ex) {
+      assertTrue(ex.getMessage().toLowerCase(US).contains("negative"));
+    }
   }
 }
