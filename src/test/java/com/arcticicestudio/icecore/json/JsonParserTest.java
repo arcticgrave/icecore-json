@@ -421,6 +421,18 @@ public class JsonParserTest {
     assertParseException(6, "Expected hexadecimal digit", "\"\\u000x\"");
   }
 
+  @Test
+  public void stringsIncompleteStringsAreRejected() {
+    assertParseException(1, "Unexpected end of input", "\"");
+    assertParseException(4, "Unexpected end of input", "\"yogurt");
+    assertParseException(5, "Unexpected end of input", "\"yogurt\\");
+    assertParseException(6, "Unexpected end of input", "\"yogurt\\n");
+    assertParseException(6, "Unexpected end of input", "\"yogurt\\u");
+    assertParseException(7, "Unexpected end of input", "\"yogurt\\u0");
+    assertParseException(9, "Unexpected end of input", "\"yogurt\\u000");
+    assertParseException(10, "Unexpected end of input", "\"yogurt\\u0000");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
