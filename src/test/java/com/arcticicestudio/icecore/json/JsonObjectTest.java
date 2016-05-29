@@ -447,4 +447,10 @@ public class JsonObjectTest {
     innerObject.add("a", 92);
     assertEquals("{\"a\":{\"a\":92}}", object.toString());
   }
+
+  @Test
+  public void setInt() {
+    object.set("a", 92);
+    assertEquals("{\"a\":92}", object.toString());
+  }
 }
