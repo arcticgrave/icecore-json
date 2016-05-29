@@ -38,4 +38,14 @@ package com.arcticicestudio.icecore.json;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonNumberTest {}
+public class JsonNumberTest {
+
+  private StringWriter output;
+  private JsonWriter writer;
+
+  @Before
+  public void setUp() {
+    output = new StringWriter();
+    writer = new JsonWriter(output);
+  }
+}
