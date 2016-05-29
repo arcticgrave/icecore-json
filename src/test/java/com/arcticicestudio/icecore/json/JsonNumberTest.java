@@ -118,4 +118,9 @@ public class JsonNumberTest {
   public void asLongFailsWithExponent() {
     new JsonNumber("1e5").asLong();
   }
+
+  @Test(expected = NumberFormatException.class)
+  public void asLongFailsWithFractional() {
+    new JsonNumber("92.5").asLong();
+  }
 }
