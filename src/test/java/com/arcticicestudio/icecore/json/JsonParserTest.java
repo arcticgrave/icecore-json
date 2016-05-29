@@ -71,6 +71,11 @@ public class JsonParserTest {
     assertThat(exception.getMessage(), StringStartsWith.startsWith("Unexpected end of input at"));
   }
 
+  @Test
+  public void parseAcceptsArrays() {
+    assertEquals(new JsonArray(), parse("[]"));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
