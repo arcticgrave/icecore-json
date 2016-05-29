@@ -134,4 +134,10 @@ public class JsonNumberTest {
     assertEquals(Float.POSITIVE_INFINITY, new JsonNumber("1e50").asFloat(), 0);
     assertEquals(Float.NEGATIVE_INFINITY, new JsonNumber("-1e50").asFloat(), 0);
   }
+
+  @Test
+  public void asDouble() {
+    double result = new JsonNumber("92.05").asDouble();
+    assertEquals(92.05, result, 0);
+  }
 }
