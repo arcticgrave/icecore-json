@@ -97,6 +97,11 @@ public class JsonParserTest {
     assertEquals(new JsonArray(), parse(" [ ] "));
   }
 
+  @Test
+  public void parseIgnoresAllWhiteSpace() {
+    assertEquals(new JsonArray(), parse("\t\r\n [\t\r\n ]\t\r\n "));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
