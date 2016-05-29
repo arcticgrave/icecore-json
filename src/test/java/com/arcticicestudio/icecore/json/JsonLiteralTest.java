@@ -61,4 +61,11 @@ public class JsonLiteralTest {
     assertFalse(NULL.isTrue());
     assertFalse(FALSE.isTrue());
   }
+
+  @Test
+  public void isFalse() {
+    assertTrue(FALSE.isFalse());
+    assertFalse(NULL.isFalse());
+    assertFalse(TRUE.isFalse());
+  }
 }
