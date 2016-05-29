@@ -34,10 +34,23 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json.mocking;
 
+import static org.junit.Assert.assertNotNull;
+
+import com.arcticicestudio.icecore.json.JsonValue;
+import org.junit.Test;
+import org.mockito.Mockito;
+
 /**
  * Tests mocking to make sure types do not prevent mocking by final or visibility constructs.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class TypeMockingTest {}
+public class TypeMockingTest {
+
+  @Test
+  public void mockValue() {
+    JsonValue jsonValue = Mockito.mock(JsonValue.class);
+    assertNotNull(jsonValue);
+  }
+}
