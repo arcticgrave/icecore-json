@@ -473,6 +473,18 @@ public class JsonParserTest {
     assertEquals(new JsonNumber("0.23e-9"), parse("0.23e-9"));
   }
 
+  @Test
+  public void numbersWithInvalidFormat() {
+    assertParseException(0, "Expected value", "+1");
+    assertParseException(0, "Expected value", ".1");
+    assertParseException(1, "Unexpected character", "02");
+    assertParseException(2, "Unexpected character", "-02");
+    assertParseException(1, "Expected digit", "-x");
+    assertParseException(2, "Expected digit", "1.x");
+    assertParseException(2, "Expected digit", "1ex");
+    assertParseException(3, "Unexpected character", "1e1x");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
