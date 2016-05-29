@@ -120,4 +120,14 @@ public class JsonTest {
     assertEquals("-1", Json.value(-1d).toString());
     assertEquals("10", Json.value(10d).toString());
   }
+
+  @Test
+  public void valueDoubleFailsWithInfinity() {
+    String message = "Infinite and NaN values not permitted in JSON";
+    assertException(IllegalArgumentException.class, message, new Runnable() {
+      public void run() {
+        Json.value(Double.POSITIVE_INFINITY);
+      }
+    });
+  }
 }
