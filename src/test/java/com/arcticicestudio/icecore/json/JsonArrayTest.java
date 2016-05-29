@@ -554,4 +554,12 @@ public class JsonArrayTest {
     JsonArray deserializedArray = serializeAndDeserialize(array);
     assertEquals(92, deserializedArray.get(0).asInt());
   }
+
+  private static JsonArray array(String... values) {
+    JsonArray array = new JsonArray();
+    for (String value : values) {
+      array.add(value);
+    }
+    return array;
+  }
 }
