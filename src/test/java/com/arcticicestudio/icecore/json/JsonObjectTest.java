@@ -119,4 +119,10 @@ public class JsonObjectTest {
   public void sizeZeroAfterCreation() {
     assertEquals(0, object.size());
   }
+
+  @Test
+  public void sizeOneAfterAdd() {
+    object.add("a", true);
+    assertEquals(1, object.size());
+  }
 }
