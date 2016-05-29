@@ -702,4 +702,9 @@ public class JsonObjectTest {
   public void asObject() {
     assertSame(object, object.asObject());
   }
+
+  @Test
+  public void equalsTrueForSameInstance() {
+    assertTrue(object.equals(object));
+  }
 }
