@@ -550,6 +550,12 @@ public class JsonArrayTest {
   }
 
   @Test
+  public void hashCodeEqualsForEqualArrays() {
+    assertTrue(array().hashCode() == array().hashCode());
+    assertTrue(array("yogurt").hashCode() == array("yogurt").hashCode());
+  }
+
+  @Test
   public void equalsFalseForSubclass() {
     assertFalse(array.equals(new JsonArray(array) {}));
   }
