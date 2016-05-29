@@ -33,13 +33,18 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+
+import com.arcticicestudio.icecore.json.TestUtil.RunnableEx;
 
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+
+
 
 /**
  * Tests the JSON values representation class {@link JsonValue}.
@@ -55,5 +60,16 @@ public class JsonValueTest {
     Writer writer = new StringWriter();
     value.writeTo(writer);
     assertEquals("{}", writer.toString());
+  }
+
+  @Test
+  public void writeToFailsWithNullWriter() {
+    final JsonValue value = new JsonObject();
+
+    assertException(NullPointerException.class, "writer is null", new RunnableEx() {
+      public void run() throws IOException {
+        value.writeTo(null, WriterConfig.MINIMAL);
+      }
+    });
   }
 }
