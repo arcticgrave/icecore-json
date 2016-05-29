@@ -102,4 +102,9 @@ public class JsonObjectTest {
     JsonObject unmodifiableObject = JsonObject.unmodifiableObject(object);
     unmodifiableObject.add("yogurt", 92);
   }
+
+  @Test
+  public void isEmptyTrueAfterCreation() {
+    assertTrue(object.isEmpty());
+  }
 }
