@@ -644,4 +644,18 @@ public class JsonObjectTest {
     inOrder.verify(writer).writeObjectClose();
     inOrder.verifyNoMoreInteractions();
   }
+
+  @Test
+  public void writeWithSingleValue() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    object.add("a", 92);
+    object.write(writer);
+    InOrder inOrder = inOrder(writer);
+    inOrder.verify(writer).writeObjectOpen();
+    inOrder.verify(writer).writeMemberName("a");
+    inOrder.verify(writer).writeMemberSeparator();
+    inOrder.verify(writer).writeNumber("92");
+    inOrder.verify(writer).writeObjectClose();
+    inOrder.verifyNoMoreInteractions();
+  }
 }
