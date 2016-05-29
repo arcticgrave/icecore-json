@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 21:03 UTC+0200       +
-modified  2016-05-29 21:04 UTC+0200       +
+modified  2016-05-29 21:14 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -159,5 +159,14 @@ public class PrettyPrintTest {
   public void singleLineNestedObject() throws IOException {
     new JsonObject().add("a", 23).add("b", new JsonObject().add("c", 42)).writeTo(output, singleLine());
     assertEquals("{\"a\": 23, \"b\": {\"c\": 42}}", output.toString());
+  }
+
+  @Test
+  public void singleLineCreatesIndependentInstances() {
+    Writer writer = mock(Writer.class);
+    WriterConfig config = singleLine();
+    Object instance1 = config.createWriter(writer);
+    Object instance2 = config.createWriter(writer);
+    assertNotSame(instance1, instance2);
   }
 }
