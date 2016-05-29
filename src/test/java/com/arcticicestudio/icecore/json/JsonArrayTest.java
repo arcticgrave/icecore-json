@@ -441,4 +441,10 @@ public class JsonArrayTest {
   public void setJsonFailsWithInvalidIndex() {
     array.set(0, Json.NULL);
   }
+
+  @Test
+  public void setJsonEnablesChaining() {
+    array.add(false);
+    assertSame(array, array.set(0, Json.NULL));
+  }
 }
