@@ -105,4 +105,13 @@ public class JsonValueTest {
     value.writeTo(writer);
     verify(writer, never()).close();
   }
+
+  @Test
+  public void asObjectFailsOnIncompatibleType() {
+    assertException(UnsupportedOperationException.class, "Not an object: null", new Runnable() {
+      public void run() {
+        Json.NULL.asObject();
+      }
+    });
+  }
 }
