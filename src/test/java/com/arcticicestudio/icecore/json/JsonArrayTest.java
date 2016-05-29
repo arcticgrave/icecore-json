@@ -229,4 +229,9 @@ public class JsonArrayTest {
     array.add(3.14d);
     assertEquals("[3.14]", array.toString());
   }
+
+  @Test
+  public void addDoubleEnablesChaining() {
+    assertSame(array, array.add(3.14d));
+  }
 }
