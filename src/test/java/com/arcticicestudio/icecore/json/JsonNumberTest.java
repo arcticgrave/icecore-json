@@ -164,4 +164,9 @@ public class JsonNumberTest {
     assertFalse(new JsonNumber("92").equals(new JsonNumber("42")));
     assertFalse(new JsonNumber("1e+5").equals(new JsonNumber("1e5")));
   }
+
+  @Test
+  public void equalsFalseForNull() {
+    assertFalse(new JsonNumber("92").equals(null));
+  }
 }
