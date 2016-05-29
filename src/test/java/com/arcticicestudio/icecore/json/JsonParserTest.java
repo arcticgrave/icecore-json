@@ -43,6 +43,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
+import java.io.StringReader;
+
+import com.arcticicestudio.icecore.json.TestUtil.RunnableEx;
 
 /**
  * Tests the JSON parser class {@link JsonParser}.
@@ -50,12 +53,22 @@ import java.io.IOException;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-
 public class JsonParserTest {
 
   @Test
   public void parseRejectsEmptyString() {
     assertParseException(0, "Unexpected end of input", "");
+  }
+
+  @Test
+  public void parseRejectsEmptyReader() {
+    ParseException exception = assertException(ParseException.class, new RunnableEx() {
+      public void run() throws IOException {
+        new JsonParser(new StringReader("")).parse();
+      }
+    });
+    assertEquals(0, exception.getOffset());
+    assertThat(exception.getMessage(), StringStartsWith.startsWith("Unexpected end of input at"));
   }
 
   private static void assertParseException(int offset, String message, final String json) {
