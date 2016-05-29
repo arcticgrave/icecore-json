@@ -169,4 +169,11 @@ public class JsonObjectTest {
     Iterator<Member> iterator = object.iterator();
     assertTrue(iterator.hasNext());
   }
+
+  @Test
+  public void iteratorNextReturnsActualValue() {
+    object.add("a", true);
+    Iterator<Member> iterator = object.iterator();
+    assertEquals(new Member("a", Json.TRUE), iterator.next());
+  }
 }
