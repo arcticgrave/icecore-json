@@ -383,4 +383,10 @@ public class JsonObjectTest {
   public void addStringEnablesChaining() {
     assertSame(object, object.add("a", "yogurt"));
   }
+
+  @Test
+  public void addJsonNull() {
+    object.add("a", Json.NULL);
+    assertEquals("{\"a\":null}", object.toString());
+  }
 }
