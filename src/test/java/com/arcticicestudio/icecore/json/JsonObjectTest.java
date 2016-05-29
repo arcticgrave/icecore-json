@@ -549,4 +549,12 @@ public class JsonObjectTest {
     object.set("a", Json.FALSE);
     assertEquals("{\"a\":false}", object.toString());
   }
+
+  @Test
+  public void setModifiesLastElementIfMultipleExisting() {
+    object.add("a", 1);
+    object.add("a", 2);
+    object.set("a", Json.TRUE);
+    assertEquals("{\"a\":1,\"a\":true}", object.toString());
+  }
 }
