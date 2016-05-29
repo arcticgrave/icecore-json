@@ -836,6 +836,15 @@ public class JsonObjectTest {
     assertEquals(-1, indexTable.get("name"));
   }
 
+  @Test
+  public void hashIndexTableRemoveUpdatesSubsequentElements() {
+    HashIndexTable indexTable = new HashIndexTable();
+    indexTable.add("yogurt", 92);
+    indexTable.add("coconut", 42);
+    indexTable.remove(92);
+    assertEquals(41, indexTable.get("coconut"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
