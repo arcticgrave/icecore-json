@@ -359,4 +359,10 @@ public class JsonArrayTest {
     array.set(0, 3.14f);
     assertEquals("[3.14]", array.toString());
   }
+
+  @Test
+  public void setFloatEnablesChaining() {
+    array.add(false);
+    assertSame(array, array.set(0, 3.14f));
+  }
 }
