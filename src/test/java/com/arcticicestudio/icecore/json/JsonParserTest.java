@@ -307,6 +307,16 @@ public class JsonParserTest {
     assertEquals("{\"yogurt\":92,\"coconut\":42}", parse("{ \"yogurt\" : 92, \"coconut\" : 42 }").toString());
   }
 
+  @Test
+  public void objectsNested() {
+    assertEquals("{\"yogurt\":{}}", parse("{\"yogurt\":{}}").toString());
+    assertEquals("{\"yogurt\":{\"coconut\":42}}", parse("{\"yogurt\":{\"coconut\": 42}}").toString());
+    assertEquals("{\"yogurt\":{\"coconut\":{\"chocolate\":42}}}",
+      parse("{\"yogurt\":{\"coconut\": {\"chocolate\": 42}}}").toString());
+    assertEquals("{\"yogurt\":[{\"coconut\":{\"chocolate\":[[42]]}}]}",
+      parse("{\"yogurt\":[{\"coconut\": {\"chocolate\": [[42]]}}]}").toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
