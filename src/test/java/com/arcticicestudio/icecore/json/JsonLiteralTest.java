@@ -129,4 +129,13 @@ public class JsonLiteralTest {
     assertFalse(NULL.equals(FALSE));
     assertFalse(NULL.equals(Json.value("null")));
   }
+
+  @Test
+  public void TRUEEquals() {
+    assertTrue(TRUE.equals(TRUE));
+    assertFalse(TRUE.equals(null));
+    assertFalse(TRUE.equals(FALSE));
+    assertFalse(TRUE.equals(Boolean.TRUE));
+    assertFalse(NULL.equals(Json.value("true")));
+  }
 }
