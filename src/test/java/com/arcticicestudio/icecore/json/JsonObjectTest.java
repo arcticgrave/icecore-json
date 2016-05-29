@@ -658,4 +658,38 @@ public class JsonObjectTest {
     inOrder.verify(writer).writeObjectClose();
     inOrder.verifyNoMoreInteractions();
   }
+
+  @Test
+  public void writeWithMultipleValues() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    object.add("a", 92);
+    object.add("b", 3.14f);
+    object.add("c", "yogurt");
+    object.add("d", true);
+    object.add("e", (String)null);
+    object.write(writer);
+    InOrder inOrder = inOrder(writer);
+    inOrder.verify(writer).writeObjectOpen();
+    inOrder.verify(writer).writeMemberName("a");
+    inOrder.verify(writer).writeMemberSeparator();
+    inOrder.verify(writer).writeNumber("92");
+    inOrder.verify(writer).writeObjectSeparator();
+    inOrder.verify(writer).writeMemberName("b");
+    inOrder.verify(writer).writeMemberSeparator();
+    inOrder.verify(writer).writeNumber("3.14");
+    inOrder.verify(writer).writeObjectSeparator();
+    inOrder.verify(writer).writeMemberName("c");
+    inOrder.verify(writer).writeMemberSeparator();
+    inOrder.verify(writer).writeString("yogurt");
+    inOrder.verify(writer).writeObjectSeparator();
+    inOrder.verify(writer).writeMemberName("d");
+    inOrder.verify(writer).writeMemberSeparator();
+    inOrder.verify(writer).writeLiteral("true");
+    inOrder.verify(writer).writeObjectSeparator();
+    inOrder.verify(writer).writeMemberName("e");
+    inOrder.verify(writer).writeMemberSeparator();
+    inOrder.verify(writer).writeLiteral("null");
+    inOrder.verify(writer).writeObjectClose();
+    inOrder.verifyNoMoreInteractions();
+  }
 }
