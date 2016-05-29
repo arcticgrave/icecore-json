@@ -64,4 +64,10 @@ public class JsonWriterTest {
     writer.writeLiteral("yogurt");
     assertEquals("yogurt", output.toString());
   }
+
+  @Test
+  public void writeNumber() throws IOException {
+    writer.writeNumber("92");
+    assertEquals("92", output.toString());
+  }
 }
