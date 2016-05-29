@@ -41,6 +41,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+
 /**
  * Tests the JSON API class {@link Json}.
  *
@@ -272,5 +276,11 @@ public class JsonTest {
         Json.parse((String)null);
       }
     });
+  }
+
+  @Test
+  public void parseReader() throws IOException {
+    Reader reader = new StringReader("23");
+    assertEquals(Json.value(23), Json.parse(reader));
   }
 }
