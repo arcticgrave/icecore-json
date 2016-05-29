@@ -194,4 +194,10 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void arrayFloat() {
+    assertEquals(new JsonArray().add(3.14f), Json.array(3.14f));
+    assertEquals(new JsonArray().add(3.14f).add(1.41f), Json.array(3.14f, 1.41f));
+  }
 }
