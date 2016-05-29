@@ -96,4 +96,12 @@ public class JsonLiteralTest {
     verify(writer).writeLiteral("true");
     verifyNoMoreInteractions(writer);
   }
+
+  @Test
+  public void FALSEWrite() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    FALSE.write(writer);
+    verify(writer).writeLiteral("false");
+    verifyNoMoreInteractions(writer);
+  }
 }
