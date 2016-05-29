@@ -130,4 +130,14 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void valueDoubleFailsWithNaN() {
+    String message = "Infinite and NaN values not permitted in JSON";
+    assertException(IllegalArgumentException.class, message, new Runnable() {
+      public void run() {
+        Json.value(Double.NaN);
+      }
+    });
+  }
 }
