@@ -520,4 +520,9 @@ public class JsonArrayTest {
   public void isArray() {
     assertTrue(array.isArray());
   }
+
+  @Test
+  public void asArray() {
+    assertSame(array, array.asArray());
+  }
 }
