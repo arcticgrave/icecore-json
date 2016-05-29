@@ -339,4 +339,11 @@ public class JsonArrayTest {
     array.add(false);
     assertSame(array, array.set(0, 92));
   }
+
+  @Test
+  public void setLong() {
+    array.add(false);
+    array.set(0, 92l);
+    assertEquals("[92]", array.toString());
+  }
 }
