@@ -329,6 +329,21 @@ public class JsonParserTest {
     assertParseException(8, "Expected name", "{\"a\":92,42");
   }
 
+  @Test
+  public void objectsIncomplete() {
+    assertParseException(1, "Unexpected end of input", "{");
+    assertParseException(2, "Unexpected end of input", "{ ");
+    assertParseException(2, "Unexpected end of input", "{\"");
+    assertParseException(4, "Unexpected end of input", "{\"a\"");
+    assertParseException(5, "Unexpected end of input", "{\"a\" ");
+    assertParseException(5, "Unexpected end of input", "{\"a\":");
+    assertParseException(6, "Unexpected end of input", "{\"a\": ");
+    assertParseException(7, "Unexpected end of input", "{\"a\":92");
+    assertParseException(8, "Unexpected end of input", "{\"a\":92 ");
+    assertParseException(8, "Unexpected end of input", "{\"a\":92,");
+    assertParseException(9, "Unexpected end of input", "{\"a\":92, ");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
