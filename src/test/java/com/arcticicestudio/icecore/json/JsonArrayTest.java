@@ -385,4 +385,10 @@ public class JsonArrayTest {
     array.set(0, true);
     assertEquals("[true]", array.toString());
   }
+
+  @Test
+  public void setBooleanEnablesChaining() {
+    array.add(false);
+    assertSame(array, array.set(0, true));
+  }
 }
