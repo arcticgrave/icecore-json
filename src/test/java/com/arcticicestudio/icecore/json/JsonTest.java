@@ -113,4 +113,11 @@ public class JsonTest {
     assertEquals("1.23E-6", Json.value(0.00000123d).toString());
     assertEquals("1.7976931348623157E308", Json.value(1.7976931348623157E308d).toString());
   }
+
+  @Test
+  public void valueDoubleCutsOffPointZero() {
+    assertEquals("0", Json.value(0d).toString());
+    assertEquals("-1", Json.value(-1d).toString());
+    assertEquals("10", Json.value(10d).toString());
+  }
 }
