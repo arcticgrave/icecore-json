@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 18:06 UTC+0200       +
-modified  2016-05-29 18:07 UTC+0200       +
+modified  2016-05-29 20:35 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -32,7 +32,6 @@ Mockito
 Arctic Versioning Specification (ArcVer)
   (http://specs.arcticicestudio.com/arcver)
 */
-
 package com.arcticicestudio.icecore.json;
 
 import org.hamcrest.core.StringStartsWith;
@@ -544,6 +543,15 @@ public class JsonParserTest {
     assertParseException(2, "Unexpected end of input", "fa");
     assertParseException(3, "Unexpected end of input", "fal");
     assertParseException(4, "Unexpected end of input", "fals");
+  }
+
+  @Test
+  public void falseWithIllegalCharacter() {
+    assertParseException(1, "Expected 'a'", "fx");
+    assertParseException(2, "Expected 'l'", "fax");
+    assertParseException(3, "Expected 's'", "falx");
+    assertParseException(4, "Expected 'e'", "falsx");
+    assertParseException(5, "Unexpected character", "falsex");
   }
 
   private static void assertParseException(int offset, String message, final String json) {
