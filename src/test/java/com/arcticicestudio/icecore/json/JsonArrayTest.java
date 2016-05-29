@@ -466,4 +466,11 @@ public class JsonArrayTest {
     array.remove(0);
     assertEquals("[]", array.toString());
   }
+
+  @Test
+  public void removeKeepsOtherElements() {
+    array.add("a").add("b").add("c");
+    array.remove(1);
+    assertEquals("[\"a\",\"c\"]", array.toString());
+  }
 }
