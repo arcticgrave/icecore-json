@@ -37,6 +37,7 @@ package com.arcticicestudio.icecore.json;
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -71,5 +72,12 @@ public class JsonObjectTest {
     JsonObject copy = new JsonObject(object);
     assertEquals(object.names(), copy.names());
     assertSame(object.get("yogurt"), copy.get("yogurt"));
+  }
+
+  @Test
+  public void copyConstructorWorksOnSafeCopy() {
+    JsonObject copy = new JsonObject(object);
+    object.add("yogurt", 92);
+    assertTrue(copy.isEmpty());
   }
 }
