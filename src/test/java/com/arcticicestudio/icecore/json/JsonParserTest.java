@@ -349,6 +349,15 @@ public class JsonParserTest {
     assertEquals("", parse("\"\"").asString());
   }
 
+  @Test
+  public void stringsAsciiCharactersAreAccepted() {
+    assertEquals(" ", parse("\" \"").asString());
+    assertEquals("a", parse("\"a\"").asString());
+    assertEquals("yogurt", parse("\"yogurt\"").asString());
+    assertEquals("A2-D2", parse("\"A2-D2\"").asString());
+    assertEquals("\u007f", parse("\"\u007f\"").asString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
