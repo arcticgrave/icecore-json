@@ -707,4 +707,12 @@ public class JsonObjectTest {
   public void equalsTrueForSameInstance() {
     assertTrue(object.equals(object));
   }
+
+  private static JsonObject object(String... namesAndValues) {
+    JsonObject object = new JsonObject();
+    for (int i = 0; i < namesAndValues.length; i += 2) {
+      object.add(namesAndValues[i], namesAndValues[i + 1]);
+    }
+    return object;
+  }
 }
