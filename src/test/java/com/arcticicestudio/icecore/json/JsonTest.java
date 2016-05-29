@@ -209,4 +209,10 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void arrayDouble() {
+    assertEquals(new JsonArray().add(3.14d), Json.array(3.14d));
+    assertEquals(new JsonArray().add(3.14d).add(1.41d), Json.array(3.14d, 1.41d));
+  }
 }
