@@ -4,7 +4,7 @@
 title     Apache Ant Build Script         +
 project   icecore-json                    +
 file      build.xml                       +
-version   0.6.0                           +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 copyright Copyright (C) 2016              +
@@ -113,6 +113,7 @@ Based on the Apache Ant Build Script skeleton of the "Glacier - Apache Ant" proj
 Development
   - junit@4.12 (http://junit.org)
   - hamcrest-core@1.3 (http://hamcrest.org)
+  - mockito-all@1.10.19 (http://mockito.org)
   Skeletons
     - glacier-apache-ant@0.11.0 (https://github.com/arcticicestudio/glacier-apache-ant)
 Production

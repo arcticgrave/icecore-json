@@ -3,7 +3,7 @@
 title     Pretty Print                    +
 project   icecore-json                    +
 file      PrettyPrint.java                +
-version   0.6.0                           +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
