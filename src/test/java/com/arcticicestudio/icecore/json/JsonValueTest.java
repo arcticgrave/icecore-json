@@ -168,4 +168,13 @@ public class JsonValueTest {
       }
     });
   }
+
+  @Test
+  public void asBooleanFailsOnIncompatibleType() {
+    assertException(UnsupportedOperationException.class, "Not a boolean: null", new Runnable() {
+      public void run() {
+        Json.NULL.asBoolean();
+      }
+    });
+  }
 }
