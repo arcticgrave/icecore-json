@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:49 UTC+0200       +
-modified  2016-05-28 14:13 UTC+0200       +
+modified  2016-05-28 19:50 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -42,6 +42,7 @@ import java.io.StringReader;
  */
 class JsonParser {
 
+  private static final int MAX_NESTING_LEVEL = 1000;
   private static final int MIN_BUFFER_SIZE = 10;
   private static final int DEFAULT_BUFFER_SIZE = 1024;
 
@@ -52,6 +53,7 @@ class JsonParser {
   private int fill;
   private int line;
   private int captureStart;
+  private int nestingLevel;
   private int lineOffset;
   private StringBuilder captureBuffer;
   private int current;
@@ -125,9 +127,13 @@ class JsonParser {
 
   private JsonArray readArray() throws IOException {
     read();
+    if (nestingLevel++ >= MAX_NESTING_LEVEL) {
+      throw error("Nesting too deep");
+    }
     JsonArray array = new JsonArray();
     skipWhiteSpace();
     if (readChar(']')) {
+      nestingLevel--;
       return array;
     }
     do {
@@ -138,14 +144,19 @@ class JsonParser {
     if (!readChar(']')) {
       throw expected("',' or ']'");
     }
+    nestingLevel--;
     return array;
   }
 
   private JsonObject readObject() throws IOException {
     read();
+    if (nestingLevel++ >= 1000) {
+      throw error("Nesting too deep");
+    }
     JsonObject object = new JsonObject();
     skipWhiteSpace();
     if (readChar('}')) {
+      nestingLevel--;
       return object;
     }
     do {
@@ -162,6 +173,7 @@ class JsonParser {
     if (!readChar('}')) {
       throw expected("',' or '}'");
     }
+    nestingLevel--;
     return object;
   }
 
