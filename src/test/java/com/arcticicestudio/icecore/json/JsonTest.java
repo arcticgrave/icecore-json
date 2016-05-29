@@ -164,4 +164,10 @@ public class JsonTest {
   public void array() {
     assertEquals(new JsonArray(), Json.array());
   }
+
+  @Test
+  public void arrayInt() {
+    assertEquals(new JsonArray().add(23), Json.array(23));
+    assertEquals(new JsonArray().add(23).add(42), Json.array(23, 42));
+  }
 }
