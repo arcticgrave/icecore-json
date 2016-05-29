@@ -40,6 +40,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 /**
  * Tests the JSON array structure representation class {@link JsonArray}.
  *
@@ -123,5 +125,14 @@ public class JsonArrayTest {
   @Test
   public void iteratorIsEmptyAfterCreation() {
     assertFalse(array.iterator().hasNext());
+  }
+
+  @Test
+  public void iteratorHasNextAfterAdd() {
+    array.add(true);
+    Iterator<JsonValue> iterator = array.iterator();
+    assertTrue(iterator.hasNext());
+    assertEquals(Json.TRUE, iterator.next());
+    assertFalse(iterator.hasNext());
   }
 }
