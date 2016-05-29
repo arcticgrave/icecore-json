@@ -136,4 +136,10 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\r\\ncoconut\"", output.toString());
   }
 
+  @Test
+  public void escapesTabs() throws IOException {
+    writer.writeString("yogurt\tcoconut");
+    assertEquals("\"yogurt\\tcoconut\"", output.toString());
+  }
+
 }
