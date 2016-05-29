@@ -140,4 +140,12 @@ public class JsonObjectTest {
     assertEquals(1, names.size());
     assertEquals("yogurt", names.get(0));
   }
+
+  @Test
+  public void namesReflectsChanges() {
+    List<String> names = object.names();
+    object.add("yogurt", true);
+    assertEquals(1, names.size());
+    assertEquals("yogurt", names.get(0));
+  }
 }
