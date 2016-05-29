@@ -600,4 +600,11 @@ public class JsonObjectTest {
     object.remove("a");
     assertEquals("{\"a\":42}", object.toString());
   }
+
+  @Test
+  public void removeDoesNotModifyObjectWithoutMatchingMember() {
+    object.add("a", 92);
+    object.remove("b");
+    assertEquals("{\"a\":92}", object.toString());
+  }
 }
