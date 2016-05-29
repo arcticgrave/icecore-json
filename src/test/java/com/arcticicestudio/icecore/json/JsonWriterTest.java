@@ -90,4 +90,13 @@ public class JsonWriterTest {
     writer.writeArrayClose();
     assertEquals("[,]", output.toString());
   }
+
+  @Test
+  public void writeObjectParts() throws IOException {
+    writer.writeObjectOpen();
+    writer.writeMemberSeparator();
+    writer.writeObjectSeparator();
+    writer.writeObjectClose();
+    assertEquals("{:,}", output.toString());
+  }
 }
