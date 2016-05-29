@@ -333,4 +333,10 @@ public class JsonArrayTest {
     array.set(0, 92);
     assertEquals("[92]", array.toString());
   }
+
+  @Test
+  public void setIntEnablesChaining() {
+    array.add(false);
+    assertSame(array, array.set(0, 92));
+  }
 }
