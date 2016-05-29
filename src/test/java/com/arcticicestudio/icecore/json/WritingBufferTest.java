@@ -90,6 +90,13 @@ public class WritingBufferTest {
     assertEquals(createString(BUFFER_SIZE) + "c", wrapped.toString());
   }
 
+  @Test
+  public void testWriteCharArray() throws IOException {
+    writer.write("foobar".toCharArray(), 1, 3);
+    writer.flush();
+    assertEquals("oob", wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
