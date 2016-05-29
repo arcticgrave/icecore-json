@@ -152,4 +152,9 @@ public class JsonNumberTest {
     JsonNumber number = new JsonNumber("92");
     assertTrue(number.equals(number));
   }
+
+  @Test
+  public void equalsTrueForEqualNumberStrings() {
+    assertTrue(new JsonNumber("92").equals(new JsonNumber("92")));
+  }
 }
