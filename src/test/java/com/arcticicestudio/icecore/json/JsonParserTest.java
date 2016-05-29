@@ -81,6 +81,11 @@ public class JsonParserTest {
     assertEquals(new JsonObject(), parse("{}"));
   }
 
+  @Test
+  public void parseAcceptsStrings() {
+    assertEquals(new JsonString(""), parse("\"\""));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
