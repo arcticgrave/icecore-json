@@ -566,4 +566,11 @@ public class JsonObjectTest {
       }
     });
   }
+
+  @Test
+  public void removeRemovesMatchingMember() {
+    object.add("a", 92);
+    object.remove("a");
+    assertEquals("{}", object.toString());
+  }
 }
