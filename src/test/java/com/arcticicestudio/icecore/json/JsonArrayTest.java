@@ -3,7 +3,7 @@
 title     JSON Array Test                 +
 project   icecore-json                    +
 file      JsonArrayTest.java              +
-version                                   +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

@@ -207,12 +207,12 @@ In the rare case that JSON data structures must be accessed from multiple thread
 Iterators will throw a `ConcurrentModificationException` when the contents of a JSON structure have been modified after the creation of the iterator.
 
 ### Version
-[`0.6.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
+[`0.7.0`](https://bitbucket.org/arcticicestudio/icecore-json/downloads)  
 
 For older versions check out the private [Bitbucket Git Repository](https://bitbucket.org/arcticicestudio/icecore-json).
 
 ### Changelog
-[`0.6.0`](CHANGELOG.md)
+[`0.7.0`](CHANGELOG.md)
 
 ### Development
 #### Workflow

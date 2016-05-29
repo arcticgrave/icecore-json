@@ -3,7 +3,7 @@
 title     Writing Buffer                  +
 project   icecore-json                    +
 file      WritingBuffer.java              +
-version   0.6.0                           +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -28,7 +28,6 @@ Java 8 API Documentation
 Arctic Versioning Specification (ArcVer)
   (http://specs.arcticicestudio.com/arcver)
 */
-
 package com.arcticicestudio.icecore.json;
 
 import java.io.IOException;
