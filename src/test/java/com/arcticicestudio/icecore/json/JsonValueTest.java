@@ -33,10 +33,27 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+
 /**
  * Tests the JSON values representation class {@link JsonValue}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonValueTest {}
+public class JsonValueTest {
+
+  @Test
+  public void writeTo() throws IOException {
+    JsonValue value = new JsonObject();
+    Writer writer = new StringWriter();
+    value.writeTo(writer);
+    assertEquals("{}", writer.toString());
+  }
+}
