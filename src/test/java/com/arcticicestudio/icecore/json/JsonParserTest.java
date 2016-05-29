@@ -40,6 +40,7 @@ import org.junit.Test;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
@@ -84,6 +85,11 @@ public class JsonParserTest {
   @Test
   public void parseAcceptsStrings() {
     assertEquals(new JsonString(""), parse("\"\""));
+  }
+
+  @Test
+  public void parseAcceptsLiterals() {
+    assertSame(Json.NULL, parse("null"));
   }
 
   private static void assertParseException(int offset, String message, final String json) {
