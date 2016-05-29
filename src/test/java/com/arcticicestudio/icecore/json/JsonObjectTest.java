@@ -692,4 +692,9 @@ public class JsonObjectTest {
     inOrder.verify(writer).writeObjectClose();
     inOrder.verifyNoMoreInteractions();
   }
+
+  @Test
+  public void isObject() {
+    assertTrue(object.isObject());
+  }
 }
