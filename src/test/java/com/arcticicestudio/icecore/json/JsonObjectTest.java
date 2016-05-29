@@ -536,4 +536,10 @@ public class JsonObjectTest {
   public void setJsonEnablesChaining() {
     assertSame(object, object.set("a", Json.NULL));
   }
+
+  @Test
+  public void setAddsElementIfMissing() {
+    object.set("a", Json.TRUE);
+    assertEquals("{\"a\":true}", object.toString());
+  }
 }
