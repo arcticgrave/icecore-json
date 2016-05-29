@@ -285,4 +285,13 @@ public class JsonArrayTest {
   public void addJsonEnablesChaining() {
     assertSame(array, array.add(Json.NULL));
   }
+
+  @Test
+  public void addJsonFailsWithNull() {
+    assertException(NullPointerException.class, "value is null", new Runnable() {
+      public void run() {
+        array.add((JsonValue)null);
+      }
+    });
+  }
 }
