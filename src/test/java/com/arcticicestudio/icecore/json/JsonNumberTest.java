@@ -98,4 +98,9 @@ public class JsonNumberTest {
   public void asIntFailsWithExponent() {
     new JsonNumber("1e5").asInt();
   }
+
+  @Test(expected = NumberFormatException.class)
+  public void asIntFailsWithFractional() {
+    new JsonNumber("92.5").asInt();
+  }
 }
