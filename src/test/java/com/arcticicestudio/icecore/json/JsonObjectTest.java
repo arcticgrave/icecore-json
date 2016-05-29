@@ -372,4 +372,10 @@ public class JsonObjectTest {
     object.add("a", "yogurt");
     assertEquals("{\"a\":\"yogurt\"}", object.toString());
   }
+
+  @Test
+  public void addStringToleratesNull() {
+    object.add("a", (String)null);
+    assertEquals("{\"a\":null}", object.toString());
+  }
 }
