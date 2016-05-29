@@ -165,6 +165,21 @@ public class JsonParserTest {
     assertEquals("Nesting too deep at 1:1001", exception.getMessage());
   }
 
+  @Test
+  public void parseFailsOnTooDeeplyNestedObject() {
+    JsonObject object = new JsonObject();
+    for (int i = 0; i < 1001; i++) {
+      object = new JsonObject().add("foo", object);
+    }
+    final String input = object.toString();
+    ParseException exception = assertException(ParseException.class, new RunnableEx() {
+      public void run() throws IOException {
+        new JsonParser(input).parse();
+      }
+    });
+    assertEquals("Nesting too deep at 1:7001", exception.getMessage());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
