@@ -42,6 +42,7 @@ import org.junit.Test;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Tests the JSON array structure representation class {@link JsonArray}.
@@ -162,5 +163,12 @@ public class JsonArrayTest {
     array.add(true);
     assertEquals(1, array.values().size());
     assertEquals(Json.TRUE, array.values().get(0));
+  }
+
+  @Test
+  public void valuesReflectsChanges() {
+    List<JsonValue> values = array.values();
+    array.add(true);
+    assertEquals(array.values(), values);
   }
 }
