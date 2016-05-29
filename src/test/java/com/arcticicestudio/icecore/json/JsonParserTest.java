@@ -102,6 +102,11 @@ public class JsonParserTest {
     assertEquals(new JsonArray(), parse("\t\r\n [\t\r\n ]\t\r\n "));
   }
 
+  @Test
+  public void parseFailsWithUnterminatedString() {
+    assertParseException(5, "Unexpected end of input", "[\"foo");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
