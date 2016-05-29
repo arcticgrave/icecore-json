@@ -118,4 +118,10 @@ public class JsonWriterTest {
     assertEquals("\"a\\\"b\"", output.toString());
   }
 
+  @Test
+  public void escapesEscapedQuotes() throws IOException {
+    writer.writeString("yogurt\\\"coconut");
+    assertEquals("\"yogurt\\\\\\\"coconut\"", output.toString());
+  }
+
 }
