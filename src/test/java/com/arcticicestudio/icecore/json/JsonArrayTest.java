@@ -76,4 +76,11 @@ public class JsonArrayTest {
     array.add(92);
     assertTrue(copy.isEmpty());
   }
+
+  @Test
+  public void unmodifiableArrayHasSameValues() {
+    array.add(92);
+    JsonArray unmodifiableArray = JsonArray.unmodifiableArray(array);
+    assertEquals(array.values(), unmodifiableArray.values());
+  }
 }
