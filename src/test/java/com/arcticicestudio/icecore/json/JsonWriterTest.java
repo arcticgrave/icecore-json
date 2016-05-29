@@ -99,4 +99,10 @@ public class JsonWriterTest {
     writer.writeObjectClose();
     assertEquals("{:,}", output.toString());
   }
+
+  @Test
+  public void writeMemberNameEmpty() throws IOException {
+    writer.writeMemberName("");
+    assertEquals("\"\"", output.toString());
+  }
 }
