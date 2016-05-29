@@ -280,4 +280,10 @@ public class JsonObjectTest {
   public void getDoubleReturnsDefaultForMissingMember() {
     assertEquals(3.14, object.getDouble("yogurt", 3.14), 0);
   }
+
+  @Test
+  public void getBooleanReturnsValueFromMember() {
+    object.add("yogurt", true);
+    assertTrue(object.getBoolean("yogurt", false));
+  }
 }
