@@ -34,6 +34,7 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -100,5 +101,11 @@ public class JsonArrayTest {
   @Test
   public void isEmptyIsTrueAfterCreation() {
     assertTrue(array.isEmpty());
+  }
+
+  @Test
+  public void isEmptyIsFalseAfterAdd() {
+    array.add(true);
+    assertFalse(array.isEmpty());
   }
 }
