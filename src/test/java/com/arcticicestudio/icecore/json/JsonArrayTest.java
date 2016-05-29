@@ -37,10 +37,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
 
+import java.io.IOException;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
@@ -472,5 +475,15 @@ public class JsonArrayTest {
     array.add("a").add("b").add("c");
     array.remove(1);
     assertEquals("[\"a\",\"c\"]", array.toString());
+  }
+
+  @Test
+  public void writeEmpty() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    array.write(writer);
+    InOrder inOrder = inOrder(writer);
+    inOrder.verify(writer).writeArrayOpen();
+    inOrder.verify(writer).writeArrayClose();
+    inOrder.verifyNoMoreInteractions();
   }
 }
