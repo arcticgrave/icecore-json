@@ -105,4 +105,12 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void valueDouble() {
+    assertEquals("23.5", Json.value(23.5d).toString());
+    assertEquals("3.1416", Json.value(3.1416d).toString());
+    assertEquals("1.23E-6", Json.value(0.00000123d).toString());
+    assertEquals("1.7976931348623157E308", Json.value(1.7976931348623157E308d).toString());
+  }
 }
