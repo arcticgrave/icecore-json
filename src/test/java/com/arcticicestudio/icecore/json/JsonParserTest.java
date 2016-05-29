@@ -92,6 +92,11 @@ public class JsonParserTest {
     assertSame(Json.NULL, parse("null"));
   }
 
+  @Test
+  public void parseStripsPadding() {
+    assertEquals(new JsonArray(), parse(" [ ] "));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
