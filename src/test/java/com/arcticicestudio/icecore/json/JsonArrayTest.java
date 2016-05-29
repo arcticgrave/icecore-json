@@ -454,4 +454,9 @@ public class JsonArrayTest {
     array.set(1, 4).set(2, 5);
     assertEquals("[3,4,5]", array.toString());
   }
+
+  @Test(expected = IndexOutOfBoundsException.class)
+  public void removeFailsWithInvalidIndex() {
+    array.remove(0);
+  }
 }
