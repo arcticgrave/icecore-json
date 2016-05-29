@@ -861,6 +861,13 @@ public class JsonObjectTest {
     assertEquals(object, serializeAndDeserialize(object));
   }
 
+  @Test
+  public void deserializedObjectCanBeAccessed() throws Exception {
+    object.add("yogurt", 92);
+    JsonObject deserializedObject = serializeAndDeserialize(object);
+    assertEquals(92, deserializedObject.get("yogurt").asInt());
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
