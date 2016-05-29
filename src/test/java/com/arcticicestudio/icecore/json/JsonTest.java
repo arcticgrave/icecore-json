@@ -239,4 +239,10 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void arrayString() {
+    assertEquals(new JsonArray().add("yogurt"), Json.array("yogurt"));
+    assertEquals(new JsonArray().add("yogurt").add("coconut"), Json.array("yogurt", "coconut"));
+  }
 }
