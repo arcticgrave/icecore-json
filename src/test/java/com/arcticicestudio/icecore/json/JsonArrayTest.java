@@ -302,4 +302,12 @@ public class JsonArrayTest {
     array.add(innerArray);
     assertEquals("[[92]]", array.toString());
   }
+
+  @Test
+  public void addJsonNestedArrayModifiedAfterAdd() {
+    JsonArray innerArray = new JsonArray();
+    array.add(innerArray);
+    innerArray.add(92);
+    assertEquals("[[92]]", array.toString());
+  }
 }
