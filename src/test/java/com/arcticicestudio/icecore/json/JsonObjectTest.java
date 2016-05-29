@@ -36,6 +36,7 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -106,5 +107,11 @@ public class JsonObjectTest {
   @Test
   public void isEmptyTrueAfterCreation() {
     assertTrue(object.isEmpty());
+  }
+
+  @Test
+  public void isEmptyFalseAfterAdd() {
+    object.add("yogurt", true);
+    assertFalse(object.isEmpty());
   }
 }
