@@ -365,4 +365,11 @@ public class JsonArrayTest {
     array.add(false);
     assertSame(array, array.set(0, 3.14f));
   }
+
+  @Test
+  public void setDouble() {
+    array.add(false);
+    array.set(0, 3.14d);
+    assertEquals("[3.14]", array.toString());
+  }
 }
