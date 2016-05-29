@@ -119,4 +119,9 @@ public class JsonArrayTest {
     array.add(true);
     assertEquals(1, array.size());
   }
+
+  @Test
+  public void iteratorIsEmptyAfterCreation() {
+    assertFalse(array.iterator().hasNext());
+  }
 }
