@@ -111,4 +111,11 @@ public class JsonWriterTest {
     writer.writeMemberName("yogurt\\coconut");
     assertEquals("\"yogurt\\\\coconut\"", output.toString());
   }
+
+  @Test
+  public void escapesQuotes() throws IOException {
+    writer.writeString("a\"b");
+    assertEquals("\"a\\\"b\"", output.toString());
+  }
+
 }
