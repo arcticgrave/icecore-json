@@ -326,4 +326,11 @@ public class JsonArrayTest {
     innerObject.add("a", 92);
     assertEquals("[{\"a\":92}]", array.toString());
   }
+
+  @Test
+  public void setInt() {
+    array.add(false);
+    array.set(0, 92);
+    assertEquals("[92]", array.toString());
+  }
 }
