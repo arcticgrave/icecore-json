@@ -365,6 +365,16 @@ public class JsonParserTest {
     assertEquals("日本語", parse("\"日本語\"").asString());
   }
 
+  @Test
+  public void stringsControlCharactersAreRejected() {
+    /* JSON strings MUST NOT contain characters < 0x20 */
+    assertParseException(3, "Expected valid string character", "\"--\n--\"");
+    assertParseException(3, "Expected valid string character", "\"--\r\n--\"");
+    assertParseException(3, "Expected valid string character", "\"--\t--\"");
+    assertParseException(3, "Expected valid string character", "\"--\u0000--\"");
+    assertParseException(3, "Expected valid string character", "\"--\u001f--\"");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
