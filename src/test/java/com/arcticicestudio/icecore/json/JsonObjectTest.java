@@ -519,4 +519,10 @@ public class JsonObjectTest {
     object.set("a", Json.NULL);
     assertEquals("{\"a\":null}", object.toString());
   }
+
+  @Test
+  public void setJsonArray() {
+    object.set("a", new JsonArray());
+    assertEquals("{\"a\":[]}", object.toString());
+  }
 }
