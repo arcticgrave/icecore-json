@@ -388,6 +388,11 @@ public class JsonParserTest {
     assertEquals(" \t ", parse("\" \\t \"").asString());
   }
 
+  @Test
+  public void stringsEscapeAtStart() {
+    assertEquals("\\x", parse("\"\\\\x\"").asString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
