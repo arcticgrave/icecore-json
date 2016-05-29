@@ -160,4 +160,8 @@ public class JsonTest {
     assertSame(Json.NULL, Json.value(null));
   }
 
+  @Test
+  public void array() {
+    assertEquals(new JsonArray(), Json.array());
+  }
 }
