@@ -70,4 +70,10 @@ public class JsonWriterTest {
     writer.writeNumber("92");
     assertEquals("92", output.toString());
   }
+
+  @Test
+  public void writeStringEmpty() throws IOException {
+    writer.writeString("");
+    assertEquals("\"\"", output.toString());
+  }
 }
