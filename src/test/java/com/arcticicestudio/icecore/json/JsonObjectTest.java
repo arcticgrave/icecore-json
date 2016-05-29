@@ -286,4 +286,9 @@ public class JsonObjectTest {
     object.add("yogurt", true);
     assertTrue(object.getBoolean("yogurt", false));
   }
+
+  @Test
+  public void getBooleanReturnsDefaultForMissingMember() {
+    assertFalse(object.getBoolean("yogurt", false));
+  }
 }
