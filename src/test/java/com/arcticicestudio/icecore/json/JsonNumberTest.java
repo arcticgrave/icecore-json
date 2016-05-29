@@ -13,7 +13,7 @@ modified  2016-05-29 09:01 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
-Tests the JSON string value representation class "JsonNumber".
+Tests the JSON number-values representation class "JsonNumber".
 
 [Copyright]
 Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
@@ -45,7 +45,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 /**
- * Tests the JSON value representation class {@link JsonNumber}.
+ * Tests the JSON number-values representation class {@link JsonNumber}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
