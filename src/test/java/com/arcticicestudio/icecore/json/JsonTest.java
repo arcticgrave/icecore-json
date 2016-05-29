@@ -34,6 +34,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -83,5 +84,15 @@ public class JsonTest {
     assertEquals("0", Json.value(0f).toString());
     assertEquals("-1", Json.value(-1f).toString());
     assertEquals("10", Json.value(10f).toString());
+  }
+
+  @Test
+  public void valueFloatFailsWithInfinity() {
+    String message = "Infinite and NaN values not permitted in JSON";
+    assertException(IllegalArgumentException.class, message, new Runnable() {
+      public void run() {
+        Json.value(Float.POSITIVE_INFINITY);
+      }
+    });
   }
 }
