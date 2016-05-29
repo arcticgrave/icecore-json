@@ -355,4 +355,10 @@ public class JsonObjectTest {
   public void addDoubleEnablesChaining() {
     assertSame(object, object.add("a", 3.14d));
   }
+
+  @Test
+  public void addBoolean() {
+    object.add("a", true);
+    assertEquals("{\"a\":true}", object.toString());
+  }
 }
