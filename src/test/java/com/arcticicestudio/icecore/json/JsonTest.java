@@ -245,4 +245,13 @@ public class JsonTest {
     assertEquals(new JsonArray().add("yogurt"), Json.array("yogurt"));
     assertEquals(new JsonArray().add("yogurt").add("coconut"), Json.array("yogurt", "coconut"));
   }
+
+  @Test
+  public void arrayStringFailsWithNull() {
+    TestUtil.assertException(NullPointerException.class, "values is null", new Runnable() {
+      public void run() {
+        Json.array((String[])null);
+      }
+    });
+  }
 }
