@@ -88,4 +88,9 @@ public class JsonNumberTest {
   public void asInt() {
     assertEquals(92, new JsonNumber("92").asInt());
   }
+
+  @Test(expected = NumberFormatException.class)
+  public void asIntFailsWithExceedingValues() {
+    new JsonNumber("10000000000").asInt();
+  }
 }
