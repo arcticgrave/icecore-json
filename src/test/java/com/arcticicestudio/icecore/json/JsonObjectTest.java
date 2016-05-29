@@ -317,4 +317,9 @@ public class JsonObjectTest {
     object.add("a", 92);
     assertEquals("{\"a\":92}", object.toString());
   }
+
+  @Test
+  public void addIntEnablesChaining() {
+    assertSame(object, object.add("a", 92));
+  }
 }
