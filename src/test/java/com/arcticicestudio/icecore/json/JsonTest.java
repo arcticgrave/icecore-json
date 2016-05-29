@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 21:03 UTC+0200       +
-modified  2016-05-29 21:14 UTC+0200       +
+modified  2016-05-29 21:28 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -44,6 +44,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+
+import com.arcticicestudio.icecore.json.TestUtil.RunnableEx;
 
 /**
  * Tests the JSON API class {@link Json}.
@@ -282,5 +284,14 @@ public class JsonTest {
   public void parseReader() throws IOException {
     Reader reader = new StringReader("23");
     assertEquals(Json.value(23), Json.parse(reader));
+  }
+
+  @Test
+  public void parseReaderFailsWithNull() {
+    TestUtil.assertException(NullPointerException.class, "reader is null", new RunnableEx() {
+      public void run() throws IOException {
+        Json.parse((Reader)null);
+      }
+    });
   }
 }
