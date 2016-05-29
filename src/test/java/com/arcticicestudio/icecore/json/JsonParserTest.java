@@ -485,6 +485,14 @@ public class JsonParserTest {
     assertParseException(3, "Unexpected character", "1e1x");
   }
 
+  @Test
+  public void numbersIncomplete() {
+    assertParseException(1, "Unexpected end of input", "-");
+    assertParseException(2, "Unexpected end of input", "1.");
+    assertParseException(4, "Unexpected end of input", "1.0e");
+    assertParseException(5, "Unexpected end of input", "1.0e-");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
