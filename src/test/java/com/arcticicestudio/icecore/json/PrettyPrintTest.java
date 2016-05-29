@@ -34,8 +34,13 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
-import org.junit.Before;
+import static com.arcticicestudio.icecore.json.PrettyPrint.indentWithSpaces;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
 import java.io.StringWriter;
 
 /**
@@ -51,5 +56,11 @@ public class PrettyPrintTest {
   @Before
   public void setUp() {
     output = new StringWriter();
+  }
+
+  @Test
+  public void indentWithSpacesEmptyArray() throws IOException {
+    new JsonArray().writeTo(output, indentWithSpaces(2));
+    assertEquals("[\n  \n]", output.toString());
   }
 }
