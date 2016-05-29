@@ -541,4 +541,10 @@ public class JsonArrayTest {
   public void equalsFalseForSubclass() {
     assertFalse(array.equals(new JsonArray(array) {}));
   }
+
+  @Test
+  public void canBeSerializedAndDeserialized() throws Exception {
+    array.add(true).add(3.14d).add(92).add("yogurt").add(new JsonArray().add(false));
+    assertEquals(array, serializeAndDeserialize(array));
+  }
 }
