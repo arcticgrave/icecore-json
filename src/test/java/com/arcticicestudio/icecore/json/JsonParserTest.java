@@ -358,6 +358,13 @@ public class JsonParserTest {
     assertEquals("\u007f", parse("\"\u007f\"").asString());
   }
 
+  @Test
+  public void stringsNonAsciiCharactersAreAccepted() {
+    assertEquals("Русский", parse("\"Русский\"").asString());
+    assertEquals("العربية", parse("\"العربية\"").asString());
+    assertEquals("日本語", parse("\"日本語\"").asString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
