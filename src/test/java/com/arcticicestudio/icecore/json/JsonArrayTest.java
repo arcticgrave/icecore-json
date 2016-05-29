@@ -151,4 +151,9 @@ public class JsonArrayTest {
     array.add(92);
     iterator.next();
   }
+
+  @Test
+  public void valuesIsEmptyAfterCreation() {
+    assertTrue(array.values().isEmpty());
+  }
 }
