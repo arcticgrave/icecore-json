@@ -247,4 +247,10 @@ public class JsonObjectTest {
   public void getIntReturnsDefaultForMissingMember() {
     assertEquals(92, object.getInt("yogurt", 92));
   }
+
+  @Test
+  public void getLongReturnsValueFromMember() {
+    object.add("yogurt", 92l);
+    assertEquals(92l, object.getLong("yogurt", 42l));
+  }
 }
