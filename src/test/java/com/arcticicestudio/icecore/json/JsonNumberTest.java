@@ -93,4 +93,9 @@ public class JsonNumberTest {
   public void asIntFailsWithExceedingValues() {
     new JsonNumber("10000000000").asInt();
   }
+
+  @Test(expected = NumberFormatException.class)
+  public void asIntFailsWithExponent() {
+    new JsonNumber("1e5").asInt();
+  }
 }
