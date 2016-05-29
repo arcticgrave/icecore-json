@@ -125,4 +125,9 @@ public class JsonObjectTest {
     object.add("a", true);
     assertEquals(1, object.size());
   }
+
+  @Test
+  public void namesEmptyAfterCreation() {
+    assertTrue(object.names().isEmpty());
+  }
 }
