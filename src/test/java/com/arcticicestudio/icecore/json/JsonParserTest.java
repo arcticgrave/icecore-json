@@ -107,6 +107,15 @@ public class JsonParserTest {
     assertParseException(5, "Unexpected end of input", "[\"foo");
   }
 
+  @Test
+  public void parseHandlesLineBreaksAndColumnsCorrectly() {
+    assertParseException(0, 1, 0, "!");
+    assertParseException(2, 2, 0, "[\n!");
+    assertParseException(3, 2, 0, "[\r\n!");
+    assertParseException(6, 3, 1, "[ \n \n !");
+    assertParseException(7, 2, 3, "[ \r\n \r !");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
