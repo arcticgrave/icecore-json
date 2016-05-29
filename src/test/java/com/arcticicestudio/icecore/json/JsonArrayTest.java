@@ -499,4 +499,20 @@ public class JsonArrayTest {
     inOrder.verify(writer).writeArrayClose();
     inOrder.verifyNoMoreInteractions();
   }
+
+  @Test
+  public void writeWithMultipleValues() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    array.add(92).add("yogurt").add(false);
+    array.write(writer);
+    InOrder inOrder = inOrder(writer);
+    inOrder.verify(writer).writeArrayOpen();
+    inOrder.verify(writer).writeNumber("92");
+    inOrder.verify(writer).writeArraySeparator();
+    inOrder.verify(writer).writeString("yogurt");
+    inOrder.verify(writer).writeArraySeparator();
+    inOrder.verify(writer).writeLiteral("false");
+    inOrder.verify(writer).writeArrayClose();
+    inOrder.verifyNoMoreInteractions();
+  }
 }
