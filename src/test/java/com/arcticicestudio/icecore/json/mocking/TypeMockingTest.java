@@ -36,6 +36,7 @@ package com.arcticicestudio.icecore.json.mocking;
 
 import static org.junit.Assert.assertNotNull;
 
+import com.arcticicestudio.icecore.json.JsonObject;
 import com.arcticicestudio.icecore.json.JsonValue;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -52,5 +53,11 @@ public class TypeMockingTest {
   public void mockValue() {
     JsonValue jsonValue = Mockito.mock(JsonValue.class);
     assertNotNull(jsonValue);
+  }
+
+  @Test
+  public void mockObject() {
+    JsonObject jsonObject = Mockito.mock(JsonObject.class);
+    assertNotNull(jsonObject);
   }
 }
