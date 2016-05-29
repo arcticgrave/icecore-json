@@ -156,4 +156,11 @@ public class JsonArrayTest {
   public void valuesIsEmptyAfterCreation() {
     assertTrue(array.values().isEmpty());
   }
+
+  @Test
+  public void valuesContainsValueAfterAdd() {
+    array.add(true);
+    assertEquals(1, array.values().size());
+    assertEquals(Json.TRUE, array.values().get(0));
+  }
 }
