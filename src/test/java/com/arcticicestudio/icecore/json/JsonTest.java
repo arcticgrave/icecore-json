@@ -69,4 +69,12 @@ public class JsonTest {
     assertEquals("9223372036854775807", Json.value(Long.MAX_VALUE).toString());
     assertEquals("-9223372036854775808", Json.value(Long.MIN_VALUE).toString());
   }
+
+  @Test
+  public void valueFloat() {
+    assertEquals("23.5", Json.value(23.5f).toString());
+    assertEquals("-3.1416", Json.value(-3.1416f).toString());
+    assertEquals("1.23E-6", Json.value(0.00000123f).toString());
+    assertEquals("-1.23E7", Json.value(-12300000f).toString());
+  }
 }
