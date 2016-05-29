@@ -498,6 +498,13 @@ public class JsonParserTest {
     assertEquals(Json.NULL, parse("null"));
   }
 
+  @Test
+  public void nullIncomplete() {
+    assertParseException(1, "Unexpected end of input", "n");
+    assertParseException(2, "Unexpected end of input", "nu");
+    assertParseException(3, "Unexpected end of input", "nul");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
