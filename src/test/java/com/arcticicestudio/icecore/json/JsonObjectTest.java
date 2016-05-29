@@ -771,6 +771,14 @@ public class JsonObjectTest {
     assertEquals(0, object.indexOf("a"));
   }
 
+  @Test
+  public void indexOfReturnsUpdatedIndexAfterRemove() {
+    object.add("a", true);
+    object.add("b", true);
+    object.remove("a");
+    assertEquals(0, object.indexOf("b"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
