@@ -732,6 +732,12 @@ public class JsonObjectTest {
     assertFalse(jsonObject.equals(new JsonObject(jsonObject) {}));
   }
 
+  @Test
+  public void hashCodeEqualsForEqualObjects() {
+    assertTrue(object().hashCode() == object().hashCode());
+    assertTrue(object("a", "1").hashCode() == object("a", "1").hashCode());
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
