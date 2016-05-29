@@ -590,4 +590,14 @@ public class JsonObjectTest {
     object.remove("a");
     assertEquals("{\"a\":92}", object.toString());
   }
+
+  @Test
+  public void removeRemovesOnlyLastMatchingMemberAfterRemove() {
+    object.add("a", 92);
+    object.remove("a");
+    object.add("a", 42);
+    object.add("a", 47);
+    object.remove("a");
+    assertEquals("{\"a\":42}", object.toString());
+  }
 }
