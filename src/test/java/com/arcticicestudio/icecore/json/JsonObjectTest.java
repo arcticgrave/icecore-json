@@ -486,4 +486,9 @@ public class JsonObjectTest {
     object.set("a", 3.14d);
     assertEquals("{\"a\":3.14}", object.toString());
   }
+
+  @Test
+  public void setDoubleEnablesChaining() {
+    assertSame(object, object.set("a", 3.14d));
+  }
 }
