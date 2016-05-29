@@ -35,6 +35,8 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import java.io.IOException;
+
 /**
  * Tests the JSON parser class {@link JsonParser}.
  *
@@ -42,4 +44,13 @@ package com.arcticicestudio.icecore.json;
  * @since 0.7.0
  */
 
-public class JsonParserTest {}
+public class JsonParserTest {
+
+  private static JsonValue parse(String json) {
+    try {
+      return new JsonParser(json).parse();
+    } catch (IOException exception) {
+      throw new RuntimeException(exception);
+    }
+  }
+}
