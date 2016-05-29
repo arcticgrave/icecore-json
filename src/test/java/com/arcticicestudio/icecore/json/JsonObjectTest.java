@@ -502,4 +502,10 @@ public class JsonObjectTest {
   public void setBooleanEnablesChaining() {
     assertSame(object, object.set("a", true));
   }
+
+  @Test
+  public void setString() {
+    object.set("a", "yogurt");
+    assertEquals("{\"a\":\"yogurt\"}", object.toString());
+  }
 }
