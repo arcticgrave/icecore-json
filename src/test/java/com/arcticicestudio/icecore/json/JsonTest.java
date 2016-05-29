@@ -36,6 +36,7 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -139,5 +140,11 @@ public class JsonTest {
         Json.value(Double.NaN);
       }
     });
+  }
+
+  @Test
+  public void valueBoolean() {
+    assertSame(Json.TRUE, Json.value(true));
+    assertSame(Json.FALSE, Json.value(false));
   }
 }
