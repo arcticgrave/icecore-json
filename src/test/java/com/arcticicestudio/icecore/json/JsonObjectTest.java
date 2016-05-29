@@ -230,4 +230,10 @@ public class JsonObjectTest {
     object.add("yogurt", true);
     assertEquals(Json.TRUE, object.get("yogurt"));
   }
+
+  @Test
+  public void getReturnsLastValueForName() {
+    object.add("yogurt", false).add("yogurt", true);
+    assertEquals(Json.TRUE, object.get("yogurt"));
+  }
 }
