@@ -445,6 +445,16 @@ public class JsonParserTest {
     assertEquals(new JsonNumber("123456789012345678901234567890"), parse("123456789012345678901234567890"));
   }
 
+  @Test
+  public void numbersMinusZero() {
+    /* Allowed for JSON and Java */
+    JsonValue value = parse("-0");
+    assertEquals(0, value.asInt());
+    assertEquals(0l, value.asLong());
+    assertEquals(0f, value.asFloat(), 0);
+    assertEquals(0d, value.asDouble(), 0);
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
