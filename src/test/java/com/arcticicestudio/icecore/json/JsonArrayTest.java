@@ -189,4 +189,10 @@ public class JsonArrayTest {
   public void getFailsWithInvalidIndex() {
     array.get(0);
   }
+
+  @Test
+  public void addInt() {
+    array.add(92);
+    assertEquals("[92]", array.toString());
+  }
 }
