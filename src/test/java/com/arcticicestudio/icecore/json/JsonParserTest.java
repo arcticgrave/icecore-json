@@ -270,6 +270,13 @@ public class JsonParserTest {
     assertEquals("[{\"yogurt\":[92]},{\"coconut\":[42]}]", parse("[{\"yogurt\":[92]},{\"coconut\":[42]}]").toString());
   }
 
+  @Test
+  public void arraysIllegalSyntax() {
+    assertParseException(1, "Expected value", "[,]");
+    assertParseException(4, "Expected ',' or ']'", "[92 42]");
+    assertParseException(4, "Expected value", "[92,]");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
