@@ -1,6 +1,34 @@
 IceCore - JSON
 ==============
 
+## 0.7.0 (2016-05-29) - API
+### Improvements
+#### JSON Parser
+  - Prevent stack overflow on deeply nested input.
+  When the input is too deeply nested, the parser can run into a stack overflow.
+  `StackOverflowError` is a VM Error, as such it should not be catched but rather be prevented.
+  The parser will now throw a `ParseException` when the nesting level exceeds `1000`.
+
+### Tests
+  Implemented new test classes:
+
+| Class | Description |
+| ----- | ----------- |
+| `com.arcticicestudio.icecore.json.JsonArrayTest` | Tests the JSON array structure representation class `JsonArray`. |
+| `com.arcticicestudio.icecore.json.JsonLiteralTest` | Tests the JSON literals representation class `JsonLiteral`. |
+| `com.arcticicestudio.icecore.json.JsonNumberTest` | Tests the JSON number-values representation class `JsonNumber`. |
+| `com.arcticicestudio.icecore.json.JsonObjectTest` | Tests the JSON object structure representation class `JsonObject`. |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | Tests the JSON parser class `JsonParser`. |
+| `com.arcticicestudio.icecore.json.JsonStringTest` | Tests the JSON string value representation class `JsonString`. |
+| `com.arcticicestudio.icecore.json.JsonTest` | Tests the JSON API class `Json`. |
+| `com.arcticicestudio.icecore.json.JsonValue` | Tests the JSON values representation class `JsonValue`. |
+| `com.arcticicestudio.icecore.json.JsonWriter` | Tests the JSON writer class `JsonWriter`. |
+| `com.arcticicestudio.icecore.json.ParseException` | Tests the JSON parser exception class `ParseException`. |
+| `com.arcticicestudio.icecore.json.PrettyPrint` | Tests the JSON writer pretty print class `PrettyPrint`. |
+| `com.arcticicestudio.icecore.json.TestUtil` | Provides test utils. |
+| `com.arcticicestudio.icecore.json.WritingBuffer` | Tests the JSON writer writing buffer class `WritingBuffer`. |
+| `com.arcticicestudio.icecore.json.mocking.TypeMockingTest` | Tests mocking to make sure types do not prevent mocking by final or visibility constructs. |
+
 ## 0.6.0 (2016-05-28) - API
 This version includes the API entrypoint class `Json` to write and parse JSON.
 

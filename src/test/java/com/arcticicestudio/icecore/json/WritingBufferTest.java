@@ -3,7 +3,7 @@
 title     JSON Writing Buffer Test        +
 project   icecore-json                    +
 file      WritingBufferTest.java          +
-version                                   +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

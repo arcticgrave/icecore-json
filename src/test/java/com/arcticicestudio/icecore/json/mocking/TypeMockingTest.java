@@ -3,7 +3,7 @@
 title     Type Mocking Test               +
 project   icecore-json                    +
 file      TypeMockingTest.java            +
-version                                   +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

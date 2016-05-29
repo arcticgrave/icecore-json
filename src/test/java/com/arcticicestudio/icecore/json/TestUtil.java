@@ -3,7 +3,7 @@
 title     Test Util                       +
 project   icecore-json                    +
 file      TestUtil.java                   +
-version                                   +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

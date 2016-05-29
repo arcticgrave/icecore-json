@@ -3,7 +3,7 @@
 title     JSON Writer Test                +
 project   icecore-json                    +
 file      JsonWriterTest.java             +
-version                                   +
+version   0.7.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
