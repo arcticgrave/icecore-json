@@ -43,6 +43,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -200,5 +201,12 @@ public class JsonObjectTest {
     Iterator<Member> iterator = object.iterator();
     iterator.next();
     iterator.remove();
+  }
+
+  @Test(expected = ConcurrentModificationException.class)
+  public void iteratorDetectsConcurrentModification() {
+    Iterator<Member> iterator = object.iterator();
+    object.add("a", 92);
+    iterator.next();
   }
 }
