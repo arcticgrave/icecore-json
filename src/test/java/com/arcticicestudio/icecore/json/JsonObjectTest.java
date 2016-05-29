@@ -209,4 +209,13 @@ public class JsonObjectTest {
     object.add("a", 92);
     iterator.next();
   }
+
+  @Test
+  public void getFailsWithNullName() {
+    assertException(NullPointerException.class, "name is null", new Runnable() {
+      public void run() {
+        object.get(null);
+      }
+    });
+  }
 }
