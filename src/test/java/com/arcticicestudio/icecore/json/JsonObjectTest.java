@@ -763,6 +763,14 @@ public class JsonObjectTest {
     assertEquals(1, object.indexOf("a"));
   }
 
+  @Test
+  public void indexOfReturnsIndexOfLastMemberAfterRemove() {
+    object.add("a", true);
+    object.add("a", true);
+    object.remove("a");
+    assertEquals(0, object.indexOf("a"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
