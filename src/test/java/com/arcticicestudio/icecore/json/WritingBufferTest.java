@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 20:52 UTC+0200       +
-modified  2016-05-29 20:53 UTC+0200       +
+modified  2016-05-29 21:02 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -141,6 +141,13 @@ public class WritingBufferTest {
     writer.write("foobar", 1, 3);
     writer.flush();
     assertEquals(createString(BUFFER_SIZE - 2) + "oob", wrapped.toString());
+  }
+
+  @Test
+  public void testWriteStringExceedingBuffer() throws IOException {
+    writer.write(createString(BUFFER_SIZE + 1));
+    writer.flush();
+    assertEquals(createString(BUFFER_SIZE + 1), wrapped.toString());
   }
 
   private static String createString(int length) {
