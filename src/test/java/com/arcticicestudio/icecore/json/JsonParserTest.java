@@ -137,6 +137,19 @@ public class JsonParserTest {
     assertEquals("[3.141592653589]", value.toString());
   }
 
+  @Test
+  public void parseHandlesPositionsCorrectlyWhenInputExceedsBufferSize() {
+    final String input = "{\n  \"a\": 23,\n  \"b\": 42,\n}";
+    ParseException exception = assertException(ParseException.class, new RunnableEx() {
+      public void run() throws IOException {
+        new JsonParser(new StringReader(input), 3).parse();
+      }
+    });
+    assertEquals(4, exception.getLine());
+    assertEquals(0, exception.getColumn());
+    assertEquals(24, exception.getOffset());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
