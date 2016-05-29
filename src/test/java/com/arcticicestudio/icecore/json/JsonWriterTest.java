@@ -148,6 +148,12 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\u2028coconut\\u2029\"", output.toString());
   }
 
+  @Test
+  public void escapesZeroCharacter() throws IOException {
+    writer.writeString(string('y', 'o', 'g', 'u', 'r', 't', (char)0, 'c', 'o', 'c', 'o', 'n', 'u', 't'));
+    assertEquals("\"yogurt\\u0000coconut\"", output.toString());
+  }
+
   private static String string(char... chars) {
     return String.valueOf(chars);
   }
