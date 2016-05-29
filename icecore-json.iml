@@ -43,5 +43,18 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="" scope="TEST">
+      <library name="mockito-all-1.10.19">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/test/java/vendor/mockito-all-1.10.19.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$MODULE_DIR$/lib/test/java/vendor/mockito-all-1.10.19-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/lib/test/java/vendor/mockito-all-1.10.19-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
