@@ -114,4 +114,13 @@ public class JsonValueTest {
       }
     });
   }
+
+  @Test
+  public void asArrayFailsOnIncompatibleType() {
+    assertException(UnsupportedOperationException.class, "Not an array: null", new Runnable() {
+      public void run() {
+        Json.NULL.asArray();
+      }
+    });
+  }
 }
