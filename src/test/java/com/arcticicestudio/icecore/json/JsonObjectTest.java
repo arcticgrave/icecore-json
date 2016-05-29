@@ -623,4 +623,11 @@ public class JsonObjectTest {
     object.merge(Json.object().add("c", 2).add("d", 2));
     assertEquals(Json.object().add("a", 1).add("b", 1).add("c", 2).add("d", 2), object);
   }
+
+  @Test
+  public void mergeReplacesMembers() {
+    object.add("a", 1).add("b", 1).add("c", 1);
+    object.merge(Json.object().add("b", 2).add("d", 2));
+    assertEquals(Json.object().add("a", 1).add("b", 2).add("c", 1).add("d", 2), object);
+  }
 }
