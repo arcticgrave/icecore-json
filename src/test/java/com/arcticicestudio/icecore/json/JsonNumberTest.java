@@ -34,6 +34,7 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -76,5 +77,10 @@ public class JsonNumberTest {
   @Test
   public void toStringReturnsInputString() {
     assertEquals("yogurt", new JsonNumber("yogurt").toString());
+  }
+
+  @Test
+  public void isNumber() {
+    assertTrue(new JsonNumber("92").isNumber());
   }
 }
