@@ -80,4 +80,12 @@ public class JsonObjectTest {
     object.add("yogurt", 92);
     assertTrue(copy.isEmpty());
   }
+
+  @Test
+  public void unmodifiableObjectHasSameValues() {
+    object.add("yogurt", 92);
+    JsonObject unmodifiableObject = JsonObject.unmodifiableObject(object);
+    assertEquals(object.names(), unmodifiableObject.names());
+    assertSame(object.get("yogurt"), unmodifiableObject.get("yogurt"));
+  }
 }
