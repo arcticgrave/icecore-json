@@ -37,6 +37,7 @@ package com.arcticicestudio.icecore.json;
 import org.junit.Before;
 
 import java.io.StringWriter;
+import java.util.Arrays;
 
 /**
  * Tests the JSON writer writing buffer class {@link WritingBuffer}.
@@ -54,5 +55,11 @@ public class WritingBufferTest {
   public void setUp() {
     wrapped = new StringWriter();
     writer = new WritingBuffer(wrapped, BUFFER_SIZE);
+  }
+
+  private static char[] createChars(int length) {
+    char[] array = new char[length];
+    Arrays.fill(array, 'x');
+    return array;
   }
 }
