@@ -750,6 +750,12 @@ public class JsonObjectTest {
     assertEquals(-1, object.indexOf("a"));
   }
 
+  @Test
+  public void indexOfReturnsIndexOfMember() {
+    object.add("a", true);
+    assertEquals(0, object.indexOf("a"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
