@@ -404,4 +404,11 @@ public class JsonArrayTest {
     array.add(false);
     assertSame(array, array.set(0, "yogurt"));
   }
+
+  @Test
+  public void setJsonNull() {
+    array.add(false);
+    array.set(0, Json.NULL);
+    assertEquals("[null]", array.toString());
+  }
 }
