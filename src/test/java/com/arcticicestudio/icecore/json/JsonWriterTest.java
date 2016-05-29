@@ -166,6 +166,12 @@ public class JsonWriterTest {
     assertEquals("\"\\u0001\\u0008\\u000f\\u0010\\u001f\"", output.toString());
   }
 
+  @Test
+  public void escapesFirstChar() throws IOException {
+    writer.writeString(string('\\', 'x'));
+    assertEquals("\"\\\\x\"", output.toString());
+  }
+
   private static String string(char... chars) {
     return String.valueOf(chars);
   }
