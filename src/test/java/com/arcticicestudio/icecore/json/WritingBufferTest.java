@@ -34,10 +34,25 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import org.junit.Before;
+
+import java.io.StringWriter;
+
 /**
  * Tests the JSON writer writing buffer class {@link WritingBuffer}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class WritingBufferTest {}
+public class WritingBufferTest {
+
+  private static final int BUFFER_SIZE = 16;
+  private StringWriter wrapped;
+  private WritingBuffer writer;
+
+  @Before
+  public void setUp() {
+    wrapped = new StringWriter();
+    writer = new WritingBuffer(wrapped, BUFFER_SIZE);
+  }
+}
