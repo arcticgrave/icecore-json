@@ -302,4 +302,13 @@ public class JsonObjectTest {
   public void getStringReturnsDefaultForMissingMember() {
     assertEquals("chocolate", object.getString("yogurt", "chocolate"));
   }
+
+  @Test
+  public void addFailsWithNullName() {
+    assertException(NullPointerException.class, "name is null", new Runnable() {
+      public void run() {
+        object.add(null, 92);
+      }
+    });
+  }
 }
