@@ -113,4 +113,9 @@ public class JsonNumberTest {
   public void asLongFailsWithExceedingValues() {
     new JsonNumber("10000000000000000000").asLong();
   }
+
+  @Test(expected = NumberFormatException.class)
+  public void asLongFailsWithExponent() {
+    new JsonNumber("1e5").asLong();
+  }
 }
