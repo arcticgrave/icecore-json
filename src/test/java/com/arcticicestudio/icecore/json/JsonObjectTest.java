@@ -721,6 +721,11 @@ public class JsonObjectTest {
     assertFalse(object("a", "1", "b", "2").equals(object("b", "2", "a", "1")));
   }
 
+  @Test
+  public void equalsFalseForNull() {
+    assertFalse(new JsonObject().equals(null));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
