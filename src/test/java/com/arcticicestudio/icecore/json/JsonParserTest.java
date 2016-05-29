@@ -462,6 +462,17 @@ public class JsonParserTest {
     assertEquals(new JsonNumber("1234567890.12345678901234567890"), parse("1234567890.12345678901234567890"));
   }
 
+  @Test
+  public void numbersWithExponent() {
+    assertEquals(new JsonNumber("0.1e9"), parse("0.1e9"));
+    assertEquals(new JsonNumber("0.1e9"), parse("0.1e9"));
+    assertEquals(new JsonNumber("0.1E9"), parse("0.1E9"));
+    assertEquals(new JsonNumber("-0.23e9"), parse("-0.23e9"));
+    assertEquals(new JsonNumber("0.23e9"), parse("0.23e9"));
+    assertEquals(new JsonNumber("0.23e+9"), parse("0.23e+9"));
+    assertEquals(new JsonNumber("0.23e-9"), parse("0.23e-9"));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
