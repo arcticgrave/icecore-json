@@ -425,4 +425,15 @@ public class JsonArrayTest {
     array.set(0, new JsonObject());
     assertEquals("[{}]", array.toString());
   }
+
+  @Test
+  public void setJsonFailsWithNull() {
+    array.add(false);
+
+    assertException(NullPointerException.class, "value is null", new Runnable() {
+      public void run() {
+        array.set(0, (JsonValue)null);
+      }
+    });
+  }
 }
