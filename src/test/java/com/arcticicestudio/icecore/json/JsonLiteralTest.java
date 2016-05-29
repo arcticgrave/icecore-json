@@ -37,8 +37,13 @@ import static com.arcticicestudio.icecore.json.Json.NULL;
 import static com.arcticicestudio.icecore.json.Json.TRUE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import org.junit.Test;
+
+import java.io.IOException;
 
 /**
  * Tests the JSON literals representation class {@link JsonLiteral}.
@@ -74,5 +79,13 @@ public class JsonLiteralTest {
     assertTrue(TRUE.isBoolean());
     assertTrue(FALSE.isBoolean());
     assertFalse(NULL.isBoolean());
+  }
+
+  @Test
+  public void NULLWrite() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    NULL.write(writer);
+    verify(writer).writeLiteral("null");
+    verifyNoMoreInteractions(writer);
   }
 }
