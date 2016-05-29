@@ -616,4 +616,11 @@ public class JsonObjectTest {
       }
     });
   }
+
+  @Test
+  public void mergeAppendsMembers() {
+    object.add("a", 1).add("b", 1);
+    object.merge(Json.object().add("c", 2).add("d", 2));
+    assertEquals(Json.object().add("a", 1).add("b", 1).add("c", 2).add("d", 2), object);
+  }
 }
