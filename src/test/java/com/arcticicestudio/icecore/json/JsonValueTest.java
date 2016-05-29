@@ -123,4 +123,13 @@ public class JsonValueTest {
       }
     });
   }
+
+  @Test
+  public void asStringFailsOnIncompatibleType() {
+    assertException(UnsupportedOperationException.class, "Not a string: null", new Runnable() {
+      public void run() {
+        Json.NULL.asString();
+      }
+    });
+  }
 }
