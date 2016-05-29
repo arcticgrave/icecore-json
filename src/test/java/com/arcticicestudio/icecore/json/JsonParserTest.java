@@ -505,6 +505,14 @@ public class JsonParserTest {
     assertParseException(3, "Unexpected end of input", "nul");
   }
 
+  @Test
+  public void nullWithIllegalCharacter() {
+    assertParseException(1, "Expected 'u'", "nx");
+    assertParseException(2, "Expected 'l'", "nux");
+    assertParseException(3, "Expected 'l'", "nulx");
+    assertParseException(4, "Unexpected character", "nullx");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
