@@ -405,6 +405,14 @@ public class JsonParserTest {
     assertParseException(2, "Expected valid escape sequence", "\"\\000\"");
   }
 
+  @Test
+  public void stringsValidUnicodeEscapesAreAccepted() {
+    assertEquals("\u0021", parse("\"\\u0021\"").asString());
+    assertEquals("\u4711", parse("\"\\u4711\"").asString());
+    assertEquals("\uffff", parse("\"\\uffff\"").asString());
+    assertEquals("\uabcdx", parse("\"\\uabcdx\"").asString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
