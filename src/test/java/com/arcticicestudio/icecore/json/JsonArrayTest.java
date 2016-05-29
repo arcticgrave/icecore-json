@@ -240,4 +240,9 @@ public class JsonArrayTest {
     array.add(true);
     assertEquals("[true]", array.toString());
   }
+
+  @Test
+  public void addBooleanEnablesChaining() {
+    assertSame(array, array.add(true));
+  }
 }
