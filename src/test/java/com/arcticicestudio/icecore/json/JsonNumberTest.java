@@ -83,4 +83,9 @@ public class JsonNumberTest {
   public void isNumber() {
     assertTrue(new JsonNumber("92").isNumber());
   }
+
+  @Test
+  public void asInt() {
+    assertEquals(92, new JsonNumber("92").asInt());
+  }
 }
