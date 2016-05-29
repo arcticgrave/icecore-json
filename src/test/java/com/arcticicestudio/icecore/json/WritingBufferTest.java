@@ -120,6 +120,13 @@ public class WritingBufferTest {
     assertEquals(createString(BUFFER_SIZE + 1), wrapped.toString());
   }
 
+  @Test
+  public void testWriteString() throws IOException {
+    writer.write("foobar", 1, 3);
+    writer.flush();
+    assertEquals("oob", wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
