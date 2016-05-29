@@ -40,6 +40,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 /**
@@ -142,5 +143,12 @@ public class JsonArrayTest {
     Iterator<JsonValue> iterator = array.iterator();
     iterator.next();
     iterator.remove();
+  }
+
+  @Test(expected = ConcurrentModificationException.class)
+  public void iteratorDetectsConcurrentModification() {
+    Iterator<JsonValue> iterator = array.iterator();
+    array.add(92);
+    iterator.next();
   }
 }
