@@ -32,7 +32,10 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+
 import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests the JSON array structure representation class {@link JsonArray}.
@@ -47,5 +50,14 @@ public class JsonArrayTest {
   @Before
   public void setUp() {
     array = new JsonArray();
+  }
+
+  @Test
+  public void copyConstructorFailsWithNull() {
+    assertException(NullPointerException.class, "array is null", new Runnable() {
+      public void run() {
+        new JsonArray(null);
+      }
+    });
   }
 }
