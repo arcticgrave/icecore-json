@@ -258,4 +258,10 @@ public class JsonObjectTest {
   public void getLongReturnsDefaultForMissingMember() {
     assertEquals(92l, object.getLong("yogurt", 92l));
   }
+
+  @Test
+  public void getFloatReturnsValueFromMember() {
+    object.add("yogurt", 3.14f);
+    assertEquals(3.14f, object.getFloat("yogurt", 1.41f), 0);
+  }
 }
