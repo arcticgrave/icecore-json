@@ -35,8 +35,11 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.json;
 
+import org.hamcrest.core.StringStartsWith;
+
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
@@ -48,6 +51,16 @@ import java.io.IOException;
  */
 
 public class JsonParserTest {
+
+  private static void assertParseException(int offset, String message, final String json) {
+    ParseException exception = assertException(ParseException.class, new Runnable() {
+      public void run() {
+        parse(json);
+      }
+    });
+    assertEquals(offset, exception.getOffset());
+    assertThat(exception.getMessage(), StringStartsWith.startsWith(message + " at"));
+  }
 
   private static void assertParseException(int offset, int line, int column, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
