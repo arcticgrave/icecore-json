@@ -148,4 +148,7 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\u2028coconut\\u2029\"", output.toString());
   }
 
+  private static String string(char... chars) {
+    return String.valueOf(chars);
+  }
 }
