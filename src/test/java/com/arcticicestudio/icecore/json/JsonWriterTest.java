@@ -160,6 +160,12 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\u001bcoconut\"", output.toString());
   }
 
+  @Test
+  public void escapesControlCharacters() throws IOException {
+    writer.writeString(string((char)1, (char)8, (char)15, (char)16, (char)31));
+    assertEquals("\"\\u0001\\u0008\\u000f\\u0010\\u001f\"", output.toString());
+  }
+
   private static String string(char... chars) {
     return String.valueOf(chars);
   }
