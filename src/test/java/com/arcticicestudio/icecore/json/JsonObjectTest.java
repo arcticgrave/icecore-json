@@ -464,4 +464,9 @@ public class JsonObjectTest {
     object.set("a", 92l);
     assertEquals("{\"a\":92}", object.toString());
   }
+
+  @Test
+  public void setLongEnablesChaining() {
+    assertSame(object, object.set("a", 92l));
+  }
 }
