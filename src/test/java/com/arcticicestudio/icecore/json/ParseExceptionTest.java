@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 20:37 UTC+0200       +
-modified  2016-05-29 20:38 UTC+0200       +
+modified  2016-05-29 20:39 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -52,5 +52,11 @@ public class ParseExceptionTest {
     assertEquals(17, exception.getOffset());
     assertEquals(23, exception.getLine());
     assertEquals(42, exception.getColumn());
+  }
+
+  @Test
+  public void message() {
+    ParseException exception = new ParseException("Yogurt", 17, 23, 42);
+    assertEquals("Yogurt at 23:42", exception.getMessage());
   }
 }
