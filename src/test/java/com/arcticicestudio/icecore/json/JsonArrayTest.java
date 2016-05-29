@@ -310,4 +310,12 @@ public class JsonArrayTest {
     innerArray.add(92);
     assertEquals("[[92]]", array.toString());
   }
+
+  @Test
+  public void addJsonNestedObject() {
+    JsonObject innerObject = new JsonObject();
+    innerObject.add("a", 92);
+    array.add(innerObject);
+    assertEquals("[{\"a\":92}]", array.toString());
+  }
 }
