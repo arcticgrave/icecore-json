@@ -297,4 +297,9 @@ public class JsonObjectTest {
     object.add("yogurt", "coconut");
     assertEquals("coconut", object.getString("yogurt", "chocolate"));
   }
+
+  @Test
+  public void getStringReturnsDefaultForMissingMember() {
+    assertEquals("chocolate", object.getString("yogurt", "chocolate"));
+  }
 }
