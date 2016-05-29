@@ -159,4 +159,13 @@ public class JsonValueTest {
       }
     });
   }
+
+  @Test
+  public void asDoubleFailsOnIncompatibleType() {
+    assertException(UnsupportedOperationException.class, "Not a number: null", new Runnable() {
+      public void run() {
+        Json.NULL.asDouble();
+      }
+    });
+  }
 }
