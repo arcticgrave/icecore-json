@@ -868,6 +868,13 @@ public class JsonObjectTest {
     assertEquals(92, deserializedObject.get("yogurt").asInt());
   }
 
+  @Test
+  public void memberReturnsNameAndValue() {
+    Member member = new Member("a", Json.TRUE);
+    assertEquals("a", member.getName());
+    assertEquals(Json.TRUE, member.getValue());
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
