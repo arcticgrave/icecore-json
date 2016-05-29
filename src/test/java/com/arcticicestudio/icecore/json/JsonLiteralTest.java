@@ -161,4 +161,11 @@ public class JsonLiteralTest {
     assertTrue(serializeAndDeserialize(TRUE).isBoolean());
     assertTrue(serializeAndDeserialize(TRUE).isTrue());
   }
+
+  @Test
+  public void FALSEIsSerializable() throws Exception {
+    assertEquals(FALSE, serializeAndDeserialize(FALSE));
+    assertTrue(serializeAndDeserialize(FALSE).isBoolean());
+    assertTrue(serializeAndDeserialize(FALSE).isFalse());
+  }
 }
