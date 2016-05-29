@@ -34,10 +34,22 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import org.junit.Before;
+
+import java.io.StringWriter;
+
 /**
  * Tests the JSON writer pretty print class {@link PrettyPrint}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class PrettyPrintTest {}
+public class PrettyPrintTest {
+
+  private StringWriter output;
+
+  @Before
+  public void setUp() {
+    output = new StringWriter();
+  }
+}
