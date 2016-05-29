@@ -34,10 +34,23 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 /**
  * Tests the JSON parser exception class {@link ParseException}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class ParseExceptionTest {}
+public class ParseExceptionTest {
+
+  @Test
+  public void position() {
+    ParseException exception = new ParseException("Yogurt", 17, 23, 42);
+    assertEquals(17, exception.getOffset());
+    assertEquals(23, exception.getLine());
+    assertEquals(42, exception.getColumn());
+  }
+}
