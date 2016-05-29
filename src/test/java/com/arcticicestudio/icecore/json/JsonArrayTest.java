@@ -274,4 +274,10 @@ public class JsonArrayTest {
     array.add(new JsonArray());
     assertEquals("[[]]", array.toString());
   }
+
+  @Test
+  public void addJsonObject() {
+    array.add(new JsonObject());
+    assertEquals("[{}]", array.toString());
+  }
 }
