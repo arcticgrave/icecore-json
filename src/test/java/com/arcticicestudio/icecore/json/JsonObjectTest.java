@@ -573,4 +573,13 @@ public class JsonObjectTest {
     object.remove("a");
     assertEquals("{}", object.toString());
   }
+
+  @Test
+  public void removeRemovesOnlyMatchingMember() {
+    object.add("a", 92);
+    object.add("b", 42);
+    object.add("c", true);
+    object.remove("b");
+    assertEquals("{\"a\":92,\"c\":true}", object.toString());
+  }
 }
