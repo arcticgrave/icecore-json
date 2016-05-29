@@ -401,4 +401,9 @@ public class JsonObjectTest {
     object.add("a", new JsonObject());
     assertEquals("{\"a\":{}}", object.toString());
   }
+
+  @Test
+  public void addJsonEnablesChaining() {
+    assertSame(object, object.add("a", Json.NULL));
+  }
 }
