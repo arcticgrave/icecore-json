@@ -292,6 +292,11 @@ public class JsonParserTest {
     assertEquals("{}", parse("{}").toString());
   }
 
+  @Test
+  public void objectsSingleValue() {
+    assertEquals("{\"yogurt\":92}", parse("{\"yogurt\":92}").toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
