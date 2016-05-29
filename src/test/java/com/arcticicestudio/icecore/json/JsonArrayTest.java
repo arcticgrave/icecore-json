@@ -135,4 +135,12 @@ public class JsonArrayTest {
     assertEquals(Json.TRUE, iterator.next());
     assertFalse(iterator.hasNext());
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void iteratorDoesNotAllowModification() {
+    array.add(92);
+    Iterator<JsonValue> iterator = array.iterator();
+    iterator.next();
+    iterator.remove();
+  }
 }
