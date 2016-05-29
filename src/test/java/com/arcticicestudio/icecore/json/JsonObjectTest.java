@@ -242,4 +242,9 @@ public class JsonObjectTest {
     object.add("yogurt", 92);
     assertEquals(92, object.getInt("yogurt", 42));
   }
+
+  @Test
+  public void getIntReturnsDefaultForMissingMember() {
+    assertEquals(92, object.getInt("yogurt", 92));
+  }
 }
