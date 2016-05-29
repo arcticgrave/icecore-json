@@ -264,4 +264,9 @@ public class JsonObjectTest {
     object.add("yogurt", 3.14f);
     assertEquals(3.14f, object.getFloat("yogurt", 1.41f), 0);
   }
+
+  @Test
+  public void getFloatReturnsDefaultForMissingMember() {
+    assertEquals(3.14f, object.getFloat("yogurt", 3.14f), 0);
+  }
 }
