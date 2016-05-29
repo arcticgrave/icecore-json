@@ -395,4 +395,10 @@ public class JsonObjectTest {
     object.add("a", new JsonArray());
     assertEquals("{\"a\":[]}", object.toString());
   }
+
+  @Test
+  public void addJsonObject() {
+    object.add("a", new JsonObject());
+    assertEquals("{\"a\":{}}", object.toString());
+  }
 }
