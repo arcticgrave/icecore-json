@@ -344,4 +344,10 @@ public class JsonObjectTest {
   public void addFloatEnablesChaining() {
     assertSame(object, object.add("a", 3.14f));
   }
+
+  @Test
+  public void addDouble() {
+    object.add("a", 3.14d);
+    assertEquals("{\"a\":3.14}", object.toString());
+  }
 }
