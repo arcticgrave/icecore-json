@@ -130,6 +130,13 @@ public class JsonParserTest {
     assertEquals("[\"lorem ipsum dolor sit amet\"]", value.toString());
   }
 
+  @Test
+  public void parseHandlesNumbersThatExceedBufferSize() throws IOException {
+    String input = "[ 3.141592653589 ]";
+    JsonValue value = new JsonParser(new StringReader(input), 3).parse();
+    assertEquals("[3.141592653589]", value.toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
