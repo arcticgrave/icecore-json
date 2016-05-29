@@ -418,4 +418,11 @@ public class JsonArrayTest {
     array.set(0, new JsonArray());
     assertEquals("[[]]", array.toString());
   }
+
+  @Test
+  public void setJsonObject() {
+    array.add(false);
+    array.set(0, new JsonObject());
+    assertEquals("[{}]", array.toString());
+  }
 }
