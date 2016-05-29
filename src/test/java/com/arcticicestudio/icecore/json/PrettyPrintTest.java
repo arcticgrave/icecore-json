@@ -36,8 +36,11 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.PrettyPrint.indentWithSpaces;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+
 import static java.util.Locale.US;
 
 import org.junit.Before;
@@ -45,6 +48,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.io.Writer;
 
 /**
  * Tests the JSON writer pretty print class {@link PrettyPrint}.
@@ -117,5 +121,14 @@ public class PrettyPrintTest {
     } catch (IllegalArgumentException ex) {
       assertTrue(ex.getMessage().toLowerCase(US).contains("negative"));
     }
+  }
+
+  @Test
+  public void indentWithSpacesCreatesIndependentInstances() {
+    Writer writer = mock(Writer.class);
+    WriterConfig config = indentWithSpaces(1);
+    Object instance1 = config.createWriter(writer);
+    Object instance2 = config.createWriter(writer);
+    assertNotSame(instance1, instance2);
   }
 }
