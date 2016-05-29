@@ -147,4 +147,11 @@ public class JsonTest {
     assertSame(Json.TRUE, Json.value(true));
     assertSame(Json.FALSE, Json.value(false));
   }
+
+  @Test
+  public void valueString() {
+    assertEquals("", Json.value("").asString());
+    assertEquals("Yogurt", Json.value("Yogurt").asString());
+    assertEquals("\"Yogurt\"", Json.value("\"Yogurt\"").asString());
+  }
 }
