@@ -142,4 +142,10 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\tcoconut\"", output.toString());
   }
 
+  @Test
+  public void escapesSpecialCharacters() throws IOException {
+    writer.writeString("yogurt\u2028coconut\u2029");
+    assertEquals("\"yogurt\\u2028coconut\\u2029\"", output.toString());
+  }
+
 }
