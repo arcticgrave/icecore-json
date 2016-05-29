@@ -413,6 +413,14 @@ public class JsonParserTest {
     assertEquals("\uabcdx", parse("\"\\uabcdx\"").asString());
   }
 
+  @Test
+  public void stringsIllegalUnicodeEscapesAreRejected() {
+    assertParseException(3, "Expected hexadecimal digit", "\"\\u \"");
+    assertParseException(3, "Expected hexadecimal digit", "\"\\ux\"");
+    assertParseException(5, "Expected hexadecimal digit", "\"\\u20 \"");
+    assertParseException(6, "Expected hexadecimal digit", "\"\\u000x\"");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
