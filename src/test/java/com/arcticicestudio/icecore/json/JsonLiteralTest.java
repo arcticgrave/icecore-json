@@ -88,4 +88,12 @@ public class JsonLiteralTest {
     verify(writer).writeLiteral("null");
     verifyNoMoreInteractions(writer);
   }
+
+  @Test
+  public void TRUEWrite() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    TRUE.write(writer);
+    verify(writer).writeLiteral("true");
+    verifyNoMoreInteractions(writer);
+  }
 }
