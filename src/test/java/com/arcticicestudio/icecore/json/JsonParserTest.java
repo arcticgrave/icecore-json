@@ -433,6 +433,18 @@ public class JsonParserTest {
     assertParseException(10, "Unexpected end of input", "\"yogurt\\u0000");
   }
 
+  @Test
+  public void numbersInteger() {
+    assertEquals(new JsonNumber("0"), parse("0"));
+    assertEquals(new JsonNumber("-0"), parse("-0"));
+    assertEquals(new JsonNumber("1"), parse("1"));
+    assertEquals(new JsonNumber("-1"), parse("-1"));
+    assertEquals(new JsonNumber("23"), parse("23"));
+    assertEquals(new JsonNumber("-23"), parse("-23"));
+    assertEquals(new JsonNumber("1234567890"), parse("1234567890"));
+    assertEquals(new JsonNumber("123456789012345678901234567890"), parse("123456789012345678901234567890"));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
