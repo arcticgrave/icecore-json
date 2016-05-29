@@ -280,4 +280,9 @@ public class JsonArrayTest {
     array.add(new JsonObject());
     assertEquals("[{}]", array.toString());
   }
+
+  @Test
+  public void addJsonEnablesChaining() {
+    assertSame(array, array.add(Json.NULL));
+  }
 }
