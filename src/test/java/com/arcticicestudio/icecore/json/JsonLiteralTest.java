@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 09:32 UTC+0200       +
-modified  2016-05-29 09:33 UTC+0200       +
+modified  2016-05-29 09:43 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -38,7 +38,9 @@ import static com.arcticicestudio.icecore.json.Json.NULL;
 import static com.arcticicestudio.icecore.json.Json.TRUE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -167,5 +169,13 @@ public class JsonLiteralTest {
     assertEquals(FALSE, serializeAndDeserialize(FALSE));
     assertTrue(serializeAndDeserialize(FALSE).isBoolean());
     assertTrue(serializeAndDeserialize(FALSE).isFalse());
+  }
+
+  @Test
+  public void sameAfterDeserialization() throws Exception {
+    JsonArray array = new JsonArray().add(NULL).add(NULL);
+    JsonArray deserialized = serializeAndDeserialize(array);
+    assertNotSame(NULL, deserialized.get(0));
+    assertSame(deserialized.get(0), deserialized.get(1));
   }
 }
