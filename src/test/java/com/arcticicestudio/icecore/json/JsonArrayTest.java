@@ -525,4 +525,9 @@ public class JsonArrayTest {
   public void asArray() {
     assertSame(array, array.asArray());
   }
+
+  @Test
+  public void equalsTrueForSameInstance() {
+    assertTrue(array.equals(array));
+  }
 }
