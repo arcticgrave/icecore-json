@@ -176,4 +176,14 @@ public class JsonObjectTest {
     Iterator<Member> iterator = object.iterator();
     assertEquals(new Member("a", Json.TRUE), iterator.next());
   }
+
+  @Test
+  public void iteratorNextProgressesToNextValue() {
+    object.add("a", true);
+    object.add("b", false);
+    Iterator<Member> iterator = object.iterator();
+    iterator.next();
+    assertTrue(iterator.hasNext());
+    assertEquals(new Member("b", Json.FALSE), iterator.next());
+  }
 }
