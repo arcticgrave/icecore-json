@@ -887,6 +887,13 @@ public class JsonObjectTest {
     assertTrue(member.equals(new Member("a", Json.TRUE)));
   }
 
+  @Test
+  public void memberEqualsFalseForDifferingObjects() {
+    Member member = new Member("a", Json.TRUE);
+    assertFalse(member.equals(new Member("b", Json.TRUE)));
+    assertFalse(member.equals(new Member("a", Json.FALSE)));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
