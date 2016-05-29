@@ -43,6 +43,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * Tests the JSON object structure representation class {@link JsonObject}.
  *
@@ -129,5 +131,13 @@ public class JsonObjectTest {
   @Test
   public void namesEmptyAfterCreation() {
     assertTrue(object.names().isEmpty());
+  }
+
+  @Test
+  public void namesContainsNameAfterAdd() {
+    object.add("yogurt", true);
+    List<String> names = object.names();
+    assertEquals(1, names.size());
+    assertEquals("yogurt", names.get(0));
   }
 }
