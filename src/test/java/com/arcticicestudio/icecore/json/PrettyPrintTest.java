@@ -63,4 +63,10 @@ public class PrettyPrintTest {
     new JsonArray().writeTo(output, indentWithSpaces(2));
     assertEquals("[\n  \n]", output.toString());
   }
+
+  @Test
+  public void indentWithSpacesEmptyObject() throws IOException {
+    new JsonObject().writeTo(output, indentWithSpaces(2));
+    assertEquals("{\n  \n}", output.toString());
+  }
 }
