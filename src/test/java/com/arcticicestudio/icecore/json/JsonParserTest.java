@@ -513,6 +513,11 @@ public class JsonParserTest {
     assertParseException(4, "Unexpected character", "nullx");
   }
 
+  @Test
+  public void trueComplete() {
+    assertSame(Json.TRUE, parse("true"));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
