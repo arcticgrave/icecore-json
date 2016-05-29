@@ -174,4 +174,9 @@ public class JsonNumberTest {
   public void equalsFalseForSubclass() {
     assertFalse(new JsonNumber("92").equals(new JsonNumber("92") {}));
   }
+
+  @Test
+  public void hashCodeEqualsForEqualStrings() {
+    assertTrue(new JsonNumber("92").hashCode() == new JsonNumber("92").hashCode());
+  }
 }
