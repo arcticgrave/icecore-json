@@ -557,4 +557,13 @@ public class JsonObjectTest {
     object.set("a", Json.TRUE);
     assertEquals("{\"a\":1,\"a\":true}", object.toString());
   }
+
+  @Test
+  public void removeFailsWithNullName() {
+    assertException(NullPointerException.class, "name is null", new Runnable() {
+      public void run() {
+        object.remove(null);
+      }
+    });
+  }
 }
