@@ -140,4 +140,10 @@ public class JsonNumberTest {
     double result = new JsonNumber("92.05").asDouble();
     assertEquals(92.05, result, 0);
   }
+
+  @Test
+  public void asDoubleReturnsInfinityForExceedingValues() {
+    assertEquals(Double.POSITIVE_INFINITY, new JsonNumber("1e500").asDouble(), 0);
+    assertEquals(Double.NEGATIVE_INFINITY, new JsonNumber("-1e500").asDouble(), 0);
+  }
 }
