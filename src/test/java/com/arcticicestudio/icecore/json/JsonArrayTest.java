@@ -171,4 +171,10 @@ public class JsonArrayTest {
     array.add(true);
     assertEquals(array.values(), values);
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void valuesPreventsModification() {
+    List<JsonValue> values = array.values();
+    values.add(Json.TRUE);
+  }
 }
