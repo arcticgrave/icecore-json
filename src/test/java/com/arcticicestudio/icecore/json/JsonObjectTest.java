@@ -253,4 +253,9 @@ public class JsonObjectTest {
     object.add("yogurt", 92l);
     assertEquals(92l, object.getLong("yogurt", 42l));
   }
+
+  @Test
+  public void getLongReturnsDefaultForMissingMember() {
+    assertEquals(92l, object.getLong("yogurt", 92l));
+  }
 }
