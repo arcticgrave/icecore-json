@@ -493,6 +493,11 @@ public class JsonParserTest {
     assertParseException(5, "Unexpected end of input", "1.0e-");
   }
 
+  @Test
+  public void nullComplete() {
+    assertEquals(Json.NULL, parse("null"));
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
