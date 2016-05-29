@@ -799,6 +799,19 @@ public class JsonObjectTest {
     assertEquals(92, copy.get("name"));
   }
 
+  @Test
+  public void hashIndexTableAdd() {
+    HashIndexTable indexTable = new HashIndexTable();
+    indexTable.add("name-0", 0);
+    indexTable.add("name-1", 1);
+    indexTable.add("name-fe", 0xfe);
+    indexTable.add("name-ff", 0xff);
+    assertEquals(0, indexTable.get("name-0"));
+    assertEquals(1, indexTable.get("name-1"));
+    assertEquals(0xfe, indexTable.get("name-fe"));
+    assertEquals(-1, indexTable.get("name-ff"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
