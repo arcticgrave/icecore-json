@@ -820,6 +820,14 @@ public class JsonObjectTest {
     assertEquals(92, indexTable.get("name"));
   }
 
+  @Test
+  public void hashIndexTableAddClearsPreviousValueIfIndexExceeds0xff() {
+    HashIndexTable indexTable = new HashIndexTable();
+    indexTable.add("name", 92);
+    indexTable.add("name", 300);
+    assertEquals(-1, indexTable.get("name"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
