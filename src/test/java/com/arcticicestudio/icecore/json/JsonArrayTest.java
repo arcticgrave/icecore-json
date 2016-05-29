@@ -515,4 +515,9 @@ public class JsonArrayTest {
     inOrder.verify(writer).writeArrayClose();
     inOrder.verifyNoMoreInteractions();
   }
+
+  @Test
+  public void isArray() {
+    assertTrue(array.isArray());
+  }
 }
