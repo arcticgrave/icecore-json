@@ -45,6 +45,7 @@ import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.arcticicestudio.icecore.json.JsonObject.Member;
 
@@ -185,5 +186,11 @@ public class JsonObjectTest {
     iterator.next();
     assertTrue(iterator.hasNext());
     assertEquals(new Member("b", Json.FALSE), iterator.next());
+  }
+
+  @Test(expected = NoSuchElementException.class)
+  public void iteratorNextFailsAtEnd() {
+    Iterator<Member> iterator = object.iterator();
+    iterator.next();
   }
 }
