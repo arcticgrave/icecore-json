@@ -229,6 +229,17 @@ public class JsonParserTest {
     assertTrue(result.isArray());
   }
 
+  @Test
+  public void parseDoesNotFailWithManyEmptyObjects() throws IOException {
+    JsonArray array = new JsonArray();
+    for (int i = 0; i < 1001; i++) {
+      array.add(new JsonObject());
+    }
+    final String input = array.toString();
+    JsonValue result = new JsonParser(input).parse();
+    assertTrue(result.isArray());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
