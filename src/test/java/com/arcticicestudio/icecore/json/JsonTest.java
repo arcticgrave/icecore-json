@@ -224,4 +224,10 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void arrayBoolean() {
+    assertEquals(new JsonArray().add(true), Json.array(true));
+    assertEquals(new JsonArray().add(true).add(false), Json.array(true, false));
+  }
 }
