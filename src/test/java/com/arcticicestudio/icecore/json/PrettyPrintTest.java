@@ -35,6 +35,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.PrettyPrint.indentWithSpaces;
+import static com.arcticicestudio.icecore.json.PrettyPrint.indentWithTabs;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
@@ -130,5 +131,11 @@ public class PrettyPrintTest {
     Object instance1 = config.createWriter(writer);
     Object instance2 = config.createWriter(writer);
     assertNotSame(instance1, instance2);
+  }
+
+  @Test
+  public void indentWithTabsArray() throws IOException {
+    new JsonArray().add(23).add(42).writeTo(output, indentWithTabs());
+    assertEquals("[\n\t23,\n\t42\n]", output.toString());
   }
 }
