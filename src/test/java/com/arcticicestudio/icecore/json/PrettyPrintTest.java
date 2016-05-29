@@ -81,4 +81,10 @@ public class PrettyPrintTest {
     new JsonArray().add(23).add(new JsonArray().add(42)).writeTo(output, indentWithSpaces(2));
     assertEquals("[\n  23,\n  [\n    42\n  ]\n]", output.toString());
   }
+
+  @Test
+  public void indentWithSpacesObject() throws IOException {
+    new JsonObject().add("a", 23).add("b", 42).writeTo(output, indentWithSpaces(2));
+    assertEquals("{\n  \"a\": 23,\n  \"b\": 42\n}", output.toString());
+  }
 }
