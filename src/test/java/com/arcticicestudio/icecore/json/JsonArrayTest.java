@@ -201,4 +201,10 @@ public class JsonArrayTest {
   public void addIntEnablesChaining() {
     assertSame(array, array.add(92));
   }
+
+  @Test
+  public void addLong() {
+    array.add(92l);
+    assertEquals("[92]", array.toString());
+  }
 }
