@@ -43,7 +43,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
 import java.util.List;
+
+import com.arcticicestudio.icecore.json.JsonObject.Member;
 
 /**
  * Tests the JSON object structure representation class {@link JsonObject}.
@@ -158,5 +161,12 @@ public class JsonObjectTest {
   @Test
   public void iteratorIsEmptyAfterCreation() {
     assertFalse(object.iterator().hasNext());
+  }
+
+  @Test
+  public void iteratorHasNextAfterAdd() {
+    object.add("a", true);
+    Iterator<Member> iterator = object.iterator();
+    assertTrue(iterator.hasNext());
   }
 }
