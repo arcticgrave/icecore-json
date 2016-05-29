@@ -544,6 +544,12 @@ public class JsonArrayTest {
   }
 
   @Test
+  public void equalsFalseForDifferentArrays() {
+    assertFalse(array("yogurt", "coconut").equals(array("yogurt", "coconut", "chocolate")));
+    assertFalse(array("yogurt", "coconut").equals(array("coconut", "yogurt")));
+  }
+
+  @Test
   public void equalsFalseForSubclass() {
     assertFalse(array.equals(new JsonArray(array) {}));
   }
