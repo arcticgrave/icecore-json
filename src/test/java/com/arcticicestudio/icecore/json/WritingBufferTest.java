@@ -67,6 +67,13 @@ public class WritingBufferTest {
     assertEquals("", wrapped.toString());
   }
 
+  @Test
+  public void testWriteChar() throws IOException {
+    writer.write('c');
+    writer.flush();
+    assertEquals("c", wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
