@@ -179,4 +179,10 @@ public class JsonTest {
       }
     });
   }
+
+  @Test
+  public void arrayLong() {
+    assertEquals(new JsonArray().add(23l), Json.array(23l));
+    assertEquals(new JsonArray().add(23l).add(42l), Json.array(23l, 42l));
+  }
 }
