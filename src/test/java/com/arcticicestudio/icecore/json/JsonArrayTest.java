@@ -35,6 +35,7 @@ package com.arcticicestudio.icecore.json;
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -194,5 +195,10 @@ public class JsonArrayTest {
   public void addInt() {
     array.add(92);
     assertEquals("[92]", array.toString());
+  }
+
+  @Test
+  public void addIntEnablesChaining() {
+    assertSame(array, array.add(92));
   }
 }
