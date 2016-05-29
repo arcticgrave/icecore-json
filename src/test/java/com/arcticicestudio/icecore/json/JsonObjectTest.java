@@ -52,6 +52,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import com.arcticicestudio.icecore.json.JsonObject.HashIndexTable;
 import com.arcticicestudio.icecore.json.JsonObject.Member;
 import org.mockito.InOrder;
 
@@ -788,6 +789,14 @@ public class JsonObjectTest {
     }
     object.add("a", true);
     assertEquals(257, object.indexOf("a"));
+  }
+
+  @Test
+  public void hashIndexTableCopyConstructor() {
+    HashIndexTable original = new HashIndexTable();
+    original.add("name", 92);
+    HashIndexTable copy = new HashIndexTable(original);
+    assertEquals(92, copy.get("name"));
   }
 
   private static JsonObject object(String... namesAndValues) {
