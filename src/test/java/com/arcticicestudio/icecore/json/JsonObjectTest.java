@@ -361,4 +361,9 @@ public class JsonObjectTest {
     object.add("a", true);
     assertEquals("{\"a\":true}", object.toString());
   }
+
+  @Test
+  public void addBooleanEnablesChaining() {
+    assertSame(object, object.add("a", true));
+  }
 }
