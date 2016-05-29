@@ -311,4 +311,10 @@ public class JsonObjectTest {
       }
     });
   }
+
+  @Test
+  public void addInt() {
+    object.add("a", 92);
+    assertEquals("{\"a\":92}", object.toString());
+  }
 }
