@@ -894,6 +894,12 @@ public class JsonObjectTest {
     assertFalse(member.equals(new Member("a", Json.FALSE)));
   }
 
+  @Test
+  public void memberEqualsFalseForNull() {
+    Member member = new Member("a", Json.TRUE);
+    assertFalse(member.equals(null));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
