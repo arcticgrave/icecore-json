@@ -317,6 +317,18 @@ public class JsonParserTest {
       parse("{\"yogurt\":[{\"coconut\": {\"chocolate\": [[42]]}}]}").toString());
   }
 
+  @Test
+  public void objectsIllegalSyntax() {
+    assertParseException(1, "Expected name", "{,}");
+    assertParseException(1, "Expected name", "{:}");
+    assertParseException(1, "Expected name", "{92}");
+    assertParseException(4, "Expected ':'", "{\"a\"}");
+    assertParseException(5, "Expected ':'", "{\"a\" \"b\"}");
+    assertParseException(5, "Expected value", "{\"a\":}");
+    assertParseException(8, "Expected name", "{\"a\":92,}");
+    assertParseException(8, "Expected name", "{\"a\":92,42");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
