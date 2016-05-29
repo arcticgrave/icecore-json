@@ -240,6 +240,11 @@ public class JsonParserTest {
     assertTrue(result.isArray());
   }
 
+  @Test
+  public void arraysEmpty() {
+    assertEquals("[]", parse("[]").toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
