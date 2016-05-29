@@ -538,6 +538,12 @@ public class JsonArrayTest {
   }
 
   @Test
+  public void equalsTrueForEqualArrays() {
+    assertTrue(array().equals(array()));
+    assertTrue(array("yogurt", "coconut").equals(array("yogurt", "coconut")));
+  }
+
+  @Test
   public void equalsFalseForSubclass() {
     assertFalse(array.equals(new JsonArray(array) {}));
   }
