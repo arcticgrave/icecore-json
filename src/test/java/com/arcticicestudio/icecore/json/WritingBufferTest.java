@@ -113,6 +113,13 @@ public class WritingBufferTest {
     assertEquals(createString(BUFFER_SIZE - 2) + "oob", wrapped.toString());
   }
 
+  @Test
+  public void testWriteCharArrayExceedingBuffer() throws IOException {
+    writer.write(createChars(BUFFER_SIZE + 1));
+    writer.flush();
+    assertEquals(createString(BUFFER_SIZE + 1), wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
