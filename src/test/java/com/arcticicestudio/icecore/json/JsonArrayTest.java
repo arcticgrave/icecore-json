@@ -83,4 +83,11 @@ public class JsonArrayTest {
     JsonArray unmodifiableArray = JsonArray.unmodifiableArray(array);
     assertEquals(array.values(), unmodifiableArray.values());
   }
+
+  @Test
+  public void unmodifiableArrayReflectsChanges() {
+    JsonArray unmodifiableArray = JsonArray.unmodifiableArray(array);
+    array.add(92);
+    assertEquals(array.values(), unmodifiableArray.values());
+  }
 }
