@@ -406,4 +406,13 @@ public class JsonObjectTest {
   public void addJsonEnablesChaining() {
     assertSame(object, object.add("a", Json.NULL));
   }
+
+  @Test
+  public void addJsonFailsWithNull() {
+    assertException(NullPointerException.class, "value is null", new Runnable() {
+      public void run() {
+        object.add("a", (JsonValue)null);
+      }
+    });
+  }
 }
