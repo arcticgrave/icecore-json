@@ -375,6 +375,19 @@ public class JsonParserTest {
     assertParseException(3, "Expected valid string character", "\"--\u001f--\"");
   }
 
+  @Test
+  public void stringsValidEscapesAreAccepted() {
+    /* Valid escapes are \" \\ \/ \b \f \n \r \t and unicode escapes */
+    assertEquals(" \" ", parse("\" \\\" \"").asString());
+    assertEquals(" \\ ", parse("\" \\\\ \"").asString());
+    assertEquals(" / ", parse("\" \\/ \"").asString());
+    assertEquals(" \u0008 ", parse("\" \\b \"").asString());
+    assertEquals(" \u000c ", parse("\" \\f \"").asString());
+    assertEquals(" \r ", parse("\" \\r \"").asString());
+    assertEquals(" \n ", parse("\" \\n \"").asString());
+    assertEquals(" \t ", parse("\" \\t \"").asString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
