@@ -378,4 +378,9 @@ public class JsonObjectTest {
     object.add("a", (String)null);
     assertEquals("{\"a\":null}", object.toString());
   }
+
+  @Test
+  public void addStringEnablesChaining() {
+    assertSame(object, object.add("a", "yogurt"));
+  }
 }
