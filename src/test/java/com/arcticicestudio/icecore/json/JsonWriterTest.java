@@ -105,4 +105,10 @@ public class JsonWriterTest {
     writer.writeMemberName("");
     assertEquals("\"\"", output.toString());
   }
+
+  @Test
+  public void writeMemberNameEscapesBackslashes() throws IOException {
+    writer.writeMemberName("yogurt\\coconut");
+    assertEquals("\"yogurt\\\\coconut\"", output.toString());
+  }
 }
