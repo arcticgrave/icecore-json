@@ -37,6 +37,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 
 import org.junit.Before;
@@ -483,6 +484,18 @@ public class JsonArrayTest {
     array.write(writer);
     InOrder inOrder = inOrder(writer);
     inOrder.verify(writer).writeArrayOpen();
+    inOrder.verify(writer).writeArrayClose();
+    inOrder.verifyNoMoreInteractions();
+  }
+
+  @Test
+  public void writeWithSingleValue() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    array.add(92);
+    array.write(writer);
+    InOrder inOrder = inOrder(writer);
+    inOrder.verify(writer).writeArrayOpen();
+    inOrder.verify(writer).writeNumber("92");
     inOrder.verify(writer).writeArrayClose();
     inOrder.verifyNoMoreInteractions();
   }
