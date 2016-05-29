@@ -230,4 +230,13 @@ public class JsonTest {
     assertEquals(new JsonArray().add(true), Json.array(true));
     assertEquals(new JsonArray().add(true).add(false), Json.array(true, false));
   }
+
+  @Test
+  public void arrayBooleanFailsWithNull() {
+    TestUtil.assertException(NullPointerException.class, "values is null", new Runnable() {
+      public void run() {
+        Json.array((boolean[])null);
+      }
+    });
+  }
 }
