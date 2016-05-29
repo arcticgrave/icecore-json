@@ -250,6 +250,11 @@ public class JsonParserTest {
     assertEquals("[92]", parse("[92]").toString());
   }
 
+  @Test
+  public void arraysMultipleValues() {
+    assertEquals("[92,42]", parse("[92,42]").toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
