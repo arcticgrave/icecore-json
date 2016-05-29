@@ -34,7 +34,10 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+
 import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests the JSON object structure representation class {@link JsonObject}.
@@ -49,5 +52,14 @@ public class JsonObjectTest {
   @Before
   public void setUp() {
     object = new JsonObject();
+  }
+
+  @Test
+  public void copyConstructorFailsWithNull() {
+    assertException(NullPointerException.class, "object is null", new Runnable() {
+      public void run() {
+        new JsonObject(null);
+      }
+    });
   }
 }
