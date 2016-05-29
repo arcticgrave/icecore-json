@@ -179,4 +179,9 @@ public class JsonNumberTest {
   public void hashCodeEqualsForEqualStrings() {
     assertTrue(new JsonNumber("92").hashCode() == new JsonNumber("92").hashCode());
   }
+
+  @Test
+  public void hashCodeDiffersForDifferentStrings() {
+    assertFalse(new JsonNumber("92").hashCode() == new JsonNumber("42").hashCode());
+  }
 }
