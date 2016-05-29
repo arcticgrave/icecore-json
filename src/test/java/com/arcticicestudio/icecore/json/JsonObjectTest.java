@@ -154,4 +154,9 @@ public class JsonObjectTest {
     List<String> names = object.names();
     names.add("yogurt");
   }
+
+  @Test
+  public void iteratorIsEmptyAfterCreation() {
+    assertFalse(object.iterator().hasNext());
+  }
 }
