@@ -398,4 +398,10 @@ public class JsonArrayTest {
     array.set(0, "yogurt");
     assertEquals("[\"yogurt\"]", array.toString());
   }
+
+  @Test
+  public void setStringEnablesChaining() {
+    array.add(false);
+    assertSame(array, array.set(0, "yogurt"));
+  }
 }
