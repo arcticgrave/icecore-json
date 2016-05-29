@@ -32,6 +32,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static com.arcticicestudio.icecore.json.TestUtil.serializeAndDeserialize;
 import static com.arcticicestudio.icecore.json.Json.FALSE;
 import static com.arcticicestudio.icecore.json.Json.NULL;
 import static com.arcticicestudio.icecore.json.Json.TRUE;
@@ -146,5 +147,11 @@ public class JsonLiteralTest {
     assertFalse(FALSE.equals(TRUE));
     assertFalse(FALSE.equals(Boolean.FALSE));
     assertFalse(NULL.equals(Json.value("false")));
+  }
+
+  @Test
+  public void NULLIsSerializable() throws Exception {
+    assertEquals(NULL, serializeAndDeserialize(NULL));
+    assertTrue(serializeAndDeserialize(NULL).isNull());
   }
 }
