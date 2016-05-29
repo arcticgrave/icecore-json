@@ -141,4 +141,13 @@ public class JsonValueTest {
       }
     });
   }
+
+  @Test
+  public void asLongFailsOnIncompatibleType() {
+    assertException(UnsupportedOperationException.class, "Not a number: null", new Runnable() {
+      public void run() {
+        Json.NULL.asLong();
+      }
+    });
+  }
 }
