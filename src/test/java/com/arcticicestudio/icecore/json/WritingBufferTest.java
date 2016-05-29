@@ -34,8 +34,12 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
-import org.junit.Before;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Arrays;
 
@@ -55,6 +59,12 @@ public class WritingBufferTest {
   public void setUp() {
     wrapped = new StringWriter();
     writer = new WritingBuffer(wrapped, BUFFER_SIZE);
+  }
+
+  @Test
+  public void testFlushEmpty() throws IOException {
+    writer.flush();
+    assertEquals("", wrapped.toString());
   }
 
   private static String createString(int length) {
