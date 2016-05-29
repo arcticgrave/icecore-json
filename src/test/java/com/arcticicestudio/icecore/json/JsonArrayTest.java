@@ -108,4 +108,9 @@ public class JsonArrayTest {
     array.add(true);
     assertFalse(array.isEmpty());
   }
+
+  @Test
+  public void sizeIsZeroAfterCreation() {
+    assertEquals(0, array.size());
+  }
 }
