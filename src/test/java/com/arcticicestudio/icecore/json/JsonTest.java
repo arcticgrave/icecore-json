@@ -34,10 +34,22 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
 /**
  * Tests the JSON API class {@link Json}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonTest {}
+public class JsonTest {
+
+  @Test
+  public void literalConstants() {
+    assertTrue(Json.NULL.isNull());
+    assertTrue(Json.TRUE.isTrue());
+    assertTrue(Json.FALSE.isFalse());
+  }
+}
