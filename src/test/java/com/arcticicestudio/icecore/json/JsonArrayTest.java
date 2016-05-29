@@ -113,4 +113,10 @@ public class JsonArrayTest {
   public void sizeIsZeroAfterCreation() {
     assertEquals(0, array.size());
   }
+
+  @Test
+  public void sizeOsOneAfterAdd() {
+    array.add(true);
+    assertEquals(1, array.size());
+  }
 }
