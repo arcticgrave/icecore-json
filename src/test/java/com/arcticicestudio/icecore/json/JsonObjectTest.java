@@ -193,4 +193,12 @@ public class JsonObjectTest {
     Iterator<Member> iterator = object.iterator();
     iterator.next();
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void iteratorDoesNotAllowModification() {
+    object.add("a", 92);
+    Iterator<Member> iterator = object.iterator();
+    iterator.next();
+    iterator.remove();
+  }
 }
