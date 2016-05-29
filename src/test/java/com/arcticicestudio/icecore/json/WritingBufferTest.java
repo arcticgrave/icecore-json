@@ -57,6 +57,10 @@ public class WritingBufferTest {
     writer = new WritingBuffer(wrapped, BUFFER_SIZE);
   }
 
+  private static String createString(int length) {
+    return new String(createChars(length));
+  }
+
   private static char[] createChars(int length) {
     char[] array = new char[length];
     Arrays.fill(array, 'x');
