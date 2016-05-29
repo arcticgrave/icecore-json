@@ -264,4 +264,13 @@ public class JsonTest {
   public void parseString() {
     assertEquals(Json.value(23), Json.parse("23"));
   }
+
+  @Test
+  public void parseStringFailsWithNull() {
+    TestUtil.assertException(NullPointerException.class, "string is null", new Runnable() {
+      public void run() {
+        Json.parse((String)null);
+      }
+    });
+  }
 }
