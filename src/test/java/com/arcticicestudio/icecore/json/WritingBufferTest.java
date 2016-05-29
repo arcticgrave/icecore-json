@@ -74,6 +74,14 @@ public class WritingBufferTest {
     assertEquals("c", wrapped.toString());
   }
 
+  @Test
+  public void testWriteCharFit() throws IOException {
+    writer.write(createString(BUFFER_SIZE - 1));
+    writer.write('c');
+    writer.flush();
+    assertEquals(createString(BUFFER_SIZE - 1) + "c", wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
