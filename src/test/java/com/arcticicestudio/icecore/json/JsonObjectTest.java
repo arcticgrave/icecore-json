@@ -812,6 +812,14 @@ public class JsonObjectTest {
     assertEquals(-1, indexTable.get("name-ff"));
   }
 
+  @Test
+  public void hashIndexTableAddOverwritesPreviousValue() {
+    HashIndexTable indexTable = new HashIndexTable();
+    indexTable.add("name", 92);
+    indexTable.add("name", 42);
+    assertEquals(92, indexTable.get("name"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
