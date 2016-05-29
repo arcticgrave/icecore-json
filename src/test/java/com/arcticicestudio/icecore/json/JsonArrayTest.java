@@ -32,10 +32,20 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import org.junit.Before;
+
 /**
  * Tests the JSON array structure representation class {@link JsonArray}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonArrayTest {}
+public class JsonArrayTest {
+
+  private JsonArray array;
+
+  @Before
+  public void setUp() {
+    array = new JsonArray();
+  }
+}
