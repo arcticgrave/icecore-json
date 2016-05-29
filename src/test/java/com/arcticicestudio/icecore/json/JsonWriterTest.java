@@ -124,4 +124,10 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\\\\\\"coconut\"", output.toString());
   }
 
+  @Test
+  public void escapesNewLine() throws IOException {
+    writer.writeString("yogurt\nbar");
+    assertEquals("\"yogurt\\ncoconut\"", output.toString());
+  }
+
 }
