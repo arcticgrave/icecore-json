@@ -115,4 +115,9 @@ public class JsonLiteralTest {
   public void TRUEToString() {
     assertEquals("true", TRUE.toString());
   }
+
+  @Test
+  public void FALSEToString() {
+    assertEquals("false", FALSE.toString());
+  }
 }
