@@ -236,4 +236,10 @@ public class JsonObjectTest {
     object.add("yogurt", false).add("yogurt", true);
     assertEquals(Json.TRUE, object.get("yogurt"));
   }
+
+  @Test
+  public void getIntReturnsValueFromMember() {
+    object.add("yogurt", 92);
+    assertEquals(92, object.getInt("yogurt", 42));
+  }
 }
