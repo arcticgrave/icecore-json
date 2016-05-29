@@ -148,4 +148,10 @@ public class JsonObjectTest {
     assertEquals(1, names.size());
     assertEquals("yogurt", names.get(0));
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void namesPreventsModification() {
+    List<String> names = object.names();
+    names.add("yogurt");
+  }
 }
