@@ -708,6 +708,12 @@ public class JsonObjectTest {
     assertTrue(object.equals(object));
   }
 
+  @Test
+  public void equalsTrueForEqualObjects() {
+    assertTrue(object().equals(object()));
+    assertTrue(object("a", "1", "b", "2").equals(object("a", "1", "b", "2")));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
