@@ -33,6 +33,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,5 +60,12 @@ public class JsonArrayTest {
         new JsonArray(null);
       }
     });
+  }
+
+  @Test
+  public void copyConstructorHasSameValues() {
+    array.add(92);
+    JsonArray copy = new JsonArray(array);
+    assertEquals(array.values(), copy.values());
   }
 }
