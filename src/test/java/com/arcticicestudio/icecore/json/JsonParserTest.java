@@ -42,6 +42,7 @@ import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -193,6 +194,17 @@ public class JsonParserTest {
       }
     });
     assertEquals("Nesting too deep at 1:4001", exception.getMessage());
+  }
+
+  @Test
+  public void parseDoesNotFailWithManyArrays() throws IOException {
+    JsonArray array = new JsonArray();
+    for (int i = 0; i < 1001; i++) {
+      array.add(new JsonArray().add(7));
+    }
+    final String input = array.toString();
+    JsonValue result = new JsonParser(input).parse();
+    assertTrue(result.isArray());
   }
 
   private static void assertParseException(int offset, String message, final String json) {
