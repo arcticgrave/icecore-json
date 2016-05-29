@@ -90,4 +90,10 @@ public class JsonArrayTest {
     array.add(92);
     assertEquals(array.values(), unmodifiableArray.values());
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void unmodifiableArrayPreventsModification() {
+    JsonArray unmodifiableArray = JsonArray.unmodifiableArray(array);
+    unmodifiableArray.add(92);
+  }
 }
