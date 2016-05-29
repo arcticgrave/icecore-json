@@ -224,4 +224,10 @@ public class JsonObjectTest {
   public void getReturnsNullForNonExistingMember() {
     assertNull(object.get("yogurt"));
   }
+
+  @Test
+  public void getReturnsValueForName() {
+    object.add("yogurt", true);
+    assertEquals(Json.TRUE, object.get("yogurt"));
+  }
 }
