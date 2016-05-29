@@ -36,6 +36,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import org.hamcrest.core.StringStartsWith;
+import org.junit.Test;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
@@ -51,6 +52,11 @@ import java.io.IOException;
  */
 
 public class JsonParserTest {
+
+  @Test
+  public void parseRejectsEmptyString() {
+    assertParseException(0, "Unexpected end of input", "");
+  }
 
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
