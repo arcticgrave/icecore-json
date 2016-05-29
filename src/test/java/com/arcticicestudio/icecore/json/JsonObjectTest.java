@@ -779,6 +779,17 @@ public class JsonObjectTest {
     assertEquals(0, object.indexOf("b"));
   }
 
+  @Test
+  public void indexOfReturnsIndexOfLastMemberForBigObject() {
+    object.add("a", true);
+    /* The hash index table does not return a value for indexes above 255 */
+    for (int i = 0; i < 256; i++) {
+      object.add("x-" + i, 0);
+    }
+    object.add("a", true);
+    assertEquals(257, object.indexOf("a"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
