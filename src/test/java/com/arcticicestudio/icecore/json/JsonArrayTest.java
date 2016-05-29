@@ -346,4 +346,10 @@ public class JsonArrayTest {
     array.set(0, 92l);
     assertEquals("[92]", array.toString());
   }
+
+  @Test
+  public void setLongEnablesChaining() {
+    array.add(false);
+    assertSame(array, array.set(0, 92l));
+  }
 }
