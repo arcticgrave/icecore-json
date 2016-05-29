@@ -123,4 +123,9 @@ public class JsonNumberTest {
   public void asLongFailsWithFractional() {
     new JsonNumber("92.5").asLong();
   }
+
+  @Test
+  public void asFloat() {
+    assertEquals(92.05f, new JsonNumber("92.05").asFloat(), 0);
+  }
 }
