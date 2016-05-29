@@ -256,4 +256,10 @@ public class JsonArrayTest {
   public void addStringEnablesChaining() {
     assertSame(array, array.add("yogurt"));
   }
+
+  @Test
+  public void addStringToleratesNull() {
+    array.add((String)null);
+    assertEquals("[null]", array.toString());
+  }
 }
