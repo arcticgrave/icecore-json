@@ -475,4 +475,9 @@ public class JsonObjectTest {
     object.set("a", 3.14f);
     assertEquals("{\"a\":3.14}", object.toString());
   }
+
+  @Test
+  public void setFloatEnablesChaining() {
+    assertSame(object, object.set("a", 3.14f));
+  }
 }
