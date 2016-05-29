@@ -352,4 +352,11 @@ public class JsonArrayTest {
     array.add(false);
     assertSame(array, array.set(0, 92l));
   }
+
+  @Test
+  public void setFloat() {
+    array.add(false);
+    array.set(0, 3.14f);
+    assertEquals("[3.14]", array.toString());
+  }
 }
