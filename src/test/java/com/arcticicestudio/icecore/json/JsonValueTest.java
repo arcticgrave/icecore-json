@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 09:44 UTC+0200       +
-modified  2016-05-29 09:45 UTC+0200       +
+modified  2016-05-29 09:59 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -30,11 +30,11 @@ JUnit
 Arctic Versioning Specification (ArcVer)
   (http://specs.arcticicestudio.com/arcver)
 */
-
 package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -46,8 +46,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-
-
 
 /**
  * Tests the JSON values representation class {@link JsonValue}.
@@ -176,5 +174,21 @@ public class JsonValueTest {
         Json.NULL.asBoolean();
       }
     });
+  }
+
+  @Test
+  public void isJsonValueReturnsFalseForIncompatibleType() {
+    JsonValue jsonValue = new JsonValue() {
+      @Override
+      void write(JsonWriter writer) throws IOException {}
+    };
+    assertFalse(jsonValue.isArray());
+    assertFalse(jsonValue.isObject());
+    assertFalse(jsonValue.isString());
+    assertFalse(jsonValue.isNumber());
+    assertFalse(jsonValue.isBoolean());
+    assertFalse(jsonValue.isNull());
+    assertFalse(jsonValue.isTrue());
+    assertFalse(jsonValue.isFalse());
   }
 }
