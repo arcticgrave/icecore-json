@@ -184,4 +184,9 @@ public class JsonArrayTest {
     JsonValue value = array.get(0);
     assertEquals(Json.value(92), value);
   }
+
+  @Test(expected = IndexOutOfBoundsException.class)
+  public void getFailsWithInvalidIndex() {
+    array.get(0);
+  }
 }
