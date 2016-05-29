@@ -62,4 +62,11 @@ public class JsonTest {
     assertEquals("2147483647", Json.value(Integer.MAX_VALUE).toString());
     assertEquals("-2147483648", Json.value(Integer.MIN_VALUE).toString());
   }
+
+  @Test
+  public void valueLong() {
+    assertEquals("0", Json.value(0l).toString());
+    assertEquals("9223372036854775807", Json.value(Long.MAX_VALUE).toString());
+    assertEquals("-9223372036854775808", Json.value(Long.MIN_VALUE).toString());
+  }
 }
