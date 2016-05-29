@@ -35,6 +35,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
+import static com.arcticicestudio.icecore.json.TestUtil.serializeAndDeserialize;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -852,6 +853,12 @@ public class JsonObjectTest {
     indexTable.add("coconut", 42);
     indexTable.remove(42);
     assertEquals(92, indexTable.get("yogurt"));
+  }
+
+  @Test
+  public void canBeSerializedAndDeserialized() throws Exception {
+    object.add("yogurt", 92).add("coconut", new JsonObject().add("a", 3.14d).add("b", true));
+    assertEquals(object, serializeAndDeserialize(object));
   }
 
   private static JsonObject object(String... namesAndValues) {
