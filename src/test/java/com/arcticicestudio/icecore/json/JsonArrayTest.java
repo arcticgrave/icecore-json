@@ -547,4 +547,11 @@ public class JsonArrayTest {
     array.add(true).add(3.14d).add(92).add("yogurt").add(new JsonArray().add(false));
     assertEquals(array, serializeAndDeserialize(array));
   }
+
+  @Test
+  public void deserializedArrayCanBeAccessed() throws Exception {
+    array.add(92);
+    JsonArray deserializedArray = serializeAndDeserialize(array);
+    assertEquals(92, deserializedArray.get(0).asInt());
+  }
 }
