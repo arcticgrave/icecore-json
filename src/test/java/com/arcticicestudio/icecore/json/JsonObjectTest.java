@@ -726,6 +726,12 @@ public class JsonObjectTest {
     assertFalse(new JsonObject().equals(null));
   }
 
+  @Test
+  public void equalsFalseForSubclass() {
+    JsonObject jsonObject = new JsonObject();
+    assertFalse(jsonObject.equals(new JsonObject(jsonObject) {}));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
