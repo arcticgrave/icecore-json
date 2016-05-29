@@ -738,6 +738,13 @@ public class JsonObjectTest {
     assertTrue(object("a", "1").hashCode() == object("a", "1").hashCode());
   }
 
+  @Test
+  public void hashCodeDiffersForDifferentObjects() {
+    assertFalse(object().hashCode() == object("a", "1").hashCode());
+    assertFalse(object("a", "1").hashCode() == object("a", "2").hashCode());
+    assertFalse(object("a", "1").hashCode() == object("b", "1").hashCode());
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
