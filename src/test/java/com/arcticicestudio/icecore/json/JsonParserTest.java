@@ -398,6 +398,13 @@ public class JsonParserTest {
     assertEquals("x\\", parse("\"x\\\\\"").asString());
   }
 
+  @Test
+  public void stringsIllegalEscapesAreRejected() {
+    assertParseException(2, "Expected valid escape sequence", "\"\\a\"");
+    assertParseException(2, "Expected valid escape sequence", "\"\\x\"");
+    assertParseException(2, "Expected valid escape sequence", "\"\\000\"");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
