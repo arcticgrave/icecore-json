@@ -130,4 +130,10 @@ public class JsonWriterTest {
     assertEquals("\"yogurt\\ncoconut\"", output.toString());
   }
 
+  @Test
+  public void escapesWindowsNewLine() throws IOException {
+    writer.writeString("yogurt\r\ncoconut");
+    assertEquals("\"yogurt\\r\\ncoconut\"", output.toString());
+  }
+
 }
