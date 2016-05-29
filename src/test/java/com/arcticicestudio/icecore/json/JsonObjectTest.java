@@ -875,6 +875,12 @@ public class JsonObjectTest {
     assertEquals(Json.TRUE, member.getValue());
   }
 
+  @Test
+  public void memberEqualsTrueForSameInstance() {
+    Member member = new Member("a", Json.TRUE);
+    assertTrue(member.equals(member));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
