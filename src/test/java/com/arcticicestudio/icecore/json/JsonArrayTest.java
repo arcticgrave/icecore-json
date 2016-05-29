@@ -34,6 +34,7 @@ package com.arcticicestudio.icecore.json;
 
 import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -67,5 +68,12 @@ public class JsonArrayTest {
     array.add(92);
     JsonArray copy = new JsonArray(array);
     assertEquals(array.values(), copy.values());
+  }
+
+  @Test
+  public void copyConstructorWorksOnSafeCopy() {
+    JsonArray copy = new JsonArray(array);
+    array.add(92);
+    assertTrue(copy.isEmpty());
   }
 }
