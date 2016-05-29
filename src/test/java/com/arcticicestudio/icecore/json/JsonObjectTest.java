@@ -114,4 +114,9 @@ public class JsonObjectTest {
     object.add("yogurt", true);
     assertFalse(object.isEmpty());
   }
+
+  @Test
+  public void sizeZeroAfterCreation() {
+    assertEquals(0, object.size());
+  }
 }
