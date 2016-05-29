@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 10:00 UTC+0200       +
-modified  2016-05-29 10:01 UTC+0200       +
+modified  2016-05-29 10:52 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -553,6 +553,12 @@ public class JsonArrayTest {
   public void hashCodeEqualsForEqualArrays() {
     assertTrue(array().hashCode() == array().hashCode());
     assertTrue(array("yogurt").hashCode() == array("yogurt").hashCode());
+  }
+
+  @Test
+  public void hashCodeDiffersForDifferentArrays() {
+    assertFalse(array().hashCode() == array("yogurt").hashCode());
+    assertFalse(array("yogurt").hashCode() == array("coconut").hashCode());
   }
 
   @Test
