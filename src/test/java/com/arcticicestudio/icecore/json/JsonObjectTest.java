@@ -34,10 +34,20 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import org.junit.Before;
+
 /**
  * Tests the JSON object structure representation class {@link JsonObject}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.7.0
  */
-public class JsonObjectTest {}
+public class JsonObjectTest {
+
+  private JsonObject object;
+
+  @Before
+  public void setUp() {
+    object = new JsonObject();
+  }
+}
