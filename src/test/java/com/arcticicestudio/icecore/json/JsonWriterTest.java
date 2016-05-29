@@ -82,4 +82,12 @@ public class JsonWriterTest {
     writer.writeString("yogurt\\coconut");
     assertEquals("\"yogurt\\\\coconut\"", output.toString());
   }
+
+  @Test
+  public void writeArrayParts() throws IOException {
+    writer.writeArrayOpen();
+    writer.writeArraySeparator();
+    writer.writeArrayClose();
+    assertEquals("[,]", output.toString());
+  }
 }
