@@ -459,4 +459,11 @@ public class JsonArrayTest {
   public void removeFailsWithInvalidIndex() {
     array.remove(0);
   }
+
+  @Test
+  public void removeRemovesElement() {
+    array.add(92);
+    array.remove(0);
+    assertEquals("[]", array.toString());
+  }
 }
