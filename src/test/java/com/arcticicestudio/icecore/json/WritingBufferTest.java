@@ -127,6 +127,14 @@ public class WritingBufferTest {
     assertEquals("oob", wrapped.toString());
   }
 
+  @Test
+  public void testWriteStringFit() throws IOException {
+    writer.write(createString(BUFFER_SIZE - 3));
+    writer.write("foobar", 1, 3);
+    writer.flush();
+    assertEquals(createString(BUFFER_SIZE - 3) + "oob", wrapped.toString());
+  }
+
   private static String createString(int length) {
     return new String(createChars(length));
   }
