@@ -34,6 +34,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -51,5 +52,14 @@ public class JsonTest {
     assertTrue(Json.NULL.isNull());
     assertTrue(Json.TRUE.isTrue());
     assertTrue(Json.FALSE.isFalse());
+  }
+
+  @Test
+  public void valueInt() {
+    assertEquals("0", Json.value(0).toString());
+    assertEquals("23", Json.value(23).toString());
+    assertEquals("-1", Json.value(-1).toString());
+    assertEquals("2147483647", Json.value(Integer.MAX_VALUE).toString());
+    assertEquals("-2147483648", Json.value(Integer.MIN_VALUE).toString());
   }
 }
