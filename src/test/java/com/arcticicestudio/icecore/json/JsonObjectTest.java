@@ -96,4 +96,10 @@ public class JsonObjectTest {
     assertEquals(object.names(), unmodifiableObject.names());
     assertSame(object.get("yogurt"), unmodifiableObject.get("yogurt"));
   }
+
+  @Test(expected = UnsupportedOperationException.class)
+  public void unmodifiableObjectPreventsModification() {
+    JsonObject unmodifiableObject = JsonObject.unmodifiableObject(object);
+    unmodifiableObject.add("yogurt", 92);
+  }
 }
