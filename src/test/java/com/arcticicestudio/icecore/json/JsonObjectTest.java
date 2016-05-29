@@ -906,6 +906,12 @@ public class JsonObjectTest {
     assertFalse(member.equals(new Member("a", Json.TRUE) {}));
   }
 
+  @Test
+  public void memberHashCodeEqualsForEqualObjects() {
+    Member member = new Member("a", Json.TRUE);
+    assertTrue(member.hashCode() == new Member("a", Json.TRUE).hashCode());
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
