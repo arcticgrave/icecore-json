@@ -447,4 +447,11 @@ public class JsonArrayTest {
     array.add(false);
     assertSame(array, array.set(0, Json.NULL));
   }
+
+  @Test
+  public void setJsonReplacesDifferentArrayElements() {
+    array.add(3).add(6).add(9);
+    array.set(1, 4).set(2, 5);
+    assertEquals("[3,4,5]", array.toString());
+  }
 }
