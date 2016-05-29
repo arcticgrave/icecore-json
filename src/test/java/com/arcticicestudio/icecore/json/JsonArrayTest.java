@@ -245,4 +245,10 @@ public class JsonArrayTest {
   public void addBooleanEnablesChaining() {
     assertSame(array, array.add(true));
   }
+
+  @Test
+  public void addString() {
+    array.add("yogurt");
+    assertEquals("[\"yogurt\"]", array.toString());
+  }
 }
