@@ -518,6 +518,13 @@ public class JsonParserTest {
     assertSame(Json.TRUE, parse("true"));
   }
 
+  @Test
+  public void trueIncomplete() {
+    assertParseException(1, "Unexpected end of input", "t");
+    assertParseException(2, "Unexpected end of input", "tr");
+    assertParseException(3, "Unexpected end of input", "tru");
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
