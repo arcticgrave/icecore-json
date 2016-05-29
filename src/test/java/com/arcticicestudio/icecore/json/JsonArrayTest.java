@@ -177,4 +177,11 @@ public class JsonArrayTest {
     List<JsonValue> values = array.values();
     values.add(Json.TRUE);
   }
+
+  @Test
+  public void getReturnsValue() {
+    array.add(92);
+    JsonValue value = array.get(0);
+    assertEquals(Json.value(92), value);
+  }
 }
