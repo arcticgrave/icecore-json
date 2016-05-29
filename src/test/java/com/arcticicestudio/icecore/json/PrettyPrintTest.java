@@ -138,4 +138,13 @@ public class PrettyPrintTest {
     new JsonArray().add(23).add(42).writeTo(output, indentWithTabs());
     assertEquals("[\n\t23,\n\t42\n]", output.toString());
   }
+
+  @Test
+  public void indentWithTabsCreatesIndependentInstances() {
+    Writer writer = mock(Writer.class);
+    WriterConfig config = indentWithTabs();
+    Object instance1 = config.createWriter(writer);
+    Object instance2 = config.createWriter(writer);
+    assertNotSame(instance1, instance2);
+  }
 }
