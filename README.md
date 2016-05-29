@@ -106,7 +106,7 @@ This is a example on how to extract nested contents.
   "order": 4378,
   "items": [
     {
-      "name": "Yoghurt",
+      "name": "Yogurt",
       "id": "28469",
       "quantity": 5,
     },
@@ -135,7 +135,7 @@ for (JsonValue item : items) {
 The entrypoint class `Json` also has methods to create instances of `JsonValue` from Java strings, numbers, and boolean values:
 
 ```java
-JsonValue name = Json.value("Yoghurt");
+JsonValue name = Json.value("Yogurt");
 JsonValue protein = Json.value(28);
 ```
 
@@ -143,8 +143,8 @@ And there are methods for creating empty arrays and objects as well.
 Use these together with `add` to create data structures:
 
 ```java
-JsonObject article = Json.object().add("name", "Yoghurt").add("protein", 28);
-// -> {"name": "Yoghurt", "protein": 28}
+JsonObject article = Json.object().add("name", "Yogurt").add("protein", 28);
+// -> {"name": "Yogurt", "protein": 28}
 
 JsonArray article = Json.array().add("Bob").add(16);
 // -> ["Coconut", 16]
@@ -153,7 +153,7 @@ JsonArray article = Json.array().add("Bob").add(16);
 You can also create JSON arrays conveniently from Java arrays such as `String[]`, `int[]`, `boolean[]`, etc.:
 
 ```java
-String[] javaNames = {"Yoghurt", "Coconut"};
+String[] javaNames = {"Yogurt", "Coconut"};
 JsonArray jsonNames = Json.array(names);
 ```
 
@@ -223,6 +223,7 @@ This project follows the [Arctic Versioning Specification (ArcVer)](https://gith
 
 ### Dependencies
 #### Development
+  - [`mockito-all@1.10.19`](http://mockito.org)
   - [`junit@4.12.0`](http://junit.org)
   - [`hamcrest-core@1.3.0`](http://hamcrest.org)
 
