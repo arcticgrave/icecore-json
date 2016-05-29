@@ -745,6 +745,11 @@ public class JsonObjectTest {
     assertFalse(object("a", "1").hashCode() == object("b", "1").hashCode());
   }
 
+  @Test
+  public void indexOfReturnsNoIndexIfEmpty() {
+    assertEquals(-1, object.indexOf("a"));
+  }
+
   private static JsonObject object(String... namesAndValues) {
     JsonObject object = new JsonObject();
     for (int i = 0; i < namesAndValues.length; i += 2) {
