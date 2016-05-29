@@ -40,16 +40,20 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import com.arcticicestudio.icecore.json.JsonObject.Member;
+import org.mockito.InOrder;
 
 /**
  * Tests the JSON object structure representation class {@link JsonObject}.
@@ -629,5 +633,15 @@ public class JsonObjectTest {
     object.add("a", 1).add("b", 1).add("c", 1);
     object.merge(Json.object().add("b", 2).add("d", 2));
     assertEquals(Json.object().add("a", 1).add("b", 2).add("c", 1).add("d", 2), object);
+  }
+
+  @Test
+  public void writeEmpty() throws IOException {
+    JsonWriter writer = mock(JsonWriter.class);
+    object.write(writer);
+    InOrder inOrder = inOrder(writer);
+    inOrder.verify(writer).writeObjectOpen();
+    inOrder.verify(writer).writeObjectClose();
+    inOrder.verifyNoMoreInteractions();
   }
 }
