@@ -123,6 +123,13 @@ public class JsonParserTest {
     assertEquals("[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]", value.toString());
   }
 
+  @Test
+  public void parseHandlesStringsThatExceedBufferSize() throws IOException {
+    String input = "[ \"lorem ipsum dolor sit amet\" ]";
+    JsonValue value = new JsonParser(new StringReader(input), 3).parse();
+    assertEquals("[\"lorem ipsum dolor sit amet\"]", value.toString());
+  }
+
   private static void assertParseException(int offset, String message, final String json) {
     ParseException exception = assertException(ParseException.class, new Runnable() {
       public void run() {
