@@ -439,4 +439,12 @@ public class JsonObjectTest {
     object.add("a", innerObject);
     assertEquals("{\"a\":{\"a\":92}}", object.toString());
   }
+
+  @Test
+  public void addJsonNestedObjectModifiedAfterAdd() {
+    JsonObject innerObject = new JsonObject();
+    object.add("a", innerObject);
+    innerObject.add("a", 92);
+    assertEquals("{\"a\":{\"a\":92}}", object.toString());
+  }
 }
