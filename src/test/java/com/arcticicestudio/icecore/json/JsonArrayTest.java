@@ -96,4 +96,9 @@ public class JsonArrayTest {
     JsonArray unmodifiableArray = JsonArray.unmodifiableArray(array);
     unmodifiableArray.add(92);
   }
+
+  @Test
+  public void isEmptyIsTrueAfterCreation() {
+    assertTrue(array.isEmpty());
+  }
 }
