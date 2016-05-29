@@ -275,4 +275,9 @@ public class JsonObjectTest {
     object.add("yogurt", 3.14);
     assertEquals(3.14, object.getDouble("yogurt", 1.41), 0);
   }
+
+  @Test
+  public void getDoubleReturnsDefaultForMissingMember() {
+    assertEquals(3.14, object.getDouble("yogurt", 3.14), 0);
+  }
 }
