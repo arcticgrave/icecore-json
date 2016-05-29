@@ -34,8 +34,12 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
-import org.junit.Before;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
 import java.io.StringWriter;
 
 /**
@@ -53,5 +57,11 @@ public class JsonWriterTest {
   public void setUp() {
     output = new StringWriter();
     writer = new JsonWriter(output);
+  }
+
+  @Test
+  public void writeLiteral() throws IOException {
+    writer.writeLiteral("yogurt");
+    assertEquals("yogurt", output.toString());
   }
 }
