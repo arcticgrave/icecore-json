@@ -259,4 +259,9 @@ public class JsonTest {
   public void object() {
     assertEquals(new JsonObject(), Json.object());
   }
+
+  @Test
+  public void parseString() {
+    assertEquals(Json.value(23), Json.parse("23"));
+  }
 }
