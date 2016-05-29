@@ -72,4 +72,15 @@ public class JsonValueTest {
       }
     });
   }
+
+  @Test
+  public void writeToFailsWithNullConfig() {
+    final JsonValue value = new JsonObject();
+
+    assertException(NullPointerException.class, "config is null", new RunnableEx() {
+      public void run() throws IOException {
+        value.writeTo(new StringWriter(), null);
+      }
+    });
+  }
 }
