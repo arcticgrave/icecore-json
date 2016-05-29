@@ -607,4 +607,13 @@ public class JsonObjectTest {
     object.remove("b");
     assertEquals("{\"a\":92}", object.toString());
   }
+
+  @Test
+  public void mergeFailsWithNull() {
+    assertException(NullPointerException.class, "object is null", new Runnable() {
+      public void run() {
+        object.merge(null);
+      }
+    });
+  }
 }
