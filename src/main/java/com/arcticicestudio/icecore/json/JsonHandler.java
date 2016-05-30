@@ -57,49 +57,73 @@ public abstract class JsonHandler<A, O> {
 
   /**
    * Indicates the beginning of a JSON {@code null} literal in the input.
-   * This method will be called when reading the first character of the literal.
+   *
+   * <p>
+   *   This method will be called when reading the first character of the literal.
+   * </p>
    */
   public void startNull() {}
 
   /**
    * Indicates the end of a JSON {@code null} literal in the input.
-   * This method will be called when reading the last character of the literal.
+   *
+   * <p>
+   *   This method will be called when reading the last character of the literal.
+   * </p>
    */
   public void endNull() {}
 
   /**
    * Indicates the beginning of a JSON {@code true} literal in the input.
-   * This method will be called when reading the first character of the literal.
+   *
+   * <p>
+   *   This method will be called when reading the first character of the literal.
+   * </p>
    */
   public void startTrue() {}
 
   /**
    * Indicates the end of a JSON {@code true} literal in the input.
-   * This method will be called when reading the last character of the literal.
+   *
+   * <p>
+   *   This method will be called when reading the last character of the literal.
+   * </p>
    */
   public void endTrue() {}
 
   /**
    * Indicates the beginning of a JSON {@code false} literal in the input.
-   * This method will be called when reading the first character of the literal.
+   *
+   * <p>
+   *   This method will be called when reading the first character of the literal.
+   * </p>
    */
   public void startFalse() {}
 
   /**
    * Indicates the end of a JSON {@code false} literal in the input.
-   * This method will be called when reading the last character of the literal.
+   *
+   * <p>
+   *   This method will be called when reading the last character of the literal.
+   * </p>
    */
   public void endFalse() {}
 
   /**
    * Indicates the beginning of a JSON string in the input.
-   * This method will be called when reading the opening double quote character ({@code '"'}).
+   *
+   * <p>
+   *   This method will be called when reading the opening double quote character ({@code '"'}).
+   * </p>
    */
   public void startString() {}
 
   /**
    * Indicates the end of a JSON string in the input.
-   * This method will be called when reading the closing double quote character ({@code '"'}).
+   *
+   * <p>
+   *   This method will be called when reading the closing double quote character ({@code '"'}).
+   * </p>
    *
    * @param string The parsed string
    */
@@ -107,13 +131,19 @@ public abstract class JsonHandler<A, O> {
 
   /**
    * Indicates the beginning of a JSON number in the input.
-   * This method will be called when reading the first character of the number.
+   *
+   * <p>
+   *   This method will be called when reading the first character of the number.
+   * </p>
    */
   public void startNumber() {}
 
   /**
    * Indicates the end of a JSON number in the input.
-   * This method will be called when reading the last character of the number.
+   *
+   * <p>
+   *   This method will be called when reading the last character of the number.
+   * </p>
    *
    * @param string The parsed number string
    */
@@ -121,13 +151,15 @@ public abstract class JsonHandler<A, O> {
 
   /**
    * Indicates the beginning of a JSON array in the input.
-   * This method will be called when reading the opening square bracket character ({@code '['}).
    *
    * <p>
-   * This method may return an object to handle subsequent parser events for this array.
-   * This array handler will then be provided in all calls to {@link #startArrayValue(Object)},
-   * {@link #startArrayValue()}, {@link #endArrayValue(Object)}, {@link #endArrayValue()},
-   * {@link #endArray(Object)}, and {@link #endArray()} for this array.
+   *   This method will be called when reading the opening square bracket character ({@code '['}).
+   * </p>
+   * <p>
+   *   This method may return an object to handle subsequent parser events for this array.
+   *   This array handler will then be provided in all calls to {@link #startArrayValue(Object)},
+   *   {@link #startArrayValue()}, {@link #endArrayValue(Object)}, {@link #endArrayValue()},
+   *   {@link #endArray(Object)}, and {@link #endArray()} for this array.
    * </p>
    *
    * @return a handler for this array, or {@code null} if not needed
@@ -138,7 +170,10 @@ public abstract class JsonHandler<A, O> {
 
   /**
    * Indicates the end of a JSON array in the input.
-   * This method will be called when reading the closing square bracket character ({@code ']'}).
+   *
+   * <p>
+   *   This method will be called when reading the closing square bracket character ({@code ']'}).
+   * </p>
    *
    * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
    */
@@ -146,9 +181,12 @@ public abstract class JsonHandler<A, O> {
 
   /**
    * Indicates the beginning of an array element in the input.
-   * This method will be called when reading the first character of the element,
-   * just before the call to the {@code start} method for the specific element type ({@link #startString()},
-   * {@link #startNumber()}, etc.).
+   *
+   * <p>
+   *   This method will be called when reading the first character of the element,
+   *   just before the call to the {@code start} method for the specific element type ({@link #startString()},
+   *   {@link #startNumber()}, etc.).
+   * </p>
    *
    * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
    */
