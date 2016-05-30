@@ -158,8 +158,7 @@ public abstract class JsonHandler<A, O> {
    * <p>
    *   This method may return an object to handle subsequent parser events for this array.
    *   This array handler will then be provided in all calls to {@link #startArrayValue(Object)},
-   *   {@link #startArrayValue()}, {@link #endArrayValue(Object)}, {@link #endArrayValue()},
-   *   {@link #endArray(Object)}, and {@link #endArray()} for this array.
+   *   {@link #endArrayValue(Object)}, and {@link #endArray(Object)} for this array.
    * </p>
    *
    * @return a handler for this array, or {@code null} if not needed
@@ -197,8 +196,8 @@ public abstract class JsonHandler<A, O> {
    *
    * <p>
    *   This method will be called when reading the last character of the element value, just after the
-   *   {@code end} method for the specific element type (like {@link #endString(String)}, {@link #endString()},
-   *   {@link #endNumber(String)}, {@link #endNumber()} etc.).
+   *   {@code end} method for the specific element type (like {@link #endString(String)},
+   *   {@link #endNumber(String)} etc.).
    * </p>
    *
    * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
