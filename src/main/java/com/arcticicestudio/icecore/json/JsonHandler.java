@@ -104,4 +104,10 @@ public abstract class JsonHandler<A, O> {
    * @param string The parsed string
    */
   public void endString(String string) {}
+
+  /**
+   * Indicates the beginning of a JSON number in the input.
+   * This method will be called when reading the first character of the number.
+   */
+  public void startNumber() {}
 }
