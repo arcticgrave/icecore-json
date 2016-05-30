@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 20:40 UTC+0200       +
-modified  2016-05-29 20:50 UTC+0200       +
+modified  2016-05-30 21:32 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -126,7 +126,7 @@ public class JsonWriterTest {
 
   @Test
   public void escapesNewLine() throws IOException {
-    writer.writeString("yogurt\nbar");
+    writer.writeString("yogurt\ncoconut");
     assertEquals("\"yogurt\\ncoconut\"", output.toString());
   }
 
