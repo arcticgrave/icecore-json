@@ -90,4 +90,10 @@ public abstract class JsonHandler<A, O> {
    * This method will be called when reading the last character of the literal.
    */
   public void endFalse() {}
+
+  /**
+   * Indicates the beginning of a JSON string in the input.
+   * This method will be called when reading the opening double quote character ({@code '"'}).
+   */
+  public void startString() {}
 }
