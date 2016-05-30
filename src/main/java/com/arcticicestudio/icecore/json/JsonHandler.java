@@ -222,4 +222,15 @@ public abstract class JsonHandler<A, O> {
   public O startObject() {
     return null;
   }
+
+  /**
+   * Indicates the end of a JSON object in the input.
+   *
+   * <p>
+   *   This method will be called when reading the closing curly bracket character ({@code '}'}).
+   * </p>
+   *
+   * @param object The object handler returned from {@link #startObject()}, or {@code null} if not provided
+   */
+  public void endObject(O object) {}
 }
