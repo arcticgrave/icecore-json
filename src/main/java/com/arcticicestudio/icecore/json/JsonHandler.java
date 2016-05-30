@@ -204,4 +204,23 @@ public abstract class JsonHandler<A, O> {
    * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
    */
   public void endArrayValue(A array) {}
+
+  /**
+   * Indicates the beginning of a JSON object in the input.
+   *
+   * <p>
+   *   This method will be called when reading the opening curly bracket character ({@code '{'}).
+   * </p>
+   * <p>
+   *   This method may return an object to handle subsequent parser events for this object.
+   *   This object handler will be provided in all calls to {@link #startObjectName(Object)},
+   *   {@link #endObjectName(Object, String)}, {@link #startObjectValue(Object, String)},
+   *   {@link #endObjectValue(Object, String)}, and {@link #endObject(Object)} for this object.
+   * </p>
+   *
+   * @return a handler for this object, or {@code null} if not needed
+   */
+  public O startObject() {
+    return null;
+  }
 }
