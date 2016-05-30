@@ -110,4 +110,12 @@ public abstract class JsonHandler<A, O> {
    * This method will be called when reading the first character of the number.
    */
   public void startNumber() {}
+
+  /**
+   * Indicates the end of a JSON number in the input.
+   * This method will be called when reading the last character of the number.
+   *
+   * @param string The parsed number string
+   */
+  public void endNumber(String string) {}
 }
