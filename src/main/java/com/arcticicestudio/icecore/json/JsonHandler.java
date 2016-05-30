@@ -256,4 +256,16 @@ public abstract class JsonHandler<A, O> {
    * @param name The parsed member name
    */
   public void endObjectName(O object, String name) {}
+
+  /**
+   * Indicates the beginning of the name of an object member in the input.
+   *
+   * <p>
+   *   This method will be called when reading the opening quote character ('&quot;') of the member name.
+   * </p>
+   *
+   * @param object The object handler returned from {@link #startObject()}, or {@code null} if not provided
+   * @param name The member name
+   */
+  public void startObjectValue(O object, String name) {}
 }
