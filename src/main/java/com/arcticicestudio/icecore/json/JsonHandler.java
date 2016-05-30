@@ -54,4 +54,10 @@ public abstract class JsonHandler<A, O> {
   protected Location getLocation() {
     return parser.getLocation();
   }
+
+  /**
+   * Indicates the beginning of a JSON {@code null} literal in the input.
+   * This method will be called when reading the first character of the literal.
+   */
+  public void startNull() {}
 }
