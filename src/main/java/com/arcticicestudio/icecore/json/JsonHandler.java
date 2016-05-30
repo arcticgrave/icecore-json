@@ -244,4 +244,16 @@ public abstract class JsonHandler<A, O> {
    * @param object The object handler returned from {@link #startObject()}, or {@code null} if not provided
    */
   public void startObjectName(O object) {}
+
+  /**
+   * Indicates the end of a JSON object member name in the input.
+   *
+   * <p>
+   *   This method will be called when reading the closing quote character ({@code '"'}) of the member name.
+   * </p>
+   *
+   * @param object The object handler returned from {@link #startObject()}, or {@code null} if not provided
+   * @param name The parsed member name
+   */
+  public void endObjectName(O object, String name) {}
 }
