@@ -118,4 +118,21 @@ public abstract class JsonHandler<A, O> {
    * @param string The parsed number string
    */
   public void endNumber(String string) {}
+
+  /**
+   * Indicates the beginning of a JSON array in the input.
+   * This method will be called when reading the opening square bracket character ({@code '['}).
+   *
+   * <p>
+   * This method may return an object to handle subsequent parser events for this array.
+   * This array handler will then be provided in all calls to {@link #startArrayValue(Object)},
+   * {@link #startArrayValue()}, {@link #endArrayValue(Object)}, {@link #endArrayValue()},
+   * {@link #endArray(Object)}, and {@link #endArray()} for this array.
+   * </p>
+   *
+   * @return a handler for this array, or {@code null} if not needed
+   */
+  public A startArray() {
+    return null;
+  }
 }
