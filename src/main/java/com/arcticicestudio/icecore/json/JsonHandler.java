@@ -96,4 +96,12 @@ public abstract class JsonHandler<A, O> {
    * This method will be called when reading the opening double quote character ({@code '"'}).
    */
   public void startString() {}
+
+  /**
+   * Indicates the end of a JSON string in the input.
+   * This method will be called when reading the closing double quote character ({@code '"'}).
+   *
+   * @param string The parsed string
+   */
+  public void endString(String string) {}
 }
