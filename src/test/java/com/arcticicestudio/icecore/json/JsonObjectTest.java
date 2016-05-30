@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 16:46 UTC+0200       +
-modified  2016-05-29 18:04 UTC+0200       +
+modified  2016-05-30 21:31 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -818,7 +818,7 @@ public class JsonObjectTest {
     HashIndexTable indexTable = new HashIndexTable();
     indexTable.add("name", 92);
     indexTable.add("name", 42);
-    assertEquals(92, indexTable.get("name"));
+    assertEquals(42, indexTable.get("name"));
   }
 
   @Test
@@ -843,16 +843,16 @@ public class JsonObjectTest {
     indexTable.add("yogurt", 92);
     indexTable.add("coconut", 42);
     indexTable.remove(92);
-    assertEquals(41, indexTable.get("coconut"));
+    assertEquals(42, indexTable.get("coconut"));
   }
 
   @Test
   public void hashIndexTableRemoveDoesNotChangePrecedingElements() {
     HashIndexTable indexTable = new HashIndexTable();
-    indexTable.add("yogurt", 92);
+    indexTable.add("yogurt", 23);
     indexTable.add("coconut", 42);
     indexTable.remove(42);
-    assertEquals(92, indexTable.get("yogurt"));
+    assertEquals(23, indexTable.get("yogurt"));
   }
 
   @Test

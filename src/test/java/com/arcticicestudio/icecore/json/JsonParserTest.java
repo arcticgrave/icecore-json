@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 18:06 UTC+0200       +
-modified  2016-05-29 20:35 UTC+0200       +
+modified  2016-05-30 21:32 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -423,13 +423,13 @@ public class JsonParserTest {
   @Test
   public void stringsIncompleteStringsAreRejected() {
     assertParseException(1, "Unexpected end of input", "\"");
-    assertParseException(4, "Unexpected end of input", "\"yogurt");
-    assertParseException(5, "Unexpected end of input", "\"yogurt\\");
-    assertParseException(6, "Unexpected end of input", "\"yogurt\\n");
-    assertParseException(6, "Unexpected end of input", "\"yogurt\\u");
-    assertParseException(7, "Unexpected end of input", "\"yogurt\\u0");
-    assertParseException(9, "Unexpected end of input", "\"yogurt\\u000");
-    assertParseException(10, "Unexpected end of input", "\"yogurt\\u0000");
+    assertParseException(7, "Unexpected end of input", "\"yogurt");
+    assertParseException(8, "Unexpected end of input", "\"yogurt\\");
+    assertParseException(9, "Unexpected end of input", "\"yogurt\\n");
+    assertParseException(9, "Unexpected end of input", "\"yogurt\\u");
+    assertParseException(10, "Unexpected end of input", "\"yogurt\\u0");
+    assertParseException(12, "Unexpected end of input", "\"yogurt\\u000");
+    assertParseException(13, "Unexpected end of input", "\"yogurt\\u0000");
   }
 
   @Test
