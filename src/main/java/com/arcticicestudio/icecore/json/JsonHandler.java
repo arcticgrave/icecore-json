@@ -135,4 +135,12 @@ public abstract class JsonHandler<A, O> {
   public A startArray() {
     return null;
   }
+
+  /**
+   * Indicates the end of a JSON array in the input.
+   * This method will be called when reading the closing square bracket character ({@code ']'}).
+   *
+   * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
+   */
+  public void endArray(A array) {}
 }
