@@ -66,4 +66,10 @@ public abstract class JsonHandler<A, O> {
    * This method will be called when reading the last character of the literal.
    */
   public void endNull() {}
+
+  /**
+   * Indicates the beginning of a JSON {@code true} literal in the input.
+   * This method will be called when reading the first character of the literal.
+   */
+  public void startTrue() {}
 }
