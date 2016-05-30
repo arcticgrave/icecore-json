@@ -30,6 +30,8 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.json;
 
+import com.arcticicestudio.icecore.json.JsonParser.Location;
+
 /**
  * A handler for parser events.
  *
@@ -40,4 +42,16 @@ package com.arcticicestudio.icecore.json;
  * @see JsonParser
  * @since 0.8.0
  */
-public abstract class JsonHandler<A, O> {}
+public abstract class JsonHandler<A, O> {
+
+  JsonParser parser;
+
+  /**
+   * Returns the current parser location.
+   *
+   * @return the current parser location
+   */
+  protected Location getLocation() {
+    return parser.getLocation();
+  }
+}
