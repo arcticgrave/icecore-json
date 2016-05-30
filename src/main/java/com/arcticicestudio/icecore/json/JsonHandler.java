@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-30 21:44 UTC+0200       +
-modified  2016-05-30 21:45 UTC+0200       +
+modified  2016-05-30 23:09 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -268,4 +268,17 @@ public abstract class JsonHandler<A, O> {
    * @param name The member name
    */
   public void startObjectValue(O object, String name) {}
+
+  /**
+   * Indicates the end of a JSON object member value in the input.
+   *
+   * <p>
+   *   This method will be called when reading the last character of the member value, just after the {@code end} method
+   *   for the specific member type (like {@link #endString(String)}, {@link #endNumber(String)}, etc.).
+   * </p>
+   *
+   * @param object The object handler returned from {@link #startObject()}, or {@code null} if not provided
+   * @param name The parsed member name
+   */
+  public void endObjectValue(O object, String name) {}
 }
