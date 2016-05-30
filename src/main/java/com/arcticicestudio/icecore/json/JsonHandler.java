@@ -143,4 +143,14 @@ public abstract class JsonHandler<A, O> {
    * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
    */
   public void endArray(A array) {}
+
+  /**
+   * Indicates the beginning of an array element in the input.
+   * This method will be called when reading the first character of the element,
+   * just before the call to the {@code start} method for the specific element type ({@link #startString()},
+   * {@link #startNumber()}, etc.).
+   *
+   * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
+   */
+  public void startArrayValue(A array) {}
 }
