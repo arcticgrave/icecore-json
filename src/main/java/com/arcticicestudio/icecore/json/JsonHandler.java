@@ -191,4 +191,17 @@ public abstract class JsonHandler<A, O> {
    * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
    */
   public void startArrayValue(A array) {}
+
+  /**
+   * Indicates the end of a JSON array element in the input.
+   *
+   * <p>
+   *   This method will be called when reading the last character of the element value, just after the
+   *   {@code end} method for the specific element type (like {@link #endString(String)}, {@link #endString()},
+   *   {@link #endNumber(String)}, {@link #endNumber()} etc.).
+   * </p>
+   *
+   * @param array The array handler returned from {@link #startArray()}, or {@code null} if not provided
+   */
+  public void endArrayValue(A array) {}
 }
