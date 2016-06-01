@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:49 UTC+0200       +
-modified  2016-05-31 22:35 UTC+0200       +
+modified  2016-06-01 22:21 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -210,7 +210,7 @@ public class JsonParser {
   private void readArray() throws IOException {
     Object array = handler.startArray();
     read();
-    if (nestingLevel++ >= MAX_NESTING_LEVEL) {
+    if (++nestingLevel > MAX_NESTING_LEVEL) {
       throw error("Nesting too deep");
     }
     skipWhiteSpace();
