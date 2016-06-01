@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 18:06 UTC+0200       +
-modified  2016-05-31 22:42 UTC+0200       +
+modified  2016-06-01 22:37 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -50,6 +50,7 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import com.arcticicestudio.icecore.json.Json.DefaultHandler;
+import com.arcticicestudio.icecore.json.JsonParser.Location;
 import com.arcticicestudio.icecore.json.TestUtil.RunnableEx;
 
 /**
@@ -259,13 +260,40 @@ public class JsonParserTest {
     assertParseException(5, "Unexpected end of input", "[\"foo");
   }
 
+  /**
+   * @since 0.8.0
+   */
   @Test
-  public void parseHandlesLineBreaksAndColumnsCorrectly() {
-    assertParseException(0, 1, 0, "!");
-    assertParseException(2, 2, 0, "[\n!");
-    assertParseException(3, 2, 0, "[\r\n!");
-    assertParseException(6, 3, 1, "[ \n \n !");
-    assertParseException(7, 2, 3, "[ \r\n \r !");
+  public void parseLineAndColumnOnFirstLine() {
+    parser.parse("[]");
+    assertEquals("1:3", handler.lastLocation.toString());
+  }
+
+  /**
+   * @since 0.8.0
+   */
+  @Test
+  public void parseLineAndColumnAfterLF() {
+    parser.parse("[\n]");
+    assertEquals("2:2", handler.lastLocation.toString());
+  }
+
+  /**
+   * @since 0.8.0
+   */
+  @Test
+  public void parseLineAndColumnAfterCRLF() {
+    parser.parse("[\r\n]");
+    assertEquals("2:2", handler.lastLocation.toString());
+  }
+
+  /**
+   * @since 0.8.0
+   */
+  @Test
+  public void parseLineAndColumnAfterCR() {
+    parser.parse("[\r]");
+    assertEquals("1:4", handler.lastLocation.toString());
   }
 
   @Test
@@ -304,7 +332,7 @@ public class JsonParserTest {
       }
     });
     assertEquals(4, exception.getLine());
-    assertEquals(0, exception.getColumn());
+    assertEquals(1, exception.getColumn());
     assertEquals(24, exception.getOffset());
   }
 
@@ -320,7 +348,7 @@ public class JsonParserTest {
         parser.parse(input);
       }
     });
-    assertEquals("Nesting too deep at 1:1001", exception.getMessage());
+    assertEquals("Nesting too deep at 1:1002", exception.getMessage());
   }
 
   @Test
@@ -335,7 +363,7 @@ public class JsonParserTest {
         parser.parse(input);
       }
     });
-    assertEquals("Nesting too deep at 1:7001", exception.getMessage());
+    assertEquals("Nesting too deep at 1:7002", exception.getMessage());
   }
 
   @Test
@@ -350,7 +378,7 @@ public class JsonParserTest {
         parser.parse(input);
       }
     });
-    assertEquals("Nesting too deep at 1:4001", exception.getMessage());
+    assertEquals("Nesting too deep at 1:4002", exception.getMessage());
   }
 
   @Test
@@ -745,17 +773,6 @@ public class JsonParserTest {
     assertThat(exception.getMessage(), startsWith(message + " at"));
   }
 
-  private void assertParseException(int offset, int line, int column, final String json) {
-    ParseException exception = assertException(ParseException.class, new Runnable() {
-      public void run() {
-        parser.parse(json);
-      }
-    });
-    assertEquals("offset", offset, exception.getOffset());
-    assertEquals("line", line, exception.getLine());
-    assertEquals("column", column, exception.getColumn());
-  }
-
   /**
    * @param strings The strings to join
    * @return the joined string
@@ -774,6 +791,7 @@ public class JsonParserTest {
    */
   static class TestHandler extends JsonHandler<Object, Object> {
 
+    Location lastLocation;
     StringBuilder log = new StringBuilder();
     int sequence = 0;
 
@@ -880,11 +898,12 @@ public class JsonParserTest {
     }
 
     private void record(String event, Object... args) {
+      lastLocation = getLocation();
       log.append(event);
       for (Object arg : args) {
         log.append(' ').append(arg);
       }
-      log.append(' ').append(getLocation().offset).append('\n');
+      log.append(' ').append(lastLocation.offset).append('\n');
     }
 
     String getLog() {

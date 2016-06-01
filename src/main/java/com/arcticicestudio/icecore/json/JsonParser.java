@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:49 UTC+0200       +
-modified  2016-06-01 22:21 UTC+0200       +
+modified  2016-06-01 22:27 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -491,8 +491,8 @@ public class JsonParser {
    */
   Location getLocation() {
     int offset = bufferOffset + index - 1;
-    int column = offset - lineOffset;
-    return new Location(offset, column, line);
+    int column = offset - lineOffset + 1;
+    return new Location(offset, line, column);
   }
 
   private ParseException expected(String expected) {
@@ -538,16 +538,16 @@ public class JsonParser {
     public final int offset;
 
     /**
-     * The column number, starting at 0.
-     */
-    public final int column;
-
-    /**
      * The line number, starting at 1.
      */
-     public final int line;
+    public final int line;
 
-    Location(int offset, int column, int line) {
+    /**
+     * The column number, starting at 1.
+     */
+     public final int column;
+
+    Location(int offset, int line, int column) {
       this.offset = offset;
       this.column = column;
       this.line = line;
