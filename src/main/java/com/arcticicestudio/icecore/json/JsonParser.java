@@ -236,7 +236,7 @@ public class JsonParser {
   private void readObject() throws IOException {
     Object object = handler.startObject();
     read();
-    if (nestingLevel++ >= 1000) {
+    if (nestingLevel++ >= MAX_NESTING_LEVEL) {
       throw error("Nesting too deep");
     }
     skipWhiteSpace();
