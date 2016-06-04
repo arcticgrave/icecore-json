@@ -9,7 +9,7 @@ email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 14:12 UTC+0200        +
-modified  2016-06-01 22:30 UTC+0200        +
+modified  2016-06-04 08:03 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -38,44 +38,23 @@ package com.arcticicestudio.icecore.json;
  */
 public class ParseException extends RuntimeException {
 
-  private final int offset;
-  private final int line;
-  private final int column;
+  private final Location location;
 
-  ParseException(String message, int offset, int line, int column) {
-    super(message + " at " + line + ":" + column);
-    this.offset = offset;
-    this.line = line;
-    this.column = column;
+  /**
+   * @since 0.8.0
+   */
+  ParseException(String message, Location location) {
+    super(message + " at " + location);
+    this.location = location;
   }
 
   /**
-   * Returns the absolute character index at which the error occurred.
-   * The offset of the first character of a document is 0.
+   * Returns the location at which the error occurred.
    *
-   * @return the character offset at which the error occurred, will be &gt;= 0
+   * @return the error location
+   * @since 0.8.0
    */
-  public int getOffset() {
-    return offset;
-  }
-
-  /**
-   * Returns the line number in which the error occurred.
-   * The number of the first line is 1
-   *
-   * @return the line in which the error occurred, will be &gt;= 1
-   */
-  public int getLine() {
-    return line;
-  }
-
-  /**
-   * Returns the column number at which the error occurred, i.e. the number of the character in its line.
-   * The number of the first character of a line is 1.
-   *
-   * @return the column in which the error occurred, will be &gt;= 1
-   */
-  public int getColumn() {
-    return column;
+  public Location getLocation() {
+    return location;
   }
 }

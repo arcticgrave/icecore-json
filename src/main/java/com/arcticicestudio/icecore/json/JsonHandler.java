@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-30 21:44 UTC+0200       +
-modified  2016-06-04 07:39 UTC+0200       +
+modified  2016-06-04 07:48 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -29,8 +29,6 @@ Arctic Versioning Specification (ArcVer)
   (http://specs.arcticicestudio.com/arcver)
 */
 package com.arcticicestudio.icecore.json;
-
-import com.arcticicestudio.icecore.json.JsonParser.Location;
 
 /**
  * A handler for parser events.

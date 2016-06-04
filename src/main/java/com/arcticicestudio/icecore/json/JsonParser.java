@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:49 UTC+0200       +
-modified  2016-06-04 07:40 UTC+0200       +
+modified  2016-06-04 07:51 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -503,8 +503,7 @@ public class JsonParser {
   }
 
   private ParseException error(String message) {
-    Location location = getLocation();
-    return new ParseException(message, location.offset, location.line, location.column);
+    return new ParseException(message, getLocation());
   }
 
   private boolean isWhiteSpace() {
@@ -523,59 +522,5 @@ public class JsonParser {
 
   private boolean isEndOfText() {
     return current == -1;
-  }
-
-  /**
-   * An immutable object that represents a location in the parsed text.
-   *
-   * @since 0.8.0
-   */
-  public static class Location {
-
-    /**
-     * The absolute character index, starting at 0.
-     */
-    public final int offset;
-
-    /**
-     * The line number, starting at 1.
-     */
-    public final int line;
-
-    /**
-     * The column number, starting at 1.
-     */
-     public final int column;
-
-    Location(int offset, int line, int column) {
-      this.offset = offset;
-      this.column = column;
-      this.line = line;
-    }
-
-    @Override
-    public String toString() {
-      return line + ":" + column;
-    }
-
-    @Override
-    public int hashCode() {
-      return offset;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-      if (this == obj) {
-        return true;
-      }
-      if (obj == null) {
-        return false;
-      }
-      if (getClass() != obj.getClass()) {
-        return false;
-      }
-      Location other = (Location)obj;
-      return offset == other.offset && column == other.column && line == other.line;
-    }
   }
 }

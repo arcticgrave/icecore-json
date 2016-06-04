@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 18:06 UTC+0200       +
-modified  2016-06-04 07:44 UTC+0200       +
+modified  2016-06-04 08:09 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -50,7 +50,6 @@ import java.io.Reader;
 import java.io.StringReader;
 
 import com.arcticicestudio.icecore.json.Json.DefaultHandler;
-import com.arcticicestudio.icecore.json.JsonParser.Location;
 import com.arcticicestudio.icecore.json.TestUtil.RunnableEx;
 
 /**
@@ -106,18 +105,18 @@ public class JsonParserTest {
   }
 
   @Test
-  public void parseRejectsEmptyString() {
+  public void parseStringRejectsEmpty() {
     assertParseException(0, "Unexpected end of input", "");
   }
 
   @Test
-  public void parseRejectsEmptyReader() {
+  public void parseReaderRejectsEmpty() {
     ParseException exception = assertException(ParseException.class, new RunnableEx() {
       public void run() throws IOException {
         parser.parse(new StringReader(""));
       }
     });
-    assertEquals(0, exception.getOffset());
+    assertEquals(0, exception.getLocation().offset);
     assertThat(exception.getMessage(), startsWith("Unexpected end of input at"));
   }
 
@@ -331,9 +330,7 @@ public class JsonParserTest {
         parser.parse(new StringReader(input), 3);
       }
     });
-    assertEquals(4, exception.getLine());
-    assertEquals(1, exception.getColumn());
-    assertEquals(24, exception.getOffset());
+    assertEquals(new Location(24, 4, 1), exception.getLocation());
   }
 
   @Test
@@ -769,7 +766,7 @@ public class JsonParserTest {
         parser.parse(json);
       }
     });
-    assertEquals(offset, exception.getOffset());
+    assertEquals(offset, exception.getLocation().offset);
     assertThat(exception.getMessage(), startsWith(message + " at"));
   }
 
