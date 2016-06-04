@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 16:46 UTC+0200       +
-modified  2016-05-30 21:31 UTC+0200       +
+modified  2016-06-04 08:20 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -38,6 +38,7 @@ import static com.arcticicestudio.icecore.json.TestUtil.assertException;
 import static com.arcticicestudio.icecore.json.TestUtil.serializeAndDeserialize;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
@@ -138,6 +139,44 @@ public class JsonObjectTest {
   public void sizeOneAfterAdd() {
     object.add("a", true);
     assertEquals(1, object.size());
+  }
+
+  /**
+   * @since 0.8.0
+   */
+  @Test
+  public void keyRepetitionAllowsMultipleEntries() {
+    object.add("a", true);
+    object.add("a", "value");
+    assertEquals(2, object.size());
+  }
+
+  /**
+   * @since 0.8.0
+   */
+  @Test
+  public void keyRepetitionGetsLastEntry() {
+    object.add("a", true);
+    object.add("a", "value");
+    assertEquals("value", object.getString("a", "missing"));
+  }
+
+  /**
+   * @since 0.8.0
+   */
+  @Test
+  public void keyRepetitionEqualityConsidersRepetitions() {
+    object.add("a", true);
+    object.add("a", "value");
+
+    JsonObject onlyFirstProperty = new JsonObject();
+    onlyFirstProperty.add("a", true);
+    assertNotEquals(onlyFirstProperty, object);
+
+    JsonObject bothProperties = new JsonObject();
+    bothProperties.add("a", true);
+    bothProperties.add("a", "value");
+    assertEquals(bothProperties, object);
   }
 
   @Test
