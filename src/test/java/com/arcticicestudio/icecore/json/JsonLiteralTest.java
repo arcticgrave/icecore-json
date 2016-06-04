@@ -3,7 +3,7 @@
 title     JSON Literal Test               +
 project   icecore-json                    +
 file      JsonLiteralTest.java            +
-version   0.7.0                           +
+version   0.8.0-frost.0                   +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

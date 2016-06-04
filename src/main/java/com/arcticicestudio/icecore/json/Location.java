@@ -3,7 +3,7 @@
 title     JSON Parser Location            +
 project   icecore-json                    +
 file      Location.java                   +
-version                                   +
+version   0.8.0-frost.0                   +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
