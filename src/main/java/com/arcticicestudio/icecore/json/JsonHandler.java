@@ -3,7 +3,7 @@
 title     JSON Handler                    +
 project   icecore-json                    +
 file      JsonHandler.java                +
-version                                   +
+version   0.8.0-frost.0                   +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

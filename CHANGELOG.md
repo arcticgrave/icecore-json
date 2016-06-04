@@ -1,6 +1,101 @@
 IceCore - JSON
 ==============
 
+## 0.8.0-frost.0 (2016-06-04) - Streaming API
+### Features
+#### Streaming API
+The new streaming API allows processing with events to a given JSON handler while reading input.
+It makes it possible to
+  - register a handler that receives callbacks during parsing
+  - avoid creating an object representation of the entire input in this mode
+  - interrupt the parsing at any point
+
+The `JsonParser` now issues events to a given `JsonHandler` instead of creating a `JsonValue` itself.
+
+##### Use cases
+###### Reading without creating data
+**Example: Syntax highlighting in an editor**  
+For this case you don't care about the content, only about the text positions where syntactical elements begin and end.
+
+**Example: Analyzing/Verifying the structure of a JSON**  
+In this case, the content would matter (e.g. object names and value types), but you would not build up a structure.
+
+###### Creating a custom data structure without intermediate `JsonValue`
+This could be useful because
+  - the application requires a custom data types type anyway and it's faster to create the right structure right away
+  - a custom data structure could be more lightweight by immediately transforming or even skipping values
+
+Example:  
+A custom document handler would know that the value for an object member named "time" is a string representing a time.
+Instead of storing the string in a `JsonValue`, it could store it in a `Date` field of the object being created.
+There should be no `JsonValue` involved unless this type is part of the custom data structure.
+
+###### Skipping parts of the inputs
+The application wants to skip parts of a long document.
+This could be useful because
+  - the document is too large to fit in memory
+  - skipping parts of the document could improve reading performance
+
+The parser still needs to read every single character, but by telling it to skip a part, it could avoid filling the capture buffer and save CPU cycles.
+
+| Class | Description |
+| ----- | ----------- |
+| `com.arcticicestudio.icecore.json.JsonHandler` | A handler for parser events. Instances of this class can be given to `JsonParser`. The parser will then call the methods of the given handler while reading the input. |
+| `com.arcticicestudio.icecore.json.Location` | An immutable object that represents a location in the parsed text. |
+
+### Tests
+#### Streaming API
+  - Implemented new unit tests and adjusted existing for the streaming API:
+
+| Class | Method | Description |
+| ----- | ------ | ----------- |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ setUp():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ constructorRejectsNullHandler():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseStringRejectsNull():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseReaderRejectsNull():void {exceptions=IOException}` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseReaderRejectsNegativeBufferSize():void {exceptions=IOException}` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseNull():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseTrue():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseFalse():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseString():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseStringEmpty():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseNumber():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseArray():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseArrayEmpty():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseObjectEmpty():void` | - |
+| `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseCanBeCalledTwice():void` | - |
+
+#### JSON Object
+  - Implemented test methods for `JsonObject` with repeated properties names:
+
+| Class | Method | Description |
+| ----- | ------ | ----------- |
+| `com.arcticicestudio.icecore.json.JsonObjectTest` | `+ keyRepetitionAllowsMultipleEntries():void` | - |
+| `com.arcticicestudio.icecore.json.JsonObjectTest` | `+ keyRepetitionGetsLastEntry():void` | - |
+| `com.arcticicestudio.icecore.json.JsonObjectTest` | `+ keyRepetitionEqualityConsidersRepetitions():void` | - |
+
+### Improvements
+#### JSON Parser
+  - The start column numbers now start at `1`
+    Most editors regard the first character position of a text as `1:1`.
+    This seems more logical than `1:0` which is currently returned for the first position by `icecore-json`.
+    Adapt this established pattern and let column numbers start at `1`, as line numbers do.
+
+    With this change, there is an easy rule:
+      - `offset` is for programs, it starts at `0`
+      - `line` and `column` are for humans, they start at `1`
+
+    This leads to a slight API change in ParseException.
+    However, since the effect can only be seen in the case of an error, it seems acceptable.
+  - The `readArray():void` method now increments before comparing to the `MAX_NESTING_LEVEL` constant to make the condition more expressive
+
+### Bug Fixes
+#### JSON Parser
+  - Replaced a fixed number for the maximal nesting level with the corresponding constant `MAX_NESTING_LEVEL`
+
+#### Unit Tests
+  - Fixed invalid test data where values are not matching the specified statements
+
 ## 0.7.0 (2016-05-29) - API
 ### Improvements
 #### JSON Parser
