@@ -42,6 +42,7 @@
     {"id": "glacier-git","version": "0.23.0","manager": "odin"},
     {"id": "hamcrest-core","version": "1.3.0","manager": "ivy"},
     {"id": "junit","version": "4.12","manager": "ivy"},
+    {"id": "minimal-json","version": "0.9.4+57a421aa","manager": "ivy"},
     {"id": "mockito-all","version": "1.10.19","manager": "ivy"}
   ],
   "contributors": [
