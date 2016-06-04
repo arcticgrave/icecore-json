@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-29 18:06 UTC+0200       +
-modified  2016-06-01 22:37 UTC+0200       +
+modified  2016-06-04 07:44 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -136,7 +136,7 @@ public class JsonParserTest {
   @Test
   public void parseTrue() {
     parser.parse("true");
-    assertEquals(join("startTrue 0", "endTrue 4"), handler.getLog());
+    assertEquals(join("startBoolean 0", "endBoolean true 4"), handler.getLog());
   }
 
   /**
@@ -145,7 +145,7 @@ public class JsonParserTest {
   @Test
   public void parseFalse() {
     parser.parse("false");
-    assertEquals(join("startFalse 0", "endFalse 5"), handler.getLog());
+    assertEquals(join("startBoolean 0", "endBoolean false 5"), handler.getLog());
   }
 
   /**
@@ -806,23 +806,13 @@ public class JsonParserTest {
     }
 
     @Override
-    public void startTrue() {
-      record("startTrue");
+    public void startBoolean() {
+      record("startBoolean");
     }
 
     @Override
-    public void endTrue() {
-      record("endTrue");
-    }
-
-    @Override
-    public void startFalse() {
-      record("startFalse");
-    }
-
-    @Override
-    public void endFalse() {
-      record("endFalse");
+    public void endBoolean(boolean value) {
+      record("endBoolean", Boolean.valueOf(value));
     }
 
     @Override

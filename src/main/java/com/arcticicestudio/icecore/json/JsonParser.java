@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-05-28 13:49 UTC+0200       +
-modified  2016-06-01 22:27 UTC+0200       +
+modified  2016-06-04 07:40 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -284,22 +284,22 @@ public class JsonParser {
   }
 
   private void readTrue() throws IOException {
-    handler.startTrue();
+    handler.startBoolean();
     read();
     readRequiredChar('r');
     readRequiredChar('u');
     readRequiredChar('e');
-    handler.endTrue();
+    handler.endBoolean(true);
   }
 
   private void readFalse() throws IOException {
-    handler.startFalse();
+    handler.startBoolean();
     read();
     readRequiredChar('a');
     readRequiredChar('l');
     readRequiredChar('s');
     readRequiredChar('e');
-    handler.endFalse();
+    handler.endBoolean(false);
   }
 
   private void readRequiredChar(char ch) throws IOException {

@@ -9,7 +9,7 @@ email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 16:06 UTC+0200        +
-modified  2016-05-31 21:33 UTC+0200        +
+modified  2016-06-04 07:26 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -346,14 +346,12 @@ public final class Json {
       value = NULL;
     }
 
+    /**
+     * @since 0.8.0
+     */
     @Override
-    public void endTrue() {
-      value = TRUE;
-    }
-
-    @Override
-    public void endFalse() {
-      value = FALSE;
+    public void endBoolean(boolean bool) {
+      value = bool ? TRUE : FALSE;
     }
 
     @Override
