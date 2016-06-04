@@ -3,13 +3,13 @@
 title     JSON Public API                  +
 project   icecore-json                     +
 file      Json.java                        +
-version   0.7.0                            +
+version   0.8.0-frost.0                    +
 author    Arctic Ice Studio                +
 email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 16:06 UTC+0200        +
-modified  2016-05-28 16:23 UTC+0200        +
+modified  2016-06-04 07:26 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -287,20 +287,17 @@ public final class Json {
     if (string == null) {
       throw new NullPointerException("string is null");
     }
-    try {
-      return new JsonParser(string).parse();
-    } catch (IOException exception) {
-      // JsonParser does not throw IOException for String
-      throw new RuntimeException(exception);
-    }
+    DefaultHandler handler = new DefaultHandler();
+    new JsonParser(handler).parse(string);
+    return handler.getValue();
   }
 
   /**
-   * Reads the entire input stream from the given reader and parses it as JSON.
+   * Reads the entire input from the given reader and parses it as JSON.
    * The input must contain a valid JSON value, optionally padded with whitespace.
    * <p>
-   *   Characters are read in chunks and buffered internally, therefore wrapping an existing reader in an additional
-   *   {@link java.io.BufferedReader} <strong>does not improve reading performance!</strong>
+   *   Characters are read in chunks into an input buffer.
+   *   Hence, wrapping a reader in an additional {@code BufferedReader} likely won't improve reading performance.
    * </p>
    *
    * @param reader the reader to read the JSON value from
@@ -312,7 +309,9 @@ public final class Json {
     if (reader == null) {
       throw new NullPointerException("reader is null");
     }
-    return new JsonParser( reader ).parse();
+    DefaultHandler handler = new DefaultHandler();
+    new JsonParser(handler).parse(reader);
+    return handler.getValue();
   }
 
   /**
@@ -326,5 +325,66 @@ public final class Json {
       return string.substring(0, string.length() - 2);
     }
     return string;
+  }
+
+  static class DefaultHandler extends JsonHandler<JsonArray, JsonObject> {
+
+    protected JsonValue value;
+
+    @Override
+    public JsonArray startArray() {
+      return new JsonArray();
+    }
+
+    @Override
+    public JsonObject startObject() {
+      return new JsonObject();
+    }
+
+    @Override
+    public void endNull() {
+      value = NULL;
+    }
+
+    /**
+     * @since 0.8.0
+     */
+    @Override
+    public void endBoolean(boolean bool) {
+      value = bool ? TRUE : FALSE;
+    }
+
+    @Override
+    public void endString(String string) {
+      value = new JsonString(string);
+    }
+
+    public void endNumber(String string) {
+      value = new JsonNumber(string);
+    }
+
+    @Override
+    public void endArray(JsonArray array) {
+      value = array;
+    }
+
+    @Override
+    public void endObject(JsonObject object) {
+      value = object;
+    }
+
+    @Override
+    public void endArrayValue(JsonArray array) {
+      array.add(value);
+    }
+
+    @Override
+    public void endObjectValue(JsonObject object, String name) {
+      object.add(name, value);
+    }
+
+    JsonValue getValue() {
+      return value;
+    }
   }
 }

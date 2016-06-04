@@ -1,16 +1,16 @@
 /*
-+++++++++++++++++++++++++++++++++++++++++++++++++
-title     Writer Configuration                  +
-project   icecore-json                          +
-file      WriterConfig.java                     +
-version   0.7.0                                 +
-author    Arctic Ice Studio                     +
-email     development@arcticicestudio.com       +
-website   http://arcticicestudio.com            +
-copyright Copyright (C) 2016                    +
-created   2016-05-28 14:39 UTC+0200             +
-modified  2016-05-28 14:44 UTC+0200             +
-+++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++
+title     Writer Configuration            +
+project   icecore-json                    +
+file      WriterConfig.java               +
+version   0.8.0-frost.0                   +
+author    Arctic Ice Studio               +
+email     development@arcticicestudio.com +
+website   http://arcticicestudio.com      +
+copyright Copyright (C) 2016              +
+created   2016-05-28 14:39 UTC+0200       +
+modified  2016-05-28 14:44 UTC+0200       +
++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
 Controls the formatting of the JSON output.

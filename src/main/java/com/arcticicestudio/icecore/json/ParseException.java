@@ -3,13 +3,13 @@
 title     Parse Exception                  +
 project   icecore-json                     +
 file      ParseException.java              +
-version   0.7.0                            +
+version   0.8.0-frost.0                    +
 author    Arctic Ice Studio                +
 email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 14:12 UTC+0200        +
-modified  2016-05-28 14:16 UTC+0200        +
+modified  2016-06-04 08:03 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -38,43 +38,23 @@ package com.arcticicestudio.icecore.json;
  */
 public class ParseException extends RuntimeException {
 
-  private final int offset;
-  private final int line;
-  private final int column;
+  private final Location location;
 
-  ParseException(String message, int offset, int line, int column) {
-    super(message + " at " + line + ":" + column);
-    this.offset = offset;
-    this.line = line;
-    this.column = column;
+  /**
+   * @since 0.8.0
+   */
+  ParseException(String message, Location location) {
+    super(message + " at " + location);
+    this.location = location;
   }
 
   /**
-   * Returns the absolute index of the character at which the error occurred.
-   * The index of the first character of a document is 0.
+   * Returns the location at which the error occurred.
    *
-   * @return the character offset at which the error occurred, will be &gt;= 0
+   * @return the error location
+   * @since 0.8.0
    */
-  public int getOffset() {
-    return offset;
-  }
-
-  /**
-   * Returns the number of the line in which the error occurred. The first line counts as 1.
-   *
-   * @return the line in which the error occurred, will be &gt;= 1
-   */
-  public int getLine() {
-    return line;
-  }
-
-  /**
-   * Returns the index of the character at which the error occurred, relative to the line. The index
-   * of the first character of a line is 0.
-   *
-   * @return the column in which the error occurred, will be &gt;= 0
-   */
-  public int getColumn() {
-    return column;
+  public Location getLocation() {
+    return location;
   }
 }
