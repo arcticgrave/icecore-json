@@ -233,7 +233,7 @@ This project follows the [Arctic Versioning Specification (ArcVer)](https://gith
   - [`odin@0.1.0`](~/yggdrasil/Odin)
 
 **Skeletons**
-  - [`glacier-apache-ant@0.11.0`](https://github.com/arcticicestudio/glacier-apache-ant)
+  - [`glacier-apache-ant@0.12.0`](https://github.com/arcticicestudio/glacier-apache-ant)
   - [`glacier-git@0.23.0`](https://github.com/arcticicestudio/glacier-git)
 
 ### Contribution
