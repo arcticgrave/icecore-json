@@ -157,7 +157,7 @@ public final class Json {
    *
    * @return a new empty JSON array of {@link JsonArray}
    */
-  public static JsonValue array() {
+  public static JsonArray array() {
     return new JsonArray();
   }
 
