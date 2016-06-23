@@ -3,7 +3,7 @@
 title     JSON Public API                  +
 project   icecore-json                     +
 file      Json.java                        +
-version   0.8.0-frost.0                    +
+version   0.8.0-frost.1                    +
 author    Arctic Ice Studio                +
 email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
@@ -396,7 +396,7 @@ public final class Json {
      * @since 0.8.0
      */
     public String getVersion() {
-      return "0.8.0-frost.0";
+      return "0.8.0-frost.1";
     }
   }
 }
