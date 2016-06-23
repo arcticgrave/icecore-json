@@ -3,7 +3,7 @@
 title     JSON Object                     +
 project   icecore-json                    +
 file      JsonObject.java                 +
-version   0.8.0-frost.0                   +
+version   0.8.0-frost.1                   +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -763,18 +763,32 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
     return result;
   }
 
+  /**
+   * Indicates whether a given object is "equal to" this JsonArray.
+   *
+   * <p>
+   *   An object is considered equal if it is also a {@code JsonArray} and both arrays contain the same list of values.
+   * </p>
+   *
+   * <p>
+   *   If two JsonArrays are equal, they will also produce the same JSON output.
+   * </p>
+   *
+   * @param object the object to be compared with this JsonArray
+   * @return {@code true} if the specified object is equal to this JsonArray, {@code false} otherwise
+   */
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
+  public boolean equals(Object object) {
+    if (this == object) {
       return true;
     }
-    if (obj == null) {
+    if (object == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (getClass() != object.getClass()) {
       return false;
     }
-    JsonObject other = (JsonObject)obj;
+    JsonObject other = (JsonObject)object;
     return names.equals(other.names) && values.equals(other.values);
   }
 

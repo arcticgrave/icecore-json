@@ -1,6 +1,21 @@
 IceCore - JSON
 ==============
 
+## 0.8.0-frost.1 (2016-06-23)
+### Features
+#### API
+  - Implemented the `+ getVersion():String` method to return the [ArcVer][arcver-github]- and [SemVer][semver] compatible version.
+
+### Improvements
+#### Documentation
+  - Improved JavaDoc for the overriden `+ equals(Object):boolean` methods to explain the conditions which imply equality for `JsonObject` and `JsonArray`.
+  In particular, point out that `JsonObject`s are considered equal only if the members have the same order.
+
+### Bug Fixes
+#### API
+  - Fixed the static method `+ Json.array():JsonValue` to return the correct type `JsonArray` instead of `JsonValue`.
+  New method signature: `+ Json.array():JsonArray`
+
 ## 0.8.0-frost.0 (2016-06-04) - Streaming API
 ### Features
 #### Streaming API
@@ -234,3 +249,6 @@ This version includes the API entrypoint class `Json` to write and parse JSON.
 | `com.arcticicestudio.icecore.json.JsonString` | Represents a JSON string. |
 
 ## 0.0.0 (2016-05-27) - Project Initialization
+
+[arcver-github]: https://github.com/arcticicestudio/arcver
+[semver]: http://semver.org

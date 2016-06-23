@@ -4,17 +4,17 @@
 title     Apache Ant Build Script         +
 project   icecore-json                    +
 file      build.xml                       +
-version   0.8.0-frost.0                   +
+version   0.8.0-frost.1                   +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 copyright Copyright (C) 2016              +
 created   2016-05-27 19:39 UTC+0100       +
-modified  2016-05-27 19:40 UTC+0100       +
+modified  2016-06-23 16:56 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
 Apache Ant Build Script of the "IceCore - JSON" project.
-Based on the Apache Ant Build Script skeleton of the "Glacier - Apache Ant" project (glacier-apache-ant@0.11.0).
+Based on the Apache Ant Build Script skeleton of the "Glacier - Apache Ant" project (glacier-apache-ant@0.12.0).
 
 [Index]
   (1) Initialization
@@ -115,7 +115,7 @@ Development
   - hamcrest-core@1.3 (http://hamcrest.org)
   - mockito-all@1.10.19 (http://mockito.org)
   Skeletons
-    - glacier-apache-ant@0.11.0 (https://github.com/arcticicestudio/glacier-apache-ant)
+    - glacier-apache-ant@0.12.0 (https://github.com/arcticicestudio/glacier-apache-ant)
 Production
   Engines
     - ant@1.9.6 (http://ant.apache.org)
@@ -294,31 +294,6 @@ Glacier Apache Ant Project
       <available type="dir" searchparents="false" file="${src.main.resources}"/>
     </condition>
 
-    <!-- Base Project Assets (required) -->
-    <condition property="hasBaseProjectAssets">
-      <and>
-        <available type="file" searchparents="false" file="README.md"/>
-        <available type="file" searchparents="false" file="CHANGELOG.md"/>
-      </and>
-    </condition>
-    <fail unless:set="hasBaseProjectAssets" message="No base project assets available"/>
-
-    <!-- Optional Project Assets (optional) -->
-    <condition property="hasOptionalProjectAssets">
-      <or>
-        <available type="file" searchparents="false" file="COPYRIGHT.md"/>
-        <available type="file" searchparents="false" file="LICENSE.md"/>
-      </or>
-    </condition>
-
-    <!-- Base Odin Project Development Assets -->
-    <condition property="hasBaseOdinProjectDevelopmentAssets">
-      <and>
-        <istrue value="${config.assembly.odin}"/>
-        <available type="file" searchparents="false" file="odin.json"/>
-      </and>
-    </condition>
-
     <!-- Assembly Dependencies Prefix Configuration (required) -->
     <condition property="hasAssemblyDependenciesPrefixConfiguration">
       <isset property="assembly.dependencies.prefix"/>
@@ -469,23 +444,6 @@ Glacier Apache Ant Project
       <zipfileset dir="${build.main.resources}" prefix="resources">
         <include name="**/*"/>
       </zipfileset>
-
-      <!-- Base Project Assets (required)-->
-      <fileset if:set="hasBaseProjectAssets" dir="${basedir}">
-        <include name="README.md"/>
-        <include name="CHANGELOG.md"/>
-      </fileset>
-
-      <!-- Optional Project Assets (optional)-->
-      <fileset if:set="hasOptionalProjectAssets" dir="${basedir}">
-        <include name="COPYRIGHT.md"/>
-        <include name="LICENSE.md"/>
-      </fileset>
-
-      <!-- Base Odin Project Development Assets (required)-->
-      <fileset if:set="hasBaseOdinProjectDevelopmentAssets" dir="${basedir}">
-        <include name="odin.json"/>
-      </fileset>
     </jar>
     <!-- +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [2.1.3]-+ -->
 

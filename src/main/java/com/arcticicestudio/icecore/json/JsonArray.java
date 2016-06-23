@@ -3,7 +3,7 @@
 title     JSON Array                      +
 project   icecore-json                    +
 file      JsonArray.java                  +
-version   0.8.0-frost.0                   +
+version   0.8.0-frost.1                   +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -416,6 +416,20 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
     return values.hashCode();
   }
 
+  /**
+   * Indicates whether a given object is "equal to" this JsonArray.
+   *
+   * <p>
+   *   An object is considered equal if it is also a {@code JsonArray} and both arrays contain the same list of values.
+   * </p>
+   *
+   * <p>
+   *   If two JsonArrays are equal, they will also produce the same JSON output.
+   * </p>
+   *
+   * @param object the object to be compared with this JsonArray
+   * @return {@code true} if the specified object is equal to this JsonArray, {@code false} otherwise
+   */
   @Override
   public boolean equals(Object object) {
     if (this == object) {
