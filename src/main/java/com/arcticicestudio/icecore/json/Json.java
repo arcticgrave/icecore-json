@@ -9,7 +9,7 @@ email     development@arcticicestudio.com  +
 website   http://arcticicestudio.com       +
 copyright Copyright (C) 2016               +
 created   2016-05-28 16:06 UTC+0200        +
-modified  2016-06-04 07:26 UTC+0200        +
+modified  2016-06-23 16:39 UTC+0200        +
 ++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -385,6 +385,18 @@ public final class Json {
 
     JsonValue getValue() {
       return value;
+    }
+
+    /**
+     * Returns the ArcVer- and SemVer compatible version.
+     *
+     * @return The ArcVer and SemVer compatible version
+     * @see <a href="https://github.com/arcticicestudio/arcver">ArcVer</a>
+     * @see <a href="http://semver.org">SemVer</a>
+     * @since 0.8.0
+     */
+    public String getVersion() {
+      return "0.8.0-frost.0";
     }
   }
 }
