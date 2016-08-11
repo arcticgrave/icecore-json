@@ -1,5 +1,4 @@
-IceCore - JSON
-==============
+![](https://bitbucket.org/arcticicestudio/icecore-json/raw/develop/src/main/assets/media/icecore-json-banner.png)
 
 ## 0.8.0-frost.1 (2016-06-23)
 ### Features
