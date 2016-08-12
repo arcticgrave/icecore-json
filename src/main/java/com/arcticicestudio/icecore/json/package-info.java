@@ -33,9 +33,9 @@ Arctic Versioning Specification (ArcVer)
  * Represents the public API of the <a href="https://bitbucket.com/arcticicestudio/icecore-json">"IceCore - JSON"</a>
  * library.
  * <p>
- * <strong>The package represents the public API.</strong><br>
- * The main entry point of the package is the {@link com.arcticicestudio.icecore.json.Json} class to parse and write
- * JSON.
+ *   <strong>The package represents the public API.</strong>
+ *   The main entry point of the package is the {@link com.arcticicestudio.icecore.json.Json} class to parse and write
+ *   JSON.
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;

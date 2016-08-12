@@ -37,26 +37,26 @@ import java.io.Reader;
  * This class serves as the entry point to the "IceCore - JSON" public API.
  * <p>
  *   To <strong>parse</strong> a given JSON input, use the {@code parse()} methods:
- * </p>
  * <pre>
  * JsonObject object = Json.parse(string).asObject();
  * </pre>
+ * </p>
  * <p>
  *   To <strong>create</strong> a JSON data structure to be serialized, use the methods {@code value()},
  *   {@code array()} and {@code object()}.
  *   The following example snippet will produce the JSON string <em>{"foo": 23, "bar": true}</em>:
- * </p>
  * <pre>
  * String string = Json.object().add("foo", 23).add("bar", true).toString();
  * </pre>
+ * </p>
  * <p>
  *   To create a JSON array from a given Java array, you can use one of the {@code array()} methods with varargs
  *   parameters:
- * </p>
  * <pre>
  * String[] names = ...
  * JsonArray array = Json.array(names);
  * </pre>
+ * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.6.0
@@ -64,8 +64,8 @@ import java.io.Reader;
 public final class Json {
 
   /*
- * Prevents the instantiation
- */
+   * Prevents the instantiation
+   */
   private Json() {}
 
   /**
@@ -277,7 +277,9 @@ public final class Json {
 
   /**
    * Parses the given input string as JSON.
-   * The input must contain a valid JSON value, optionally padded with whitespace.
+   * <p>
+   *   The input must contain a valid JSON value, optionally padded with whitespace.
+   * </p>
    *
    * @param string the input string, must be valid JSON
    * @return a value that represents the parsed JSON
@@ -294,10 +296,13 @@ public final class Json {
 
   /**
    * Reads the entire input from the given reader and parses it as JSON.
-   * The input must contain a valid JSON value, optionally padded with whitespace.
+   * <p>
+   *   The input must contain a valid JSON value, optionally padded with whitespace.
+   * </p>
    * <p>
    *   Characters are read in chunks into an input buffer.
-   *   Hence, wrapping a reader in an additional {@code BufferedReader} likely won't improve reading performance.
+   *   Hence, wrapping a reader in an additional {@link java.io.BufferedReader} likely won't improve reading
+   *   performance.
    * </p>
    *
    * @param reader the reader to read the JSON value from

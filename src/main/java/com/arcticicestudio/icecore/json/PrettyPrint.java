@@ -38,7 +38,7 @@ import java.util.Arrays;
 /**
  * Enables human readable JSON output by inserting whitespace between values after commas and colons.
  * <p>
- *   Example:<br>
+ *   Example:
  *   <pre>
  *     jsonValue.writeTo(writer, PrettyPrint.singleLine());
  *   </pre>

@@ -45,8 +45,9 @@ import com.arcticicestudio.icecore.json.JsonObject.Member;
  *   Members can be added using the {@code add(String, ...)} methods which accept instances of {@link JsonValue},
  *   strings, primitive numbers, and boolean values.
  *   To modify certain values of an object, use the {@code set(String, ...)} methods.
- *   Please note that the {@code add} methods are faster than {@code set} as they do not search for existing members.
- *   On the other hand, the {@code add} methods do not prevent adding multiple members with the same name.
+ *   Please note that the {@code add(String, ...)} methods are faster than {@code set(String, ...)} as they do not
+ *   search for existing members.
+ *   On the other hand, the {@code add(String, ...)} methods do not prevent adding multiple members with the same name.
  *   Duplicate names are discouraged but not prohibited by JSON.
  * </p>
  * <p>
@@ -67,8 +68,10 @@ import com.arcticicestudio.icecore.json.JsonObject.Member;
  *   to allow processing in document order and to guarantee a predictable output.
  * </p>
  * <p>
- *   <strong>Note that this class is not thread-safe!</strong>.<br>
- *   If multiple threads access a {@code JsonObject} instance concurrently, while at least one of these threads modifies
+ *   <strong>Note that this class is not thread-safe!</strong>.
+ * </p>
+ * <p>
+ *   If multiple threads access a {@link JsonObject} instance concurrently, while at least one of these threads modifies
  *   the contents of this object, access to the instance must be synchronized externally.
  *   Failure to do so may lead to an inconsistent state.
  * </p>
@@ -127,10 +130,12 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
 
   /**
    * Returns an unmodifiable JsonObject for the specified one.
-   * This method allows to provide read-only access to a JsonObject.
+   * <p>
+   *   This method allows to provide read-only access to a JsonObject.
+   * </p>
    * <p>
    *   The returned JsonObject is backed by the given object and reflect changes that happen to it.
-   *   Attempts to modify the returned JsonObject result in an {@code UnsupportedOperationException}.
+   *   Attempts to modify the returned JsonObject result in an {@link UnsupportedOperationException}.
    * </p>
    *
    * @param object the JsonObject for which an unmodifiable JsonObject is to be returned
@@ -144,7 +149,9 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * Appends a new member to the end of this object, with the specified name and the JSON representation of the
    * specified {@code int} value.
    * <p>
-   *   <strong>This method does not prevent duplicate names!</strong><br>
+   *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -167,6 +174,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * specified {@code long} value.
    * <p>
    *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -189,6 +198,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * specified {@code float} value.
    * <p>
    *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -211,6 +222,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * specified {@code double} value.
    * <p>
    *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -233,6 +246,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * specified {@code boolean} value.
    * <p>
    *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -255,6 +270,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * specified string.
    * <p>
    *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -276,6 +293,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * Appends a new member to the end of this object, with the specified name and the specified JSON value.
    * <p>
    *   <strong>This method does not prevent duplicate names!</strong>
+   * </p>
+   * <p>
    *   Calling this method with a name that already exists in the object will append another member with the same name.
    *   In order to replace existing members, use the method {@code set(name, value)} instead.
    *   Note that <strong><em>add</em> is much faster than <em>set</em></strong>, because it does not need to search for
@@ -309,6 +328,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -332,6 +353,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -355,6 +378,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -378,6 +403,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -401,6 +428,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -423,6 +452,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -445,6 +476,8 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    * <p>
    *   <strong>This method should only be used to modify existing objects!</strong>.
+   * </p>
+   * <p>
    *   To fill a new object with members, the method {@code add(name, value)} should be preferred which is much faster
    *   as it does not need to search for existing members.
    * </p>
@@ -676,7 +709,9 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
 
   /**
    * Returns an iterator over the members of this object in document order.
-   * The returned iterator cannot be used to modify this object.
+   * <p>
+   *   The returned iterator cannot be used to modify this object.
+   * </p>
    *
    * @return an iterator over the members of this object
    */
@@ -765,11 +800,9 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
 
   /**
    * Indicates whether a given object is "equal to" this JsonArray.
-   *
    * <p>
-   *   An object is considered equal if it is also a {@code JsonArray} and both arrays contain the same list of values.
+   *   An object is considered equal if it is also a {@link JsonArray} and both arrays contain the same list of values.
    * </p>
-   *
    * <p>
    *   If two JsonArrays are equal, they will also produce the same JSON output.
    * </p>

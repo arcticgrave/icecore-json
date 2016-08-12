@@ -47,18 +47,20 @@ import java.util.List;
  *   Elements can be accessed by their index using {@link #get(int)}.
  *   This class also supports iterating over the elements in document order using an {@link #iterator()} or an
  *   enhanced for loop:
- * </p>
  * <pre>
  * for (JsonValue value : jsonArray) {
  *   ...
  * }
  * </pre>
+ * </p>
  * <p>
  *   An equivalent {@link List} can be obtained from the method {@link #values()}.
  * </p>
  * <p>
  *   Note that this class is <strong>not thread-safe!</strong><br>
- *   If multiple threads access a {@code JsonArray} instance concurrently, while at least one of these threads modifies
+ * </p>
+ * <p>
+ *   If multiple threads access a {@link JsonArray} instance concurrently, while at least one of these threads modifies
  *   the contents of this array, access to the instance must be synchronized externally.
  *   Failure to do so may lead to an inconsistent state.
  * </p>
@@ -109,10 +111,12 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
 
   /**
    * Returns an unmodifiable wrapper for the specified JsonArray.
-   * This method allows to provide read-only access to a JsonArray.
+   * <p>
+   *   This method allows to provide read-only access to a JsonArray.
+   * </p>
    * <p>
    *   The returned JsonArray is backed by the given array and reflects subsequent changes.
-   *   Attempts to modify the returned JsonArray result in an {@code UnsupportedOperationException}.
+   *   Attempts to modify the returned JsonArray result in an {@link UnsupportedOperationException}.
    * </p>
    *
    * @param array the JsonArray for which an unmodifiable JsonArray is to be returned
@@ -345,9 +349,9 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
   /**
    * Returns a list of the values in this array in document order.
    * <p>
-   * The returned list is backed by this array and will reflect subsequent changes.
-   * <strong>It cannot be used to modify this array!</strong>
-   * Attempts to modify the returned list will result in an exception.
+   *   The returned list is backed by this array and will reflect subsequent changes.
+   *   <strong>It cannot be used to modify this array!</strong>
+   *   Attempts to modify the returned list will result in an exception.
    * </p>
    *
    * @return a list of the values in this array
@@ -358,8 +362,9 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
 
   /**
    * Returns an iterator over the values of this array in document order.
-   * <strong>The returned iterator cannot be used to modify this array!</strong>
-   *
+   * <p>
+   *   <strong>The returned iterator cannot be used to modify this array!</strong>
+   * </p>
    *
    * @return an iterator over the values of this array
    */
@@ -418,11 +423,9 @@ public class JsonArray extends JsonValue implements Iterable<JsonValue> {
 
   /**
    * Indicates whether a given object is "equal to" this JsonArray.
-   *
    * <p>
    *   An object is considered equal if it is also a {@code JsonArray} and both arrays contain the same list of values.
    * </p>
-   *
    * <p>
    *   If two JsonArrays are equal, they will also produce the same JSON output.
    * </p>

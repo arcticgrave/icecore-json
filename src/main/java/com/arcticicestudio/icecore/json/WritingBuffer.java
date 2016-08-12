@@ -36,9 +36,12 @@ import java.io.Writer;
 /**
  * A lightweight writing buffer to reduce the amount of write operations to be performed on the underlying writer.
  * <p>
- * <strong>This implementation is not thread-safe.</strong><br>
- * It deliberately deviates from the contract of {@link java.io.Writer}.
- * In particular, it does not flush or close the wrapped writer nor does it ensure that the wrapped writer is open.
+ *   <strong>This implementation is not thread-safe.</strong>.
+ * </p>
+ *
+ * <p>
+ *   It deliberately deviates from the contract of {@link java.io.Writer}.
+ *   In particular, it does not flush or close the wrapped writer nor does it ensure that the wrapped writer is open.
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
