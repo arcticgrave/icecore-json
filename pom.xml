@@ -297,6 +297,20 @@ Glacier Apache Maven Project
       <scope>test</scope>
       <optional>true</optional>
     </dependency>
+
+    <!--
+    Mocking framework for unit tests written in Java.
+
+    @see  http://mockito.org
+    @since 0.8.0
+    -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>2.0.100-beta</version>
+      <scope>test</scope>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 
   <!--+- - - - +
