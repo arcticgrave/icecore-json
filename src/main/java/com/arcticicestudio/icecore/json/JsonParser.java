@@ -36,7 +36,9 @@ import java.io.StringReader;
 
 /**
  * A streaming parser for JSON text.
- * The parser reports all events to a given handler.
+ * <p>
+ *   The parser reports all events to a given handler.
+ * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.4.0
@@ -71,7 +73,9 @@ public class JsonParser {
 
   /**
    * Creates a new JsonParser with the given handler.
-   * The parser will report all parser events to this handler.
+   * <p>
+   *   The parser will report all parser events to this handler.
+   * </p>
    *
    * @param handler The handler to process parser events
    * @since 0.8.0
@@ -115,7 +119,8 @@ public class JsonParser {
    * </p>
    * <p>
    *   Characters are read in chunks into a default-sized input buffer.
-   *   Hence, wrapping a reader in an additional {@code BufferedReader} likely won't improve reading performance.
+   *   Hence, wrapping a reader in an additional {@link java.io.BufferedReader} likely won't improve reading
+   *   performance.
    * </p>
    *
    * @param reader The reader to read the input from
@@ -134,8 +139,9 @@ public class JsonParser {
    *   The input <strong>MUST</strong> contain a valid JSON value, optionally padded with whitespace.
    * </p>
    * <p>
-   * Characters are read in chunks into an input buffer of the given size.
-   * Hence, wrapping a reader in an additional {@code BufferedReader} likely won't improve reading performance.
+   *   Characters are read in chunks into an input buffer of the given size.
+   *   Hence, wrapping a reader in an additional {@link java.io.BufferedReader} likely won't improve reading
+   *   performance.
    * </p>
    *
    * @param reader The reader to read the input from
