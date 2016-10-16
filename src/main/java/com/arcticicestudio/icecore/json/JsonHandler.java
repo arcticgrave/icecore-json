@@ -186,7 +186,7 @@ public abstract class JsonHandler<A, O> {
   /**
    * Indicates the beginning of an object in the JSON input.
    * <p>
-   *   This method will be called when reading the opening curly bracket character ({@code '{'}).
+   *   This method will be called when reading the opening curly bracket character ('&#123;').
    * <p>
    *   This method may return an object to handle subsequent parser events for this object.
    *   This object handler will be provided in all calls to {@link #startObjectName(Object)},
