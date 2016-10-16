@@ -1,13 +1,16 @@
-![](https://bitbucket.org/arcticicestudio/icecore-json/raw/develop/src/main/assets/media/icecore-json-banner.png)
+<p align="center"><img src="https://bitbucket.org/arcticicestudio/icecore-json/raw/develop/src/main/assets/icecore-json-logo-banner.svg"/></p>
 
-<img src="https://bitbucket.org/favicon.ico" width=24 height=24/> [![release](https://img.shields.io/badge/release-v0.7.0-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-json/downloads) [![pre-release](https://img.shields.io/badge/pre--release-v0.8.0--frost.1-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-json/downloads) [![issues](https://img.shields.io/bitbucket/issues-raw/arcticicestudio/icecore-json.svg?maxAge=86400)](https://bitbucket.org/arcticicestudio/icecore-json/issues)
+<p align="center"><img src="https://cdn.travis-ci.org/images/favicon-c566132d45ab1a9bcae64d8d90e4378a.svg" width=24 height=24/> <a href="https://travis-ci.org/arcticicestudio/icecore-json"><img src="https://img.shields.io/travis/arcticicestudio/icecore-json/develop.svg"/></a> <img src="https://circleci.com/favicon.ico" width=24 height=24/> <a href="https://circleci.com/bb/arcticicestudio/icecore-json"><img src="https://circleci.com/bb/arcticicestudio/icecore-json.svg?style=shield&circle-token=15a1daa3568d1239de2d34f61e8cb807024cd4de"/></a> <img src="https://codecov.io/favicon.ico" width=24 height=24/> <a href="https://codecov.io/gh/arcticicestudio/icecore-json"><img src="https://codecov.io/gh/arcticicestudio/icecore-json/branch/develop/graph/badge.svg"/></a> <img src="https://bitbucket.org/favicon.ico" width=24 height=24/> <a href="https://bitbucket.org/arcticicestudio/icecore-json/downloads"><img src="https://img.shields.io/badge/release-0.7.0-blue.svg"/></a> <a href="https://bitbucket.org/arcticicestudio/icecore-json/downloads"><img src="https://img.shields.io/badge/pre--release-0.8.0--frost.1-blue.svg"/></a> <img src="http://central.sonatype.org/favicon.ico" width=24 height=24/> <a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.arcticicestudio%22%20AND%20a%3A%22icecore-json%22"><img src="https://img.shields.io/maven-central/v/com.arcticicestudio/icecore-json.svg"/></a> <img src="https://oss.sonatype.org/favicon.ico"/> <a href="https://oss.sonatype.org/content/repositories/snapshots/com/arcticicestudio/icecore-json"><img src="https://img.shields.io/badge/snapshot----blue.svg"/></a> <img src="https://bintray.com/favicon.ico" width=24 height=24/> <a href='https://bintray.com/arcticicestudio/IceCore/icecore-json/_latestVersion'><img src='https://api.bintray.com/packages/arcticicestudio/IceCore/icecore-json/images/download.svg'></a></p>
 
-Lightweight module library as part of the [IceCore](https://bitbucket.org/arcticicestudio/icecore) engine, providing a fast, minimal and simple [JSON](http://json.org) parser and writer.  
+<p align="center">A fast, minimal and simple [JSON](http://json.org) parser and writer.</p>
+
+---
+
 It's not an object mapper, but a bare-bones library that aims at being
   - **lightweight**: object representation with minimal memory footprint (e.g. no HashMaps)
+  - **simple**: reading, writing and modifying JSON with minimal code (short names, fluent style)
   - **fast**: high performance comparable with other state-of-the-art parsers
   - **minimal**: no dependencies, single package with just a few classes, small download size (< 35kB)
-  - **simple**: reading, writing and modifying JSON with minimal code (short names, fluent style)
 
 ## Getting started
 ### Setup
@@ -31,7 +34,9 @@ compile(group: 'com.arcticicestudio', name: 'icecore-json', version: '0.8.0-fros
 <img src="http://apache.org/favicons/favicon.ico" width=16 height=16/> <a href="https://ant.apache.org/ivy">Apache Ivy</a>
 ```xml
 <dependency org="com.arcticicestudio" name="icecore-json" rev="0.8.0-frost.1" />
-```   
+```
+
+Development snapshots are available via [OSS Sonatype](https://oss.sonatype.org/content/repositories/snapshots/com/arcticicestudio/icecore-json).
 
 ### Build
 Build and install icecore-json into your local repository without GPG signing:  
@@ -43,6 +48,8 @@ Signed artifacts may be build by using the `sign-gpg` profile with a provided `g
 ```
 mvn clean install -Dgpg.keyname=YourGPGKeyId
 ```
+
+Continuous integration builds are running at [Travis CI](https://travis-ci.org/arcticicestudio/icecore-json) and [Circle CI](https://circleci.com/bb/arcticicestudio/icecore-json).
 
 ## Usage Guide
 This is a basic guide to show the common usage of the icecore-json API.  
@@ -57,6 +64,7 @@ The class `Json` is the entrypoint to the icecore-json API, use it to parse and 
     - [Create JSON values](#create-json-values)
     - [Modify JSON arrays and objects](#modify-json-arrays-and-objects)
     - [Output JSON](#output-json)
+  - [Concurrency](#concurrency)
 
 ### Parse JSON
 You can parse JSON from a `String` or from a `java.io.Reader`.  
@@ -208,28 +216,25 @@ String json = jsonValue.toString(WriterConfig.PRETTY_PRINT);
 jsonValue.writeTo(writer, WriterConfig.PRETTY_PRINT);
 ```
 
----
-
 ## Concurrency
 The JSON structures in this library (`JsonObject` and `JsonArray`) are deliberately **not thread-safe** to keep them fast and simple.  
 In the rare case that JSON data structures must be accessed from multiple threads, while at least one of these threads modifies their contents, the application must ensure proper synchronization.
 
 Iterators will throw a `ConcurrentModificationException` when the contents of a JSON structure have been modified after the creation of the iterator.
 
+---
+
 ## Development
-[![](https://img.shields.io/badge/Changelog-v0.8.0--frost.1-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-json/raw/v0.8.0-frost.1/CHANGELOG.md)
-
-### Workflow
-This project follows the [gitflow](http://nvie.com/posts/a-successful-git-branching-model) branching model.
-
-### Specifications
-This project follows the [Arctic Versioning Specification](https://github.com/arcticicestudio/arcver).
+[![](https://img.shields.io/badge/Changelog-0.8.0--frost.1-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-json/raw/v0.8.0-frost.1/CHANGELOG.md) [![](https://img.shields.io/badge/Workflow-gitflow_Branching_Model-blue.svg)](http://nvie.com/posts/a-successful-git-branching-model) [![](https://img.shields.io/badge/Versioning-ArcVer_0.8.0-blue.svg)](https://github.com/arcticicestudio/arcver)
 
 ### Contribution
 Please report issues/bugs, feature requests and suggestions for improvements to the [issue tracker](https://bitbucket.org/arcticicestudio/icecore-json/issues).
 
+## Credits
+Inspired by the awesome [minimal-json](https://github.com/ralfstx/minimal-json) project which is the codebase of this project.
+
 ---
 
-<img src="http://arcticicestudio.com/favicon.ico" width=16 height=16/> Copyright &copy; 2016 Arctic Ice Studio
+<p align="center"> <img src="http://arcticicestudio.com/favicon.ico" width=16 height=16/> Copyright &copy; 2016 Arctic Ice Studio</p>
 
-[![GPL-3.0](http://www.gnu.org/graphics/gplv3-88x31.png)](http://www.gnu.org/licenses/gpl.txt)
+<p align="center"><a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"/></a></p>

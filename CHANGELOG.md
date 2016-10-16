@@ -1,23 +1,27 @@
-![](https://bitbucket.org/arcticicestudio/icecore-json/raw/develop/src/main/assets/media/icecore-json-banner.png)
+<p align="center"><img src="https://bitbucket.org/arcticicestudio/icecore-json/raw/develop/src/main/assets/icecore-json-logo-banner.svg"/></p>
 
-## 0.8.0-frost.1 (2016-06-23)
-### Features
-#### API
+<p align="center"><img src="https://bitbucket.org/favicon.ico" width=24 height=24/> <a href="https://bitbucket.org/arcticicestudio/icecore-json/downloads"><img src="https://img.shields.io/badge/release-0.7.0-blue.svg"/></a> <a href="https://bitbucket.org/arcticicestudio/icecore-json/downloads"><img src="https://img.shields.io/badge/pre--release-0.8.0--frost.1-blue.svg"/></a> <img src="http://central.sonatype.org/favicon.ico" width=24 height=24/> <a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.arcticicestudio%22%20AND%20a%3A%22icecore-json%22"><img src="https://img.shields.io/maven-central/v/com.arcticicestudio/icecore-json.svg"/></a> <img src="https://oss.sonatype.org/favicon.ico"/> <a href="https://oss.sonatype.org/content/repositories/snapshots/com/arcticicestudio/icecore-json"><img src="https://img.shields.io/badge/snapshot----blue.svg"/></a> <img src="https://bintray.com/favicon.ico" width=24 height=24/> <a href='https://bintray.com/arcticicestudio/IceCore/icecore-json/_latestVersion'><img src='https://api.bintray.com/packages/arcticicestudio/IceCore/icecore-json/images/download.svg'></a></p>
+
+---
+
+# 0.8.0-frost.1 (2016-06-23)
+## Features
+### API
   - Implemented the `+ getVersion():String` method to return the [ArcVer][arcver-github]- and [SemVer][semver] compatible version.
 
-### Improvements
-#### Documentation
+## Improvements
+### Documentation
   - Improved JavaDoc for the overriden `+ equals(Object):boolean` methods to explain the conditions which imply equality for `JsonObject` and `JsonArray`.
   In particular, point out that `JsonObject`s are considered equal only if the members have the same order.
 
-### Bug Fixes
-#### API
+## Bug Fixes
+### API
   - Fixed the static method `+ Json.array():JsonValue` to return the correct type `JsonArray` instead of `JsonValue`.
   New method signature: `+ Json.array():JsonArray`
 
-## 0.8.0-frost.0 (2016-06-04) - Streaming API
-### Features
-#### Streaming API
+# 0.8.0-frost.0 (2016-06-04) - Streaming API
+## Features
+### Streaming API
 The new streaming API allows processing with events to a given JSON handler while reading input.
 It makes it possible to
   - register a handler that receives callbacks during parsing
@@ -26,15 +30,15 @@ It makes it possible to
 
 The `JsonParser` now issues events to a given `JsonHandler` instead of creating a `JsonValue` itself.
 
-##### Use cases
-###### Reading without creating data
+#### Use cases
+##### Reading without creating data
 **Example: Syntax highlighting in an editor**  
 For this case you don't care about the content, only about the text positions where syntactical elements begin and end.
 
 **Example: Analyzing/Verifying the structure of a JSON**  
 In this case, the content would matter (e.g. object names and value types), but you would not build up a structure.
 
-###### Creating a custom data structure without intermediate `JsonValue`
+##### Creating a custom data structure without intermediate `JsonValue`
 This could be useful because
   - the application requires a custom data types type anyway and it's faster to create the right structure right away
   - a custom data structure could be more lightweight by immediately transforming or even skipping values
@@ -44,7 +48,7 @@ A custom document handler would know that the value for an object member named "
 Instead of storing the string in a `JsonValue`, it could store it in a `Date` field of the object being created.
 There should be no `JsonValue` involved unless this type is part of the custom data structure.
 
-###### Skipping parts of the inputs
+##### Skipping parts of the inputs
 The application wants to skip parts of a long document.
 This could be useful because
   - the document is too large to fit in memory
@@ -57,8 +61,8 @@ The parser still needs to read every single character, but by telling it to skip
 | `com.arcticicestudio.icecore.json.JsonHandler` | A handler for parser events. Instances of this class can be given to `JsonParser`. The parser will then call the methods of the given handler while reading the input. |
 | `com.arcticicestudio.icecore.json.Location` | An immutable object that represents a location in the parsed text. |
 
-### Tests
-#### Streaming API
+## Tests
+### Streaming API
   - Implemented new unit tests and adjusted existing for the streaming API:
 
 | Class | Method | Description |
@@ -79,7 +83,7 @@ The parser still needs to read every single character, but by telling it to skip
 | `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseObjectEmpty():void` | - |
 | `com.arcticicestudio.icecore.json.JsonParserTest` | `+ parseCanBeCalledTwice():void` | - |
 
-#### JSON Object
+### JSON Object
   - Implemented test methods for `JsonObject` with repeated properties names:
 
 | Class | Method | Description |
@@ -88,8 +92,8 @@ The parser still needs to read every single character, but by telling it to skip
 | `com.arcticicestudio.icecore.json.JsonObjectTest` | `+ keyRepetitionGetsLastEntry():void` | - |
 | `com.arcticicestudio.icecore.json.JsonObjectTest` | `+ keyRepetitionEqualityConsidersRepetitions():void` | - |
 
-### Improvements
-#### JSON Parser
+## Improvements
+### JSON Parser
   - The start column numbers now start at `1`
     Most editors regard the first character position of a text as `1:1`.
     This seems more logical than `1:0` which is currently returned for the first position by `icecore-json`.
@@ -103,22 +107,22 @@ The parser still needs to read every single character, but by telling it to skip
     However, since the effect can only be seen in the case of an error, it seems acceptable.
   - The `readArray():void` method now increments before comparing to the `MAX_NESTING_LEVEL` constant to make the condition more expressive
 
-### Bug Fixes
-#### JSON Parser
+## Bug Fixes
+### JSON Parser
   - Replaced a fixed number for the maximal nesting level with the corresponding constant `MAX_NESTING_LEVEL`
 
-#### Unit Tests
+### Unit Tests
   - Fixed invalid test data where values are not matching the specified statements
 
-## 0.7.0 (2016-05-29) - API
-### Improvements
-#### JSON Parser
+# 0.7.0 (2016-05-29) - API
+## Improvements
+### JSON Parser
   - Prevent stack overflow on deeply nested input.
   When the input is too deeply nested, the parser can run into a stack overflow.
   `StackOverflowError` is a VM Error, as such it should not be catched but rather be prevented.
   The parser will now throw a `ParseException` when the nesting level exceeds `1000`.
 
-### Tests
+## Tests
   Implemented new test classes:
 
 | Class | Description |
@@ -138,11 +142,11 @@ The parser still needs to read every single character, but by telling it to skip
 | `com.arcticicestudio.icecore.json.WritingBuffer` | Tests the JSON writer writing buffer class `WritingBuffer`. |
 | `com.arcticicestudio.icecore.json.mocking.TypeMockingTest` | Tests mocking to make sure types do not prevent mocking by final or visibility constructs. |
 
-## 0.6.0 (2016-05-28) - API
+# 0.6.0 (2016-05-28) - API
 This version includes the API entrypoint class `Json` to write and parse JSON.
 
-### Features
-#### API
+## Features
+### API
   - Implemented new classes:
 
 | Class | Description |
@@ -166,15 +170,15 @@ This version includes the API entrypoint class `Json` to write and parse JSON.
 | `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, double) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified `double` value. |
 | `com.arcticicestudio.icecore.json.JsonObject` | `+ set(String, String) : JsonObject` | - | Sets the value of the member with the specified name to the JSON representation of the specified string. |
 
-#### Documentation
+### Documentation
   - Added a basic "User Guide" to the README to show the common usage of the icecore-json API.
   - Added "Concurrency" section to inform about the thread-safety of the JSON library structures
 
-## 0.5.0 (2016-05-28)
+# 0.5.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
-### Features
-#### JSON Writing
+## Features
+### JSON Writing
   - Implemented new classes:
 
 | Class | Description |
@@ -199,11 +203,11 @@ This version includes the API entrypoint class `Json` to write and parse JSON.
 | `com.arcticicestudio.icecore.json.JsonValue` | `@Override toString(WriterConfig) : String` | - | Returns the JSON string for this value using the given formatting. |
 | `com.arcticicestudio.icecore.json.JsonValue` | `abstract write(JsonWriter) : String` | `IOException` | - |
 
-## 0.4.0 (2016-05-28)
+# 0.4.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
-### Features
-#### JSON Parsing
+## Features
+### JSON Parsing
   - Implemented new classes:
 
 | Class | Description |
@@ -211,22 +215,22 @@ This version includes the API entrypoint class `Json` to write and parse JSON.
 | `com.arcticicestudio.icecore.json.JsonParser` | Represents a JSON parser. |
 | `com.arcticicestudio.icecore.json.ParseException` | Represents an unchecked exception to indicate that an input does not qualify as valid JSON. |
 
-## 0.3.0 (2016-05-28)
+# 0.3.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
-### Features
-#### JSON Literal Representations
+## Features
+### JSON Literal Representations
   - Implemented new classes:
 
 | Class | Description |
 | ----- | ----------- |
 | `com.arcticicestudio.icecore.json.JsonLiteral` | Represents a JSON literal. |
 
-## 0.2.0 (2016-05-28)
+# 0.2.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
-### Features
-#### JSON Structure Representations
+## Features
+### JSON Structure Representations
   - Implemented new classes:
 
 | Class | Description |
@@ -234,11 +238,11 @@ This version includes the API entrypoint class `Json` to write and parse JSON.
 | `com.arcticicestudio.icecore.json.JsonArray` | Represents a JSON array, an ordered collection of JSON values. |
 | `com.arcticicestudio.icecore.json.JsonObject` | Represents a JSON object, a set of name/value pairs, where the names are strings and the values are JSON values. |
 
-## 0.1.0 (2016-05-28)
+# 0.1.0 (2016-05-28)
 **NOTE**: This is a development-progressive-only version and represents a non-executable state!**
 
-### Features
-#### JSON Value Representations
+## Features
+### JSON Value Representations
   - Implemented new classes:
 
 | Class | Description |
@@ -247,7 +251,7 @@ This version includes the API entrypoint class `Json` to write and parse JSON.
 | `com.arcticicestudio.icecore.json.JsonNumber` | Represents a JSON number. |
 | `com.arcticicestudio.icecore.json.JsonString` | Represents a JSON string. |
 
-## 0.0.0 (2016-05-27) - Project Initialization
+# 0.0.0 (2016-05-27) - Project Initialization
 
 [arcver-github]: https://github.com/arcticicestudio/arcver
 [semver]: http://semver.org
