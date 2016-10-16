@@ -536,6 +536,7 @@ public class JsonObject extends JsonValue implements Iterable<Member> {
    * </p>
    *
    * @param name the name of the member whose value is to be returned object does not contain a member with that name
+   * @return the {@link JsonValue} with the specified name
    */
   public JsonValue get(String name) {
     if (name == null) {

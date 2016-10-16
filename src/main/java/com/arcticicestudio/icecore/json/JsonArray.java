@@ -34,7 +34,6 @@ import java.util.List;
  *   ...
  * }
  * </pre>
- * </p>
  * <p>
  *   An equivalent {@link List} can be obtained from the method {@link #values()}.
  * </p>
