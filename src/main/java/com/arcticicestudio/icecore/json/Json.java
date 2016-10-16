@@ -22,7 +22,6 @@ import java.io.Reader;
  * <pre>
  * JsonObject object = Json.parse(string).asObject();
  * </pre>
- * </p>
  * <p>
  *   To <strong>create</strong> a JSON data structure to be serialized, use the methods {@code value()},
  *   {@code array()} and {@code object()}.
@@ -30,7 +29,6 @@ import java.io.Reader;
  * <pre>
  * String string = Json.object().add("foo", 23).add("bar", true).toString();
  * </pre>
- * </p>
  * <p>
  *   To create a JSON array from a given Java array, you can use one of the {@code array()} methods with varargs
  *   parameters:
@@ -38,7 +36,6 @@ import java.io.Reader;
  * String[] names = ...
  * JsonArray array = Json.array(names);
  * </pre>
- * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.6.0

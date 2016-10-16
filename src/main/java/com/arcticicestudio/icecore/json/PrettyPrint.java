@@ -24,7 +24,6 @@ import java.util.Arrays;
  *   <pre>
  *     jsonValue.writeTo(writer, PrettyPrint.singleLine());
  *   </pre>
- * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @since 0.5.0
