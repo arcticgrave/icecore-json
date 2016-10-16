@@ -13,6 +13,7 @@ copyright Copyright (C) 2016              +
 package com.arcticicestudio.icecore.json;
 
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -311,8 +312,8 @@ public abstract class JsonValue implements Serializable {
   /**
    * Returns the JSON string for this value in its minimal form, without any additional whitespace.
    * <p>
-   *   The result is guaranteed to be a valid input for the method {@link #readFrom(String)} and to create a value that
-   *   is <em>equal</em> to this object.
+   *   The result is guaranteed to be a valid input for the method {@link Json#parse(Reader)} and to create a value
+   *   that is <em>equal</em> to this object.
    * </p>
    *
    * @return a JSON string that represents this value
