@@ -32,7 +32,7 @@ JFrog Bintray
   <packaging>jar</packaging>
 
   <name>icecore-json</name>
-  <description>A fast, minimal and simple parser and writer.</description>
+  <description>A fast, minimal and simple JSON parser and writer.</description>
   <url>https://github.com/arcticicestudio/icecore-json</url>
   <inceptionYear>2016</inceptionYear>
   <organization>
