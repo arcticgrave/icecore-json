@@ -1,14 +1,13 @@
 /*
-+++++++++++++++++++++++++++++++++++++++++++
-title     JSON String                     +
-project   icecore-json                    +
-file      JsonString.java                 +
-version   0.8.0-frost.1                   +
-author    Arctic Ice Studio               +
-email     development@arcticicestudio.com +
-website   http://arcticicestudio.com      +
-copyright Copyright (C) 2016              +
-+++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+title      JSON String                                     +
+project    icecore-json                                    +
+version    0.8.0-frost.1                                   +
+repository https://github.com/arcticicestudio/icecore-json +
+author     Arctic Ice Studio                               +
+email      development@arcticicestudio.com                 +
+copyright  Copyright (C) 2016                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 package com.arcticicestudio.icecore.json;
 

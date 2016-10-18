@@ -1,14 +1,13 @@
 /*
-++++++++++++++++++++++++++++++++++++++++++++
-title     JSON Public API                  +
-project   icecore-json                     +
-file      Json.java                        +
-version   0.8.0-frost.1                    +
-author    Arctic Ice Studio                +
-email     development@arcticicestudio.com  +
-website   http://arcticicestudio.com       +
-copyright Copyright (C) 2016               +
-++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+title      JSON Public API                                 +
+project    icecore-json                                    +
+version    0.8.0-frost.1                                   +
+repository https://github.com/arcticicestudio/icecore-json +
+author     Arctic Ice Studio                               +
+email      development@arcticicestudio.com                 +
+copyright  Copyright (C) 2016                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 package com.arcticicestudio.icecore.json;
 
@@ -16,7 +15,8 @@ import java.io.IOException;
 import java.io.Reader;
 
 /**
- * This class serves as the entry point to the "IceCore - JSON" public API.
+ * This class serves as the entry point to the
+ * <a href="https://github.com/arcticicestudio/icecore-json">IceCore JSON</a> public API.
  * <p>
  *   To <strong>parse</strong> a given JSON input, use the {@code parse()} methods:
  * <pre>
@@ -38,6 +38,7 @@ import java.io.Reader;
  * </pre>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
+ * @see <a href="https://github.com/arcticicestudio/icecore-json">IceCore JSON Repository</a>
  * @since 0.6.0
  */
 public final class Json {
