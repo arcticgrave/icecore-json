@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-title      POM                                                +
-project    icecore-json                                       +
-version    0.8.0-frost.1                                      +
-repository https://bitbucket.org/arcticicestudio/icecore-json +
-author     Arctic Ice Studio                                  +
-email      development@arcticicestudio.com                    +
-copyright  Copyright (C) 2016                                 +
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+title      POM                                             +
+project    icecore-json                                    +
+version    0.8.0-frost.1                                   +
+repository https://github.com/arcticicestudio/icecore-json +
+author     Arctic Ice Studio                               +
+email      development@arcticicestudio.com                 +
+copyright  Copyright (C) 2016                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 [References]
 Apache Maven
@@ -32,8 +32,8 @@ JFrog Bintray
   <packaging>jar</packaging>
 
   <name>icecore-json</name>
-  <description>A fast, minimal and simple [JSON](http://json.org) parser and writer.</description>
-  <url>https://bitbucket.org/arcticicestudio/icecore-json</url>
+  <description>A fast, minimal and simple parser and writer.</description>
+  <url>https://github.com/arcticicestudio/icecore-json</url>
   <inceptionYear>2016</inceptionYear>
   <organization>
     <name>Arctic Ice Studio</name>
@@ -94,15 +94,15 @@ JFrog Bintray
   </properties>
 
   <scm>
-    <connection>scm:git:https://bitbucket.org/arcticicestudio/icecore-json.git</connection>
-    <developerConnection>scm:git:git://git@bitbucket.org:arcticicestudio/icecore-json.git</developerConnection>
+    <connection>scm:git:https://github.com/arcticicestudio/icecore-json.git</connection>
+    <developerConnection>scm:git:git://git@github.com:arcticicestudio/icecore-json.git</developerConnection>
     <tag>HEAD</tag>
-    <url>https://bitbucket.org/arcticicestudio/icecore-json</url>
+    <url>https://github.com/arcticicestudio/icecore-json</url>
   </scm>
 
   <issueManagement>
-    <system>Bitbucket</system>
-    <url>https://bitbucket.org/arcticicestudio/icecore-json/issues</url>
+    <system>GitHub</system>
+    <url>https://github.com/arcticicestudio/icecore-json</url>
   </issueManagement>
 
   <dependencies>
@@ -362,7 +362,7 @@ JFrog Bintray
     <profile>
       <id>jfrog</id>
       <distributionManagement>
-        <downloadUrl>https://bitbucket.org/arcticicestudio/icecore-json</downloadUrl>
+        <downloadUrl>https://github.com/arcticicestudio/icecore-json</downloadUrl>
           <snapshotRepository>
             <id>bintray</id>
             <name>OSS JFrog</name>
@@ -379,7 +379,7 @@ JFrog Bintray
     <profile>
       <id>oss-sonatype</id>
       <distributionManagement>
-        <downloadUrl>https://bitbucket.org/arcticicestudio/icecore-json</downloadUrl>
+        <downloadUrl>https://github.com/arcticicestudio/icecore-json</downloadUrl>
         <snapshotRepository>
           <id>ossrh</id>
           <name>OSS Sonatype</name>
