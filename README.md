@@ -1,6 +1,6 @@
-<p align="center"><img src="https://bitbucket.org/arcticicestudio/icecore-json/raw/develop/src/main/assets/icecore-json-logo-banner.svg"/></p>
+<p align="center"><img src="https://cdn.rawgit.com/arcticicestudio/icecore-json/develop/src/main/assets/icecore-json-logo-banner.svg"/></p>
 
-<p align="center"><img src="https://cdn.travis-ci.org/images/favicon-c566132d45ab1a9bcae64d8d90e4378a.svg" width=24 height=24/> <a href="https://travis-ci.org/arcticicestudio/icecore-json"><img src="https://img.shields.io/travis/arcticicestudio/icecore-json/develop.svg"/></a> <img src="https://circleci.com/favicon.ico" width=24 height=24/> <a href="https://circleci.com/bb/arcticicestudio/icecore-json"><img src="https://circleci.com/bb/arcticicestudio/icecore-json.svg?style=shield&circle-token=15a1daa3568d1239de2d34f61e8cb807024cd4de"/></a> <img src="https://codecov.io/favicon.ico" width=24 height=24/> <a href="https://codecov.io/gh/arcticicestudio/icecore-json"><img src="https://codecov.io/gh/arcticicestudio/icecore-json/branch/develop/graph/badge.svg"/></a> <img src="https://bitbucket.org/favicon.ico" width=24 height=24/> <a href="https://bitbucket.org/arcticicestudio/icecore-json/downloads"><img src="https://img.shields.io/badge/release-0.7.0-blue.svg"/></a> <a href="https://bitbucket.org/arcticicestudio/icecore-json/downloads"><img src="https://img.shields.io/badge/pre--release-0.8.0--frost.1-blue.svg"/></a> <img src="http://central.sonatype.org/favicon.ico" width=24 height=24/> <a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.arcticicestudio%22%20AND%20a%3A%22icecore-json%22"><img src="https://img.shields.io/maven-central/v/com.arcticicestudio/icecore-json.svg"/></a> <img src="https://oss.sonatype.org/favicon.ico"/> <a href="https://oss.sonatype.org/content/repositories/snapshots/com/arcticicestudio/icecore-json"><img src="https://img.shields.io/badge/snapshot----blue.svg"/></a> <img src="https://bintray.com/favicon.ico" width=24 height=24/> <a href='https://bintray.com/arcticicestudio/IceCore/icecore-json/_latestVersion'><img src='https://api.bintray.com/packages/arcticicestudio/IceCore/icecore-json/images/download.svg'></a></p>
+<p align="center"><img src="https://cdn.travis-ci.org/images/favicon-c566132d45ab1a9bcae64d8d90e4378a.svg" width=24 height=24/> <a href="https://travis-ci.org/arcticicestudio/icecore-json"><img src="https://img.shields.io/travis/arcticicestudio/icecore-json/develop.svg"/></a> <img src="https://circleci.com/favicon.ico" width=24 height=24/> <a href="https://circleci.com/bb/arcticicestudio/icecore-json"><img src="https://circleci.com/bb/arcticicestudio/icecore-json.svg?style=shield&circle-token=be8b5b0a914996239ba512525f91c626e7d00ba8"/></a> <img src="https://codecov.io/favicon.ico" width=24 height=24/> <a href="https://codecov.io/gh/arcticicestudio/icecore-json"><img src="https://codecov.io/gh/arcticicestudio/icecore-json/branch/develop/graph/badge.svg"/></a> <img src="https://assets-cdn.github.com/favicon.ico" width=24 height=24/> <a href="https://github.com/arcticicestudio/icecore-json/releases/latest"><img src="https://img.shields.io/github/release/arcticicestudio/icecore-json.svg"/></a> <a href="https://github.com/arcticicestudio/icecore-json/releases/latest"><img src="https://img.shields.io/badge/pre--release-0.8.0--frost.1-blue.svg"/></a> <img src="http://central.sonatype.org/favicon.ico" width=24 height=24/> <a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.arcticicestudio%22%20AND%20a%3A%22icecore-json%22"><img src="https://img.shields.io/maven-central/v/com.arcticicestudio/icecore-json.svg"/></a> <img src="https://oss.sonatype.org/favicon.ico"/> <a href="https://oss.sonatype.org/content/repositories/snapshots/com/arcticicestudio/icecore-json"><img src="https://img.shields.io/badge/oss--sonatype---_-blue.svg"/></a> <img src="https://bintray.com/favicon.ico" width=24 height=24/> <a href='https://bintray.com/arcticicestudio/IceCore/icecore-json/_latestVersion'><img src='https://api.bintray.com/packages/arcticicestudio/IceCore/icecore-json/images/download.svg'></a> <a href="https://oss.jfrog.org/webapp/#/artifacts/browse/tree/General/oss-snapshot-local/com/arcticicestudio/icecore-json"><img src="https://img.shields.io/badge/artifactory---_-green.svg"/></a></p>
 
 <p align="center">A fast, minimal and simple [JSON](http://json.org) parser and writer.</p>
 
@@ -15,7 +15,7 @@ It's not an object mapper, but a bare-bones library that aims at being
 ## Getting started
 ### Setup
 To use icecore-json it must be available on your classpath.  
-You can use it as a dependency for your favorite build tool or [download the latest version](https://bitbucket.org/arcticicestudio/icecore-json/downloads).
+You can use it as a dependency for your favorite build tool or [download the latest version](https://github.com/arcticicestudio/icecore-json/releases/latest).
 
 <img src="http://apache.org/favicons/favicon.ico" width=16 height=16/> <a href="https://maven.apache.org">Apache Maven</a>
 ```xml
@@ -138,7 +138,7 @@ This is a example on how to extract nested contents:
     {
       "name": "Yogurt",
       "id": "28469",
-      "quantity": 5,
+      "quantity": 5
     },
     {
       "name": "Coconut",
@@ -225,13 +225,13 @@ Iterators will throw a `ConcurrentModificationException` when the contents of a 
 ---
 
 ## Development
-[![](https://img.shields.io/badge/Changelog-0.8.0--frost.1-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-json/raw/v0.8.0-frost.1/CHANGELOG.md) [![](https://img.shields.io/badge/Workflow-gitflow_Branching_Model-blue.svg)](http://nvie.com/posts/a-successful-git-branching-model) [![](https://img.shields.io/badge/Versioning-ArcVer_0.8.0-blue.svg)](https://github.com/arcticicestudio/arcver)
+[![](https://img.shields.io/badge/Changelog-0.8.0--frost.1-blue.svg)](https://github.com/arcticicestudio/icecore-strman/blob/v0.8.0-frost.1/CHANGELOG.md) [![](https://img.shields.io/badge/Workflow-gitflow_Branching_Model-blue.svg)](http://nvie.com/posts/a-successful-git-branching-model) [![](https://img.shields.io/badge/Versioning-ArcVer_0.8.0-blue.svg)](https://github.com/arcticicestudio/arcver)
 
 ### Contribution
-Please report issues/bugs, feature requests and suggestions for improvements to the [issue tracker](https://bitbucket.org/arcticicestudio/icecore-json/issues).
+Please report issues/bugs, feature requests and suggestions for improvements to the [issue tracker](https://github.com/arcticicestudio/icecore-json/issues).
 
 ## Credits
-Inspired by the awesome [minimal-json](https://github.com/ralfstx/minimal-json) project which is the codebase of this project.
+The codebase of this project is inspired by the awesome [minimal-json](https://github.com/ralfstx/minimal-json) project.
 
 ---
 

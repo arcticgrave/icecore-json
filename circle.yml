@@ -1,12 +1,12 @@
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# title      Circle CI Build Configuration                      +
-# project    icecore-json                                       +
-# version                                                       +
-# repository https://bitbucket.org/arcticicestudio/icecore-json +
-# author     Arctic Ice Studio                                  +
-# email      development@arcticicestudio.com                    +
-# copyright  Copyright (C) 2016                                 +
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# title      Circle CI Build Configuration                   +
+# project    icecore-json                                    +
+# version                                                    +
+# repository https://github.com/arcticicestudio/icecore-json +
+# author     Arctic Ice Studio                               +
+# email      development@arcticicestudio.com                 +
+# copyright  Copyright (C) 2016                              +
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #
 # [References]
 # Circle CI
