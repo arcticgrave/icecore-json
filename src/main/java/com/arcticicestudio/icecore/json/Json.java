@@ -64,6 +64,13 @@ public final class Json {
   public static final JsonValue FALSE = new JsonLiteral("false");
 
   /**
+   * Holds the public API version of this library.
+   *
+   * @since 0.8.0
+   */
+  public static final String VERSION = "0.8.0-frost.1";
+
+  /**
    * Returns a {@link JsonValue} instance that represents the given {@code int} value.
    *
    * @param value the value to get a JSON representation for
@@ -373,15 +380,15 @@ public final class Json {
     }
 
     /**
-     * Returns the ArcVer- and SemVer compatible version.
+     * Returns the ArcVer / SemVer version of the public API.
      *
-     * @return The ArcVer and SemVer compatible version
+     * @return The ArcVer / SemVer version string
      * @see <a href="https://github.com/arcticicestudio/arcver">ArcVer</a>
      * @see <a href="http://semver.org">SemVer</a>
      * @since 0.8.0
      */
     public String getVersion() {
-      return "0.8.0-frost.1";
+      return VERSION;
     }
   }
 }
